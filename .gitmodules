@@ -1,0 +1,3 @@
+[submodule "Components/SocketIO-Kit"]
+	path = Components/SocketIO-Kit
+	url = https://github.com/ricardopereira/SocketIO-Kit.git

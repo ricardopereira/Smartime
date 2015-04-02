@@ -8,11 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		D79540051ACDB4B50031354F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540041ACDB4B50031354F /* AppDelegate.swift */; };
-		D79540071ACDB4B50031354F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540061ACDB4B50031354F /* ViewController.swift */; };
-		D795400A1ACDB4B50031354F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D79540081ACDB4B50031354F /* Main.storyboard */; };
 		D795400C1ACDB4B50031354F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D795400B1ACDB4B50031354F /* Images.xcassets */; };
 		D795400F1ACDB4B50031354F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D795400D1ACDB4B50031354F /* LaunchScreen.xib */; };
 		D795401B1ACDB4B50031354F /* SmartimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795401A1ACDB4B50031354F /* SmartimeTests.swift */; };
+		D79540251ACDB74E0031354F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540241ACDB74E0031354F /* AppSettings.swift */; };
+		D79540281ACDB9F00031354F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540261ACDB9EF0031354F /* MainViewController.swift */; };
+		D79540291ACDB9F00031354F /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D79540271ACDB9F00031354F /* MainViewController.xib */; };
+		D795404E1ACDC3640031354F /* SocketIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540431ACDC3640031354F /* SocketIO.swift */; };
+		D795404F1ACDC3640031354F /* SocketIOCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540441ACDC3640031354F /* SocketIOCallback.swift */; };
+		D79540501ACDC3640031354F /* SocketIOConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540451ACDC3640031354F /* SocketIOConnection.swift */; };
+		D79540511ACDC3640031354F /* SocketIOEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540461ACDC3640031354F /* SocketIOEmitter.swift */; };
+		D79540521ACDC3640031354F /* SocketIOHandshake.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540471ACDC3640031354F /* SocketIOHandshake.swift */; };
+		D79540531ACDC3640031354F /* SocketIOOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540481ACDC3640031354F /* SocketIOOptions.swift */; };
+		D79540541ACDC3640031354F /* SocketIOPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540491ACDC3640031354F /* SocketIOPacket.swift */; };
+		D79540551ACDC3640031354F /* SocketIOParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795404A1ACDC3640031354F /* SocketIOParser.swift */; };
+		D79540561ACDC3640031354F /* SocketIOTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795404B1ACDC3640031354F /* SocketIOTransport.swift */; };
+		D79540571ACDC3640031354F /* SocketIOTransportDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795404C1ACDC3640031354F /* SocketIOTransportDelegate.swift */; };
+		D79540581ACDC3640031354F /* SocketIOWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795404D1ACDC3640031354F /* SocketIOWebSocket.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +41,25 @@
 		D7953FFF1ACDB4B50031354F /* Smartime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smartime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79540031ACDB4B50031354F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D79540041ACDB4B50031354F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D79540061ACDB4B50031354F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D79540091ACDB4B50031354F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D795400B1ACDB4B50031354F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D795400E1ACDB4B50031354F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D79540141ACDB4B50031354F /* SmartimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79540191ACDB4B50031354F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D795401A1ACDB4B50031354F /* SmartimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartimeTests.swift; sourceTree = "<group>"; };
+		D79540241ACDB74E0031354F /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		D79540261ACDB9EF0031354F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D79540271ACDB9F00031354F /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		D79540431ACDC3640031354F /* SocketIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIO.swift; sourceTree = "<group>"; };
+		D79540441ACDC3640031354F /* SocketIOCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOCallback.swift; sourceTree = "<group>"; };
+		D79540451ACDC3640031354F /* SocketIOConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOConnection.swift; sourceTree = "<group>"; };
+		D79540461ACDC3640031354F /* SocketIOEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOEmitter.swift; sourceTree = "<group>"; };
+		D79540471ACDC3640031354F /* SocketIOHandshake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOHandshake.swift; sourceTree = "<group>"; };
+		D79540481ACDC3640031354F /* SocketIOOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOOptions.swift; sourceTree = "<group>"; };
+		D79540491ACDC3640031354F /* SocketIOPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOPacket.swift; sourceTree = "<group>"; };
+		D795404A1ACDC3640031354F /* SocketIOParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOParser.swift; sourceTree = "<group>"; };
+		D795404B1ACDC3640031354F /* SocketIOTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOTransport.swift; sourceTree = "<group>"; };
+		D795404C1ACDC3640031354F /* SocketIOTransportDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOTransportDelegate.swift; sourceTree = "<group>"; };
+		D795404D1ACDC3640031354F /* SocketIOWebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOWebSocket.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +86,7 @@
 				D79540011ACDB4B50031354F /* Smartime */,
 				D79540171ACDB4B50031354F /* SmartimeTests */,
 				D79540001ACDB4B50031354F /* Products */,
+				D79540411ACDC3420031354F /* Components */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,8 +103,9 @@
 			isa = PBXGroup;
 			children = (
 				D79540041ACDB4B50031354F /* AppDelegate.swift */,
-				D79540061ACDB4B50031354F /* ViewController.swift */,
-				D79540081ACDB4B50031354F /* Main.storyboard */,
+				D79540241ACDB74E0031354F /* AppSettings.swift */,
+				D79540261ACDB9EF0031354F /* MainViewController.swift */,
+				D79540271ACDB9F00031354F /* MainViewController.xib */,
 				D795400B1ACDB4B50031354F /* Images.xcassets */,
 				D795400D1ACDB4B50031354F /* LaunchScreen.xib */,
 				D79540021ACDB4B50031354F /* Supporting Files */,
@@ -110,6 +136,33 @@
 				D79540191ACDB4B50031354F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D79540411ACDC3420031354F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D79540421ACDC3640031354F /* SocketIO-Kit */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		D79540421ACDC3640031354F /* SocketIO-Kit */ = {
+			isa = PBXGroup;
+			children = (
+				D79540431ACDC3640031354F /* SocketIO.swift */,
+				D79540441ACDC3640031354F /* SocketIOCallback.swift */,
+				D79540451ACDC3640031354F /* SocketIOConnection.swift */,
+				D79540461ACDC3640031354F /* SocketIOEmitter.swift */,
+				D79540471ACDC3640031354F /* SocketIOHandshake.swift */,
+				D79540481ACDC3640031354F /* SocketIOOptions.swift */,
+				D79540491ACDC3640031354F /* SocketIOPacket.swift */,
+				D795404A1ACDC3640031354F /* SocketIOParser.swift */,
+				D795404B1ACDC3640031354F /* SocketIOTransport.swift */,
+				D795404C1ACDC3640031354F /* SocketIOTransportDelegate.swift */,
+				D795404D1ACDC3640031354F /* SocketIOWebSocket.swift */,
+			);
+			name = "SocketIO-Kit";
+			path = "Components/SocketIO-Kit/Source";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,8 +245,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D795400A1ACDB4B50031354F /* Main.storyboard in Resources */,
 				D795400F1ACDB4B50031354F /* LaunchScreen.xib in Resources */,
+				D79540291ACDB9F00031354F /* MainViewController.xib in Resources */,
 				D795400C1ACDB4B50031354F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,7 +265,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D79540071ACDB4B50031354F /* ViewController.swift in Sources */,
+				D79540561ACDC3640031354F /* SocketIOTransport.swift in Sources */,
+				D79540531ACDC3640031354F /* SocketIOOptions.swift in Sources */,
+				D79540281ACDB9F00031354F /* MainViewController.swift in Sources */,
+				D79540541ACDC3640031354F /* SocketIOPacket.swift in Sources */,
+				D79540251ACDB74E0031354F /* AppSettings.swift in Sources */,
+				D79540521ACDC3640031354F /* SocketIOHandshake.swift in Sources */,
+				D79540501ACDC3640031354F /* SocketIOConnection.swift in Sources */,
+				D79540511ACDC3640031354F /* SocketIOEmitter.swift in Sources */,
+				D79540581ACDC3640031354F /* SocketIOWebSocket.swift in Sources */,
+				D795404F1ACDC3640031354F /* SocketIOCallback.swift in Sources */,
+				D79540551ACDC3640031354F /* SocketIOParser.swift in Sources */,
+				D795404E1ACDC3640031354F /* SocketIO.swift in Sources */,
+				D79540571ACDC3640031354F /* SocketIOTransportDelegate.swift in Sources */,
 				D79540051ACDB4B50031354F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,14 +301,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D79540081ACDB4B50031354F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D79540091ACDB4B50031354F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D795400D1ACDB4B50031354F /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
