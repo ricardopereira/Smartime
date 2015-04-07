@@ -17,6 +17,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = start()
+        
+        // Testing
+        let options = SocketIOOptions()
+        let socket = SocketIO(url: "http://locahost:8000", withOptions: options)
+        
+        socket.on("event", withCallback: { () -> () in
+            
+        }).on("connect", withCallback: { () -> () in
+            
+        }).on("connect", withCallback: { () -> () in
+            
+        })
+        
+        socket.connect()
+        
         return true
     }
 

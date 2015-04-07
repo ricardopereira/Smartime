@@ -17,7 +17,7 @@
 		D795404E1ACDC3640031354F /* SocketIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540431ACDC3640031354F /* SocketIO.swift */; };
 		D795404F1ACDC3640031354F /* SocketIOCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540441ACDC3640031354F /* SocketIOCallback.swift */; };
 		D79540501ACDC3640031354F /* SocketIOConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540451ACDC3640031354F /* SocketIOConnection.swift */; };
-		D79540511ACDC3640031354F /* SocketIOEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540461ACDC3640031354F /* SocketIOEmitter.swift */; };
+		D79540511ACDC3640031354F /* SocketIOEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540461ACDC3640031354F /* SocketIOEventHandler.swift */; };
 		D79540521ACDC3640031354F /* SocketIOHandshake.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540471ACDC3640031354F /* SocketIOHandshake.swift */; };
 		D79540531ACDC3640031354F /* SocketIOOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540481ACDC3640031354F /* SocketIOOptions.swift */; };
 		D79540541ACDC3640031354F /* SocketIOPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540491ACDC3640031354F /* SocketIOPacket.swift */; };
@@ -52,7 +52,7 @@
 		D79540431ACDC3640031354F /* SocketIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIO.swift; sourceTree = "<group>"; };
 		D79540441ACDC3640031354F /* SocketIOCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOCallback.swift; sourceTree = "<group>"; };
 		D79540451ACDC3640031354F /* SocketIOConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOConnection.swift; sourceTree = "<group>"; };
-		D79540461ACDC3640031354F /* SocketIOEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOEmitter.swift; sourceTree = "<group>"; };
+		D79540461ACDC3640031354F /* SocketIOEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOEventHandler.swift; sourceTree = "<group>"; };
 		D79540471ACDC3640031354F /* SocketIOHandshake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOHandshake.swift; sourceTree = "<group>"; };
 		D79540481ACDC3640031354F /* SocketIOOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOOptions.swift; sourceTree = "<group>"; };
 		D79540491ACDC3640031354F /* SocketIOPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOPacket.swift; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 				D79540431ACDC3640031354F /* SocketIO.swift */,
 				D79540441ACDC3640031354F /* SocketIOCallback.swift */,
 				D79540451ACDC3640031354F /* SocketIOConnection.swift */,
-				D79540461ACDC3640031354F /* SocketIOEmitter.swift */,
+				D79540461ACDC3640031354F /* SocketIOEventHandler.swift */,
 				D79540471ACDC3640031354F /* SocketIOHandshake.swift */,
 				D79540481ACDC3640031354F /* SocketIOOptions.swift */,
 				D79540491ACDC3640031354F /* SocketIOPacket.swift */,
@@ -272,7 +272,7 @@
 				D79540251ACDB74E0031354F /* AppSettings.swift in Sources */,
 				D79540521ACDC3640031354F /* SocketIOHandshake.swift in Sources */,
 				D79540501ACDC3640031354F /* SocketIOConnection.swift in Sources */,
-				D79540511ACDC3640031354F /* SocketIOEmitter.swift in Sources */,
+				D79540511ACDC3640031354F /* SocketIOEventHandler.swift in Sources */,
 				D79540581ACDC3640031354F /* SocketIOWebSocket.swift in Sources */,
 				D795404F1ACDC3640031354F /* SocketIOCallback.swift in Sources */,
 				D79540551ACDC3640031354F /* SocketIOParser.swift in Sources */,
@@ -397,6 +397,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Smartime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -464,6 +465,7 @@
 				D79540201ACDB4B50031354F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D79540211ACDB4B50031354F /* Build configuration list for PBXNativeTarget "SmartimeTests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +474,7 @@
 				D79540231ACDB4B50031354F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
