@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D74846311AD45A74005836F9 /* SocketIOCallbackResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74846301AD45A74005836F9 /* SocketIOCallbackResult.swift */; };
 		D79540051ACDB4B50031354F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540041ACDB4B50031354F /* AppDelegate.swift */; };
 		D795400C1ACDB4B50031354F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D795400B1ACDB4B50031354F /* Images.xcassets */; };
 		D795400F1ACDB4B50031354F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D795400D1ACDB4B50031354F /* LaunchScreen.xib */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D74846301AD45A74005836F9 /* SocketIOCallbackResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOCallbackResult.swift; sourceTree = "<group>"; };
 		D7953FFF1ACDB4B50031354F /* Smartime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smartime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79540031ACDB4B50031354F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D79540041ACDB4B50031354F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			children = (
 				D79540431ACDC3640031354F /* SocketIO.swift */,
 				D79540441ACDC3640031354F /* SocketIOCallback.swift */,
+				D74846301AD45A74005836F9 /* SocketIOCallbackResult.swift */,
 				D79540451ACDC3640031354F /* SocketIOConnection.swift */,
 				D79540461ACDC3640031354F /* SocketIOEventHandler.swift */,
 				D79540471ACDC3640031354F /* SocketIOHandshake.swift */,
@@ -277,6 +280,7 @@
 				D795404F1ACDC3640031354F /* SocketIOCallback.swift in Sources */,
 				D79540551ACDC3640031354F /* SocketIOParser.swift in Sources */,
 				D795404E1ACDC3640031354F /* SocketIO.swift in Sources */,
+				D74846311AD45A74005836F9 /* SocketIOCallbackResult.swift in Sources */,
 				D79540571ACDC3640031354F /* SocketIOTransportDelegate.swift in Sources */,
 				D79540051ACDB4B50031354F /* AppDelegate.swift in Sources */,
 			);

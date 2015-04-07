@@ -22,15 +22,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let options = SocketIOOptions()
         let socket = SocketIO(url: "http://locahost:8000", withOptions: options)
         
-        socket.on("event", withCallback: { () -> () in
-            
-        }).on("connect", withCallback: { () -> () in
-            
-        }).on("connect", withCallback: { () -> () in
-            
+        socket.on("event", withCallback: { (value: AnyObject) in
+            println("Event: \(value)")
+            return SocketIOCallbackResult()
+        }).on("connect", withCallback: { (value: AnyObject) in
+            println("Teste 1: \(value)")
+            return SocketIOCallbackResult()
+        }).on("connect", withCallback: { (value: AnyObject) in
+            println("Teste 2: \(value)")
+            return SocketIOCallbackResult()
         })
         
         socket.connect()
+        
+        socket.connection.emit("connect", withMessage: "sdflkaskdçfjwe")
+        socket.off()
+        socket.connection.emit("connect", withMessage: "aaaa")
         
         return true
     }
