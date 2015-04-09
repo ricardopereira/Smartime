@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B72110FC-CDDC-4BE9-AF56-04AFB8666C7C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Smartime</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1641CFF8C2272F8D3B8FA745B5E5586AE05067E3</key>
+		<string>https://github.com/ricardopereira/SocketIO-Kit.git</string>
+		<key>22992DA45658B74C1C9CD20D9DA137B364FE9E77</key>
+		<string>https://bitbucket.org/ricardopereiraw/smartime.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Smartime.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1641CFF8C2272F8D3B8FA745B5E5586AE05067E3</key>
+		<string>../..Components/SocketIO-Kit</string>
+		<key>22992DA45658B74C1C9CD20D9DA137B364FE9E77</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/ricardopereiraw/smartime.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>22992DA45658B74C1C9CD20D9DA137B364FE9E77</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>22992DA45658B74C1C9CD20D9DA137B364FE9E77</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Smartime</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1641CFF8C2272F8D3B8FA745B5E5586AE05067E3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SocketIO-Kit</string>
+		</dict>
+	</array>
+</dict>
+</plist>

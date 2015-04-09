@@ -18,27 +18,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = start()
         
-        // Testing
-        let options = SocketIOOptions()
-        let socket = SocketIO(url: "http://locahost:8000", withOptions: options)
-        
-        socket.on("event", withCallback: { (value: AnyObject) in
-            println("Event: \(value)")
-            return SocketIOCallbackResult()
-        }).on("connect", withCallback: { (value: AnyObject) in
-            println("Teste 1: \(value)")
-            return SocketIOCallbackResult()
-        }).on("connect", withCallback: { (value: AnyObject) in
-            println("Teste 2: \(value)")
-            return SocketIOCallbackResult()
-        })
-        
-        socket.connect()
-        
-        socket.connection.emit("connect", withMessage: "sdflkaskdçfjwe")
-        socket.off()
-        socket.connection.emit("connect", withMessage: "aaaa")
-        
+        if let socket = SocketIO(url: "sdjfsjdfh") {
+            socket.on("event", withCallback: { (value: AnyObject) in
+                println("Event: \(value)")
+                return SocketIOCallbackResult()
+            }).on("connect", withCallback: { (value: AnyObject) in
+                println("Teste 1: \(value)")
+                return SocketIOCallbackResult()
+            }).on("connect", withCallback: { (value: AnyObject) in
+                println("Teste 2: \(value)")
+                return SocketIOCallbackResult()
+            })
+            
+            socket.connect()
+            
+            socket.connection.emit("connect", withMessage: "sdflkaskdçfjwe")
+            socket.off()
+            socket.connection.emit("connect", withMessage: "aaaa")
+        }
+        else {
+            println("URL is invalid!")
+        }
+
         return true
     }
 

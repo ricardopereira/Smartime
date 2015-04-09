@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D74846311AD45A74005836F9 /* SocketIOCallbackResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74846301AD45A74005836F9 /* SocketIOCallbackResult.swift */; };
+		D74846331AD45F10005836F9 /* SocketIOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74846321AD45F10005836F9 /* SocketIOTests.swift */; };
 		D79540051ACDB4B50031354F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540041ACDB4B50031354F /* AppDelegate.swift */; };
 		D795400C1ACDB4B50031354F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D795400B1ACDB4B50031354F /* Images.xcassets */; };
 		D795400F1ACDB4B50031354F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D795400D1ACDB4B50031354F /* LaunchScreen.xib */; };
@@ -26,6 +27,8 @@
 		D79540561ACDC3640031354F /* SocketIOTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795404B1ACDC3640031354F /* SocketIOTransport.swift */; };
 		D79540571ACDC3640031354F /* SocketIOTransportDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795404C1ACDC3640031354F /* SocketIOTransportDelegate.swift */; };
 		D79540581ACDC3640031354F /* SocketIOWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795404D1ACDC3640031354F /* SocketIOWebSocket.swift */; };
+		D7B63B281AD6BA8100C06BD8 /* LumaJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B63B261AD6BA8100C06BD8 /* LumaJSON.swift */; };
+		D7B63B291AD6BA8100C06BD8 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B63B271AD6BA8100C06BD8 /* WebSocket.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		D74846301AD45A74005836F9 /* SocketIOCallbackResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOCallbackResult.swift; sourceTree = "<group>"; };
+		D74846321AD45F10005836F9 /* SocketIOTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOTests.swift; sourceTree = "<group>"; };
 		D7953FFF1ACDB4B50031354F /* Smartime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smartime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79540031ACDB4B50031354F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D79540041ACDB4B50031354F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 		D795404B1ACDC3640031354F /* SocketIOTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOTransport.swift; sourceTree = "<group>"; };
 		D795404C1ACDC3640031354F /* SocketIOTransportDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOTransportDelegate.swift; sourceTree = "<group>"; };
 		D795404D1ACDC3640031354F /* SocketIOWebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOWebSocket.swift; sourceTree = "<group>"; };
+		D7B63B261AD6BA8100C06BD8 /* LumaJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LumaJSON.swift; sourceTree = "<group>"; };
+		D7B63B271AD6BA8100C06BD8 /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				D795401A1ACDB4B50031354F /* SmartimeTests.swift */,
+				D74846321AD45F10005836F9 /* SocketIOTests.swift */,
 				D79540181ACDB4B50031354F /* Supporting Files */,
 			);
 			path = SmartimeTests;
@@ -163,9 +170,19 @@
 				D795404B1ACDC3640031354F /* SocketIOTransport.swift */,
 				D795404C1ACDC3640031354F /* SocketIOTransportDelegate.swift */,
 				D795404D1ACDC3640031354F /* SocketIOWebSocket.swift */,
+				D7B63B251AD6BA8100C06BD8 /* External */,
 			);
 			name = "SocketIO-Kit";
 			path = "Components/SocketIO-Kit/Source";
+			sourceTree = "<group>";
+		};
+		D7B63B251AD6BA8100C06BD8 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				D7B63B261AD6BA8100C06BD8 /* LumaJSON.swift */,
+				D7B63B271AD6BA8100C06BD8 /* WebSocket.swift */,
+			);
+			path = External;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +287,8 @@
 			files = (
 				D79540561ACDC3640031354F /* SocketIOTransport.swift in Sources */,
 				D79540531ACDC3640031354F /* SocketIOOptions.swift in Sources */,
+				D7B63B281AD6BA8100C06BD8 /* LumaJSON.swift in Sources */,
+				D7B63B291AD6BA8100C06BD8 /* WebSocket.swift in Sources */,
 				D79540281ACDB9F00031354F /* MainViewController.swift in Sources */,
 				D79540541ACDC3640031354F /* SocketIOPacket.swift in Sources */,
 				D79540251ACDB74E0031354F /* AppSettings.swift in Sources */,
@@ -290,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D74846331AD45F10005836F9 /* SocketIOTests.swift in Sources */,
 				D795401B1ACDB4B50031354F /* SmartimeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
