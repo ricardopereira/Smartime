@@ -18,24 +18,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = start()
         
-        let socket = SocketIO(url: "sdjfsjdfh");
+        let socket = SocketIO(url: "http://localhost:8000");
         
-        socket.on("event", withCallback: { (value: AnyObject) in
+        socket.on("myevent", withCallback: { (value: AnyObject) in
             println("Event: \(value)")
-            return SocketIOCallbackResult()
+            return SocketIOCallbackResult.Success(status: 0)
         }).on(.Connect, withCallback: { (value: AnyObject) in
             println("Teste 1: \(value)")
-            return SocketIOCallbackResult()
+            
+            // Connected: not called
+            
+            return SocketIOCallbackResult.Success(status: 0)
         }).on(.Connect, withCallback: { (value: AnyObject) in
             println("Teste 2: \(value)")
-            return SocketIOCallbackResult()
+            
+            // Connected
+            // Emit "connect" not possible!
+            socket.emit("myevent", withMessage: "sdflkaskdçfjwe")
+            socket.off()
+            socket.emit("myevent", withMessage: "aaaa")
+            
+            return SocketIOCallbackResult.Success(status: 0)
         })
         
         socket.connect()
         
-        socket.connection.emit("connect", withMessage: "sdflkaskdçfjwe")
-        socket.off()
-        socket.connection.emit("connect", withMessage: "aaaa")
+        // Teste
+        socket.emit("connect", withMessage: "200")
 
         return true
     }
