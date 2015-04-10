@@ -12,33 +12,30 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = start()
         
-        if let socket = SocketIO(url: "sdjfsjdfh") {
-            socket.on("event", withCallback: { (value: AnyObject) in
-                println("Event: \(value)")
-                return SocketIOCallbackResult()
-            }).on("connect", withCallback: { (value: AnyObject) in
-                println("Teste 1: \(value)")
-                return SocketIOCallbackResult()
-            }).on("connect", withCallback: { (value: AnyObject) in
-                println("Teste 2: \(value)")
-                return SocketIOCallbackResult()
-            })
-            
-            socket.connect()
-            
-            socket.connection.emit("connect", withMessage: "sdflkaskdçfjwe")
-            socket.off()
-            socket.connection.emit("connect", withMessage: "aaaa")
-        }
-        else {
-            println("URL is invalid!")
-        }
+        let socket = SocketIO(url: "sdjfsjdfh");
+        
+        socket.on("event", withCallback: { (value: AnyObject) in
+            println("Event: \(value)")
+            return SocketIOCallbackResult()
+        }).on(.Connect, withCallback: { (value: AnyObject) in
+            println("Teste 1: \(value)")
+            return SocketIOCallbackResult()
+        }).on(.Connect, withCallback: { (value: AnyObject) in
+            println("Teste 2: \(value)")
+            return SocketIOCallbackResult()
+        })
+        
+        socket.connect()
+        
+        socket.connection.emit("connect", withMessage: "sdflkaskdçfjwe")
+        socket.off()
+        socket.connection.emit("connect", withMessage: "aaaa")
 
         return true
     }
