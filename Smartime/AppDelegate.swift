@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = start()
         
-        let socket = SocketIO(url: "http://localhost:8000");
+        let socket = SocketIO(url: "http://localhost:8000/");
         
         socket.on("myevent", withCallback: { (value: AnyObject) in
             println("Event: \(value)")
