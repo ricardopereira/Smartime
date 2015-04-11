@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D7242B4C1AD825F00015BA96 /* SocketIOEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B4B1AD825F00015BA96 /* SocketIOEvent.swift */; };
 		D7242B4E1AD82D900015BA96 /* SocketIOEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B4D1AD82D900015BA96 /* SocketIOEmitter.swift */; };
+		D7242B501AD8A3D40015BA96 /* SocketIORequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B4F1AD8A3D40015BA96 /* SocketIORequester.swift */; };
 		D74846311AD45A74005836F9 /* SocketIOCallbackResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74846301AD45A74005836F9 /* SocketIOCallbackResult.swift */; };
 		D74846331AD45F10005836F9 /* SocketIOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74846321AD45F10005836F9 /* SocketIOTests.swift */; };
 		D79540051ACDB4B50031354F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540041ACDB4B50031354F /* AppDelegate.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		D7242B4B1AD825F00015BA96 /* SocketIOEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOEvent.swift; sourceTree = "<group>"; };
 		D7242B4D1AD82D900015BA96 /* SocketIOEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOEmitter.swift; sourceTree = "<group>"; };
+		D7242B4F1AD8A3D40015BA96 /* SocketIORequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIORequester.swift; sourceTree = "<group>"; };
 		D74846301AD45A74005836F9 /* SocketIOCallbackResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOCallbackResult.swift; sourceTree = "<group>"; };
 		D74846321AD45F10005836F9 /* SocketIOTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOTests.swift; sourceTree = "<group>"; };
 		D7953FFF1ACDB4B50031354F /* Smartime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smartime.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +168,7 @@
 				D79540441ACDC3640031354F /* SocketIOCallback.swift */,
 				D74846301AD45A74005836F9 /* SocketIOCallbackResult.swift */,
 				D79540451ACDC3640031354F /* SocketIOConnection.swift */,
+				D7242B4F1AD8A3D40015BA96 /* SocketIORequester.swift */,
 				D7242B4D1AD82D900015BA96 /* SocketIOEmitter.swift */,
 				D7242B4B1AD825F00015BA96 /* SocketIOEvent.swift */,
 				D79540461ACDC3640031354F /* SocketIOEventHandler.swift */,
@@ -298,6 +301,7 @@
 				D79540281ACDB9F00031354F /* MainViewController.swift in Sources */,
 				D79540541ACDC3640031354F /* SocketIOPacket.swift in Sources */,
 				D79540251ACDB74E0031354F /* AppSettings.swift in Sources */,
+				D7242B501AD8A3D40015BA96 /* SocketIORequester.swift in Sources */,
 				D79540521ACDC3640031354F /* SocketIOHandshake.swift in Sources */,
 				D7242B4E1AD82D900015BA96 /* SocketIOEmitter.swift in Sources */,
 				D79540501ACDC3640031354F /* SocketIOConnection.swift in Sources */,
