@@ -20,17 +20,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let socket = SocketIO(url: "http://localhost:8000/");
         
-        socket.on("myevent", withCallback: { (value: AnyObject) in
-            println("Event: \(value)")
-            return SocketIOCallbackResult.Success(status: 0)
-        }).on(.Connect, withCallback: { (value: AnyObject) in
-            println("Teste 1: \(value)")
-            
-            // Connected: not called
-            
-            return SocketIOCallbackResult.Success(status: 0)
-        }).on(.Connect, withCallback: { (value: AnyObject) in
-            println("Teste 2: \(value)")
+        socket.on("myevent", withCallback: { (arg: SocketIOArg) in
+            //println("Event: \(arg)")
+            return SocketIOResult.Success(status: 0)
+        }).on(.ConnectError, withCallback: { (arg: SocketIOArg) in
+            switch arg {
+            case .Error(let error):
+                println(error)
+            default:
+                return SocketIOResult.Success(status: 0)
+            }
+            return SocketIOResult.Success(status: 0)
+        }).on(.Connected, withCallback: { (arg: SocketIOArg) in
+            //println("Teste 2: \(arg)")
             
             // Connected
             // Emit "connect" not possible!
@@ -38,13 +40,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             socket.off()
             socket.emit("myevent", withMessage: "aaaa")
             
-            return SocketIOCallbackResult.Success(status: 0)
+            return SocketIOResult.Success(status: 0)
         })
         
         socket.connect()
         
         // Teste
-        socket.emit("connect", withMessage: "200")
+        
+        //socket.emit("connect", withMessage: "200")
 
         return true
     }
