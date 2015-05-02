@@ -20,18 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let socket = SocketIO(url: "http://localhost:8000/");
         
-        socket.on("myevent", withCallback: { (arg: SocketIOArg) in
+        socket.on("myevent") { (arg: SocketIOArg) -> (SocketIOResult) in
             //println("Event: \(arg)")
             return SocketIOResult.Success(status: 0)
-        }).on(.ConnectError, withCallback: { (arg: SocketIOArg) in
+        }.on(.ConnectError) { (arg: SocketIOArg) -> (SocketIOResult) in
             switch arg {
-            case .Error(let error):
+            case .Failure(let error):
                 println(error)
             default:
                 return SocketIOResult.Success(status: 0)
             }
             return SocketIOResult.Success(status: 0)
-        }).on(.Connected, withCallback: { (arg: SocketIOArg) in
+        }.on(.Connected) { (arg: SocketIOArg) -> (SocketIOResult) in
             //println("Teste 2: \(arg)")
             
             // Connected
@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             socket.emit("myevent", withMessage: "aaaa")
             
             return SocketIOResult.Success(status: 0)
-        })
+        }
         
         socket.connect()
         
