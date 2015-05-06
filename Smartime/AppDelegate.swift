@@ -32,8 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             return SocketIOResult.Success(status: 0)
         }.on(.Connected) { (arg: SocketIOArg) -> (SocketIOResult) in
-            //println("Teste 2: \(arg)")
-            
             // Connected
             // Emit "connect" not possible!
             socket.emit("myevent", withMessage: "sdflkaskdçfjwe")
@@ -42,6 +40,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             return SocketIOResult.Success(status: 0)
         }
+        
+        socket.on("chat message", withCallback: { (arg: SocketIOArg) -> (SocketIOResult) in
+            switch arg {
+            case .Message(let message):
+                println("Finally: \(message)")
+            default:
+                println("Not supported")
+            }
+            return SocketIOResult.Success(status: 0)
+        })
         
         socket.connect()
         
