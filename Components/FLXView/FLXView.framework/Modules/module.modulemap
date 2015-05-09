@@ -1,0 +1,6 @@
+framework module FLXView {
+  umbrella header "FLXView.h"
+
+  export *
+  module * { export * }
+}

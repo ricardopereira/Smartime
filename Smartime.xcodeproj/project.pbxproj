@@ -37,6 +37,8 @@
 		D7B63B281AD6BA8100C06BD8 /* LumaJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B63B261AD6BA8100C06BD8 /* LumaJSON.swift */; };
 		D7B63B291AD6BA8100C06BD8 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B63B271AD6BA8100C06BD8 /* WebSocket.swift */; };
 		D7C604A71AE56241004342CE /* SocketIOEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C604A61AE56241004342CE /* SocketIOEmitter.swift */; };
+		D7EFA9091AFE766D00623A16 /* FLXView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFA9081AFE766D00623A16 /* FLXView.framework */; };
+		D7EFA90B1AFE795600623A16 /* FLXView.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7EFA9081AFE766D00623A16 /* FLXView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,19 @@
 			remoteInfo = Smartime;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D7EFA90A1AFE794C00623A16 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D7EFA90B1AFE795600623A16 /* FLXView.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D7242B4B1AD825F00015BA96 /* SocketIOEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOEvent.swift; sourceTree = "<group>"; };
@@ -84,6 +99,7 @@
 		D7B63B261AD6BA8100C06BD8 /* LumaJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LumaJSON.swift; sourceTree = "<group>"; };
 		D7B63B271AD6BA8100C06BD8 /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		D7C604A61AE56241004342CE /* SocketIOEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOEmitter.swift; sourceTree = "<group>"; };
+		D7EFA9081AFE766D00623A16 /* FLXView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FLXView.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7EFA9091AFE766D00623A16 /* FLXView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +191,7 @@
 		D79540411ACDC3420031354F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D7EFA9071AFE766D00623A16 /* FLXView */,
 				D79540421ACDC3640031354F /* SocketIO-Kit */,
 			);
 			name = Components;
@@ -217,6 +235,15 @@
 			path = External;
 			sourceTree = "<group>";
 		};
+		D7EFA9071AFE766D00623A16 /* FLXView */ = {
+			isa = PBXGroup;
+			children = (
+				D7EFA9081AFE766D00623A16 /* FLXView.framework */,
+			);
+			name = FLXView;
+			path = Components/FLXView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -227,6 +254,7 @@
 				D7953FFB1ACDB4B50031354F /* Sources */,
 				D7953FFC1ACDB4B50031354F /* Frameworks */,
 				D7953FFD1ACDB4B50031354F /* Resources */,
+				D7EFA90A1AFE794C00623A16 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -459,6 +487,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Components/FLXView",
+				);
 				INFOPLIST_FILE = Smartime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
@@ -470,6 +502,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Components/FLXView",
+				);
 				INFOPLIST_FILE = Smartime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
