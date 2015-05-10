@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         socket = SocketIO(url: "http://localhost:8000/");
         
-        socket.on(.ConnectError) { (arg: SocketIOArg) -> (SocketIOResult) in
-            switch arg {
+        socket.on(.ConnectError) {
+            switch $0 {
             case .Failure(let error):
                 println(error)
             default:
@@ -97,20 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         flexView.addSubview(Separator())
         
-        let friends = Label(text: "Friends:", align: .Left)
-        friends.flx_margins = FLXMargins(top: 8, left: 8, bottom: 4, right: 8)
-        flexView.addSubview(friends)
-        
-        let friendList = FLXView()
-        friendList.childAlignment = .Start
-        friendList.direction = .Row
-        friendList.flx_margins = FLXMargins(top: 0, left: 8, bottom: 4, right: 4)
-        friendList.wrap = true
-        flexView.addSubview(friendList)
-        
-        let separator = Separator()
-        flexView.addSubview(separator)
-        
+        // Buttons
         let connect = Button(label: "Connect")
         connect.flx_margins = FLXMargins(top: 8, left: 8, bottom: 4, right: 8)
         flexView.addSubview(connect)
@@ -123,12 +110,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         send.flx_margins = FLXMargins(top: 8, left: 8, bottom: 4, right: 8)
         flexView.addSubview(send)
         
-        // Test
+        // Base
         let mainVC = UIViewController()
         mainVC.view.backgroundColor = UIColor.greenColor()
-
-        //sendButton.layer.borderWidth = 1.0
-        //sendButton.layer.borderColor = UIColor.whiteColor().CGColor
         
         // Events
         connect.addTarget(self, action: Selector("didTouchConnect:"), forControlEvents: .TouchUpInside)
@@ -138,8 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Subview
         mainVC.view.addSubview(flexView)
         
-        
-        // Layout
+        // Fullscreen
         flexView.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         var constraints = [NSLayoutConstraint]()
@@ -177,7 +160,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.init()
             
             setTitle(label, forState: .Normal)
-            layer.cornerRadius = 5
+            layer.cornerRadius = 4
+            layer.borderWidth = 1
+            layer.borderColor = UIColor.whiteColor().CGColor
         }
     }
     
