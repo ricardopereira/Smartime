@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D70CB5A91B024C00001DFA3D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70CB5A81B024C00001DFA3D /* Utilities.swift */; };
 		D7242B4C1AD825F00015BA96 /* SocketIOEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B4B1AD825F00015BA96 /* SocketIOEvent.swift */; };
 		D7242B501AD8A3D40015BA96 /* SocketIORequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B4F1AD8A3D40015BA96 /* SocketIORequester.swift */; };
 		D7242B531AD95F040015BA96 /* NSURL+TrailingSlash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B521AD95F040015BA96 /* NSURL+TrailingSlash.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D70CB5A81B024C00001DFA3D /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		D7242B4B1AD825F00015BA96 /* SocketIOEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOEvent.swift; sourceTree = "<group>"; };
 		D7242B4F1AD8A3D40015BA96 /* SocketIORequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIORequester.swift; sourceTree = "<group>"; };
 		D7242B521AD95F040015BA96 /* NSURL+TrailingSlash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+TrailingSlash.swift"; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			children = (
 				D7B63B261AD6BA8100C06BD8 /* LumaJSON.swift */,
 				D79107E21AFFB1A600CF0CDB /* Functional.swift */,
+				D70CB5A81B024C00001DFA3D /* Utilities.swift */,
 				D7B63B271AD6BA8100C06BD8 /* WebSocket.swift */,
 			);
 			path = External;
@@ -363,6 +366,7 @@
 				D7242B531AD95F040015BA96 /* NSURL+TrailingSlash.swift in Sources */,
 				D79540501ACDC3640031354F /* SocketIOConnection.swift in Sources */,
 				D79540511ACDC3640031354F /* SocketIOEventHandler.swift in Sources */,
+				D70CB5A91B024C00001DFA3D /* Utilities.swift in Sources */,
 				D79540581ACDC3640031354F /* SocketIOWebSocket.swift in Sources */,
 				D7242B4C1AD825F00015BA96 /* SocketIOEvent.swift in Sources */,
 				D795404F1ACDC3640031354F /* SocketIOCallback.swift in Sources */,

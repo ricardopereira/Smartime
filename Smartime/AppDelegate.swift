@@ -34,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         socket = SocketIO(url: "http://localhost:8001/")
         
+        let socket2 = SocketIO<Events>(url: "http://localhost:8001/")
+        
         socket.on(.ConnectError) {
             switch $0 {
             case .Failure(let error):
@@ -59,22 +61,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             switch arg {
             case .Message(let message):
                 println("Finally: \(message)")
-            case .JSON(let json):
-                let decodeBuffer : String -> NSData? = {
-                    NSData(base64EncodedString: $0, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
-                }
-                
-                let base64ToUIImage : NSData -> UIImage? = {
-                    UIImage(data: $0)
-                }
-                
-                if let image = json["buffer"] as? String >>- decodeBuffer >>- base64ToUIImage {
+            case .JSON(let json):                
+                if let image = json["buffer"] as? String >>- Utilities.base64EncodedStringToUIImage {
                     println(image)
                 }
             default:
                 println("Not supported")
             }
-            return SocketIOResult.Success(status: 0)
+            return .Success(status: 0)
         })
         
         return true
