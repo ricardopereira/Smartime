@@ -15,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     enum Events: String, Printable {
         
         case ChatMessage = "chat message"
+        case GetImage = "getimage"
+        case Image = "image"
         
         var description: String {
             return self.rawValue
@@ -30,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = start()
         
-        socket = SocketIO(url: "http://localhost:8000/")
+        socket = SocketIO(url: "http://localhost:8001/")
         
         socket.on(.ConnectError) {
             switch $0 {
@@ -53,10 +55,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return SocketIOResult.Success(status: 0)
         }
         
-        socket.on(.ChatMessage, withCallback: { (arg: SocketIOArg) -> (SocketIOResult) in
+        socket.on(.Image, withCallback: { (arg: SocketIOArg) -> (SocketIOResult) in
             switch arg {
             case .Message(let message):
                 println("Finally: \(message)")
+            case .JSON(let json):
+                if let bufferBase64 = json["buffer"] as? String {
+                    
+                    let decodedData = NSData(base64EncodedString: bufferBase64, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+                    
+                    if let data = decodedData {
+                        var decodedimage = UIImage(data: data)
+                        if let finalImage = decodedimage {
+                            println(finalImage)
+                        }
+                        println(decodedimage)
+                    }
+                }
             default:
                 println("Not supported")
             }
@@ -165,7 +180,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func didTouchSend(sender: AnyObject?) {
-        socket.emit(.ChatMessage, withMessage: "I'm iOS")
+        socket.emit(.GetImage, withMessage: "I'm iOS")
     }
     
     
