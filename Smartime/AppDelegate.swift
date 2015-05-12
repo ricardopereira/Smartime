@@ -12,22 +12,32 @@ import FLXView
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    enum Events: String, Printable {
+        
+        case ChatMessage = "chat message"
+        
+        var description: String {
+            return self.rawValue
+        }
+        
+    }
+    
     var window: UIWindow?
-    var socket: SocketIO!
+    var socket: SocketIO<Events>!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = start()
         
-        socket = SocketIO(url: "http://localhost:8000/");
+        socket = SocketIO(url: "http://localhost:8000/")
         
         socket.on(.ConnectError) {
             switch $0 {
             case .Failure(let error):
                 println(error)
             default:
-                return SocketIOResult.Success(status: 0)
+                break
             }
             return SocketIOResult.Success(status: 0)
         }.on(.Connected) { (arg: SocketIOArg) -> (SocketIOResult) in
@@ -38,10 +48,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //socket.off()
             //socket.emit("myevent", withMessage: "aaaa")
             
+            println("User event telling that it was connected")
+            
             return SocketIOResult.Success(status: 0)
         }
         
-        socket.on("chat message", withCallback: { (arg: SocketIOArg) -> (SocketIOResult) in
+        socket.on(.ChatMessage, withCallback: { (arg: SocketIOArg) -> (SocketIOResult) in
             switch arg {
             case .Message(let message):
                 println("Finally: \(message)")
@@ -110,6 +122,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         send.flx_margins = FLXMargins(top: 8, left: 8, bottom: 4, right: 8)
         flexView.addSubview(send)
         
+        let reconnect = Button(label: "Reconnect")
+        reconnect.flx_margins = FLXMargins(top: 8, left: 8, bottom: 4, right: 8)
+        flexView.addSubview(reconnect)
+        
         // Base
         let mainVC = UIViewController()
         mainVC.view.backgroundColor = UIColor.greenColor()
@@ -145,11 +161,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func didTouchDisconnect(sender: AnyObject?) {
-        
+        socket.disconnect()
     }
     
     func didTouchSend(sender: AnyObject?) {
-        socket.emit("chat message", withMessage: "I'm iOS")
+        socket.emit(.ChatMessage, withMessage: "I'm iOS")
     }
     
     
