@@ -43,32 +43,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             default:
                 break
             }
-            return SocketIOResult.Success(status: 0)
-        }.on(.Connected) { (arg: SocketIOArg) -> (SocketIOResult) in
-            // Connected
-            // ToDo: Emit "connect" not possible!
-            
-            //socket.emit("myevent", withMessage: "sdflkaskdçfjwe")
-            //socket.off()
-            //socket.emit("myevent", withMessage: "aaaa")
-            
+        }.on(.Connected) { (arg: SocketIOArg) -> () in
             println("User event telling that it was connected")
-            
-            return SocketIOResult.Success(status: 0)
         }
         
-        socket.on(.Image, withCallback: { (arg: SocketIOArg) -> (SocketIOResult) in
+        socket.on(.Image, withCallback: { (arg: SocketIOArg) -> () in
             switch arg {
             case .Message(let message):
                 println("Finally: \(message)")
-            case .JSON(let json):                
+            case .JSON(let json):
                 if let image = json["buffer"] as? String >>- Utilities.base64EncodedStringToUIImage {
                     println(image)
                 }
             default:
                 println("Not supported")
             }
-            return .Success(status: 0)
         })
         
         return true
