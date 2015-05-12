@@ -60,17 +60,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case .Message(let message):
                 println("Finally: \(message)")
             case .JSON(let json):
-                if let bufferBase64 = json["buffer"] as? String {
-                    
-                    let decodedData = NSData(base64EncodedString: bufferBase64, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
-                    
-                    if let data = decodedData {
-                        var decodedimage = UIImage(data: data)
-                        if let finalImage = decodedimage {
-                            println(finalImage)
-                        }
-                        println(decodedimage)
-                    }
+                let decodeBuffer : String -> NSData? = {
+                    NSData(base64EncodedString: $0, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+                }
+                
+                let base64ToUIImage : NSData -> UIImage? = {
+                    UIImage(data: $0)
+                }
+                
+                if let image = json["buffer"] as? String >>- decodeBuffer >>- base64ToUIImage {
+                    println(image)
                 }
             default:
                 println("Not supported")
