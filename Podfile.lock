@@ -1,0 +1,10 @@
+PODS:
+  - QRCodeReader.swift (4.1.1)
+
+DEPENDENCIES:
+  - QRCodeReader.swift (~> 4.1.0)
+
+SPEC CHECKSUMS:
+  QRCodeReader.swift: f5c610a1cf10dab664d4fdf366f5772b24d93027
+
+COCOAPODS: 0.37.1

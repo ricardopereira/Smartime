@@ -8,6 +8,7 @@
 
 import UIKit
 import FLXView
+import ReactiveCocoa
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
