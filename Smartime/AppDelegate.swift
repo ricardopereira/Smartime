@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case ChatMessage = "chat message"
         case GetImage = "getimage"
         case Image = "image"
+        case Login = "login"
         
         var description: String {
             return self.rawValue
@@ -159,6 +160,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         reconnect.flx_margins = FLXMargins(top: 8, left: 8, bottom: 4, right: 8)
         flexView.addSubview(reconnect)
         
+        let login = Button(label: "Login")
+        login.flx_margins = FLXMargins(top: 8, left: 8, bottom: 4, right: 8)
+        flexView.addSubview(login)
+        
         // Base
         let mainVC = UIViewController()
         mainVC.view.backgroundColor = UIColor.greenColor()
@@ -167,6 +172,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         connect.addTarget(self, action: Selector("didTouchConnect:"), forControlEvents: .TouchUpInside)
         disconnect.addTarget(self, action: Selector("didTouchDisconnect:"), forControlEvents: .TouchUpInside)
         send.addTarget(self, action: Selector("didTouchSend:"), forControlEvents: .TouchUpInside)
+        reconnect.addTarget(self, action: Selector("didTouchReconnect:"), forControlEvents: .TouchUpInside)
+        login.addTarget(self, action: Selector("didTouchLogin:"), forControlEvents: .TouchUpInside)
         
         // Subview
         mainVC.view.addSubview(flexView)
@@ -199,6 +206,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func didTouchSend(sender: AnyObject?) {
         socket.emit(.GetImage, withMessage: "I'm iOS")
+    }
+    
+    func didTouchReconnect(sender: AnyObject?) {
+        socket.reconnect()
+    }
+    
+    func didTouchLogin(sender: AnyObject?) {
+        socket.emit(.Login, withObject: Person(name: "John"))
     }
     
     
