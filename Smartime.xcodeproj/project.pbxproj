@@ -16,6 +16,7 @@
 		D72CEED11AF5163C00D86C38 /* SocketIOJSONHandshake.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72CEED01AF5163C00D86C38 /* SocketIOJSONHandshake.swift */; };
 		D74846331AD45F10005836F9 /* SocketIOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74846321AD45F10005836F9 /* SocketIOTests.swift */; };
 		D74CDE251AFB9A18006CF7FE /* SocketIOReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CDE241AFB9A18006CF7FE /* SocketIOReceiver.swift */; };
+		D769DA291B02A68B00606FB4 /* SocketIOObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D769DA281B02A68B00606FB4 /* SocketIOObject.swift */; };
 		D79107E31AFFB1A600CF0CDB /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79107E21AFFB1A600CF0CDB /* Functional.swift */; };
 		D79540051ACDB4B50031354F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540041ACDB4B50031354F /* AppDelegate.swift */; };
 		D795400C1ACDB4B50031354F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D795400B1ACDB4B50031354F /* Images.xcassets */; };
@@ -76,6 +77,7 @@
 		D72CEED01AF5163C00D86C38 /* SocketIOJSONHandshake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOJSONHandshake.swift; sourceTree = "<group>"; };
 		D74846321AD45F10005836F9 /* SocketIOTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOTests.swift; sourceTree = "<group>"; };
 		D74CDE241AFB9A18006CF7FE /* SocketIOReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOReceiver.swift; sourceTree = "<group>"; };
+		D769DA281B02A68B00606FB4 /* SocketIOObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOObject.swift; sourceTree = "<group>"; };
 		D79107E21AFFB1A600CF0CDB /* Functional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functional.swift; sourceTree = "<group>"; };
 		D7953FFF1ACDB4B50031354F /* Smartime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smartime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79540031ACDB4B50031354F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				D795404D1ACDC3640031354F /* SocketIOWebSocket.swift */,
 				D72CEECE1AF5059100D86C38 /* SocketIOJSON.swift */,
 				D72CEED01AF5163C00D86C38 /* SocketIOJSONHandshake.swift */,
+				D769DA281B02A68B00606FB4 /* SocketIOObject.swift */,
 				D7A8540B1AF6258B0043AC4E /* SocketIOError.swift */,
 				D7242B511AD95F040015BA96 /* Extensions */,
 				D7B63B251AD6BA8100C06BD8 /* External */,
@@ -370,6 +373,7 @@
 				D79540581ACDC3640031354F /* SocketIOWebSocket.swift in Sources */,
 				D7242B4C1AD825F00015BA96 /* SocketIOEvent.swift in Sources */,
 				D795404F1ACDC3640031354F /* SocketIOCallback.swift in Sources */,
+				D769DA291B02A68B00606FB4 /* SocketIOObject.swift in Sources */,
 				D79540551ACDC3640031354F /* SocketIOParser.swift in Sources */,
 				D74CDE251AFB9A18006CF7FE /* SocketIOReceiver.swift in Sources */,
 				D795404E1ACDC3640031354F /* SocketIO.swift in Sources */,

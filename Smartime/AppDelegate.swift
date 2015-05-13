@@ -24,6 +24,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    class Person: SocketIOObject {
+        
+        let name: String
+        
+        init(name: String) {
+            self.name = name
+        }
+        
+        convenience required init(dict: NSDictionary) {
+            self.init(name: dict["name"] as! String)
+        }
+        
+        var asDictionary: NSDictionary {
+            return ["name": name]
+        }
+        
+    }
+    
+    struct ImageInfo: SocketIOObject {
+        
+        let buffer: String
+        
+        init(buffer: String) {
+            self.buffer = buffer
+        }
+        
+        init(dict: NSDictionary) {
+            self.init(buffer: dict["buffer"] as! String)
+        }
+        
+        var asDictionary: NSDictionary {
+            return ["buffer": buffer]
+        }
+        
+    }
+    
     var window: UIWindow?
     var socket: SocketIO<Events>!
     
@@ -33,8 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = start()
         
         socket = SocketIO(url: "http://localhost:8001/")
-        
-        let socket2 = SocketIO<Events>(url: "http://localhost:8001/")
         
         socket.on(.ConnectError) {
             switch $0 {
@@ -52,7 +86,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case .Message(let message):
                 println("Finally: \(message)")
             case .JSON(let json):
-                if let image = json["buffer"] as? String >>- Utilities.base64EncodedStringToUIImage {
+                let imageInfo = ImageInfo(dict: json)
+                
+                if let image = imageInfo.buffer >>- Utilities.base64EncodedStringToUIImage {
                     println(image)
                 }
             default:
