@@ -177,9 +177,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         login.addTarget(self, action: Selector("didTouchLogin:"), forControlEvents: .TouchUpInside)
         
         // Subview
-        mainVC.view.addSubview(flexView)
+        //mainVC.view.addSubview(flexView)
+
+        mainVC.view = flexView
         
         // Fullscreen
+        /*
         flexView.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         var constraints = [NSLayoutConstraint]()
@@ -193,6 +196,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         constraints.append(NSLayoutConstraint(item: flexView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: mainVC.view, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: 0))
         
         mainVC.view.addConstraints(constraints)
+        */
         
         return mainVC
     }
