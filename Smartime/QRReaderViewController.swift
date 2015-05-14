@@ -21,9 +21,9 @@ class QRReaderViewController: UIViewController, AVCaptureMetadataOutputObjectsDe
     
     private let metadataObjectTypes: [String]
     
-    private var resultCallback: ResultCallback?
-    private var errorCallback: ErrorCallback?
-    private var cancelCallback: CancelCallback?
+    var resultCallback: ResultCallback?
+    var errorCallback: ErrorCallback?
+    var cancelCallback: CancelCallback?
     
     private var avSession: AVCaptureSession?
     private var avDevice: AVCaptureDevice?
@@ -87,11 +87,6 @@ class QRReaderViewController: UIViewController, AVCaptureMetadataOutputObjectsDe
         avVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: avSession);
         avVideoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill;
         avVideoPreviewLayer?.frame = self.view.bounds;
-        if let videoLayer = avVideoPreviewLayer {
-            if videoLayer.connection.supportsVideoOrientation {
-                videoLayer.connection.videoOrientation = getVideoOrientationFromInterfaceOrientation(UIDevice.currentDevice().orientation);
-            }
-        }
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             self.avDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
@@ -146,9 +141,9 @@ class QRReaderViewController: UIViewController, AVCaptureMetadataOutputObjectsDe
                 session.commitConfiguration()
                 
                 dispatch_async(dispatch_get_main_queue()) {
-                    if let videoLayer = self.avVideoPreviewLayer {
-                        if videoLayer.connection.supportsVideoOrientation {
-                            videoLayer.connection.videoOrientation = self.getVideoOrientationFromInterfaceOrientation(UIDevice.currentDevice().orientation);
+                    if let videoLayer = self.avVideoPreviewLayer, let conn = videoLayer.connection {
+                        if conn.supportsVideoOrientation {
+                            conn.videoOrientation = self.getVideoOrientationFromInterfaceOrientation(UIDevice.currentDevice().orientation);
                         }
                     }
                     
@@ -156,8 +151,14 @@ class QRReaderViewController: UIViewController, AVCaptureMetadataOutputObjectsDe
                 }
             }
             
-            self.view.layer.addSublayer(self.avVideoPreviewLayer)
         }
+        
+        if let videoLayer = avVideoPreviewLayer, let conn = videoLayer.connection {
+            if conn.supportsVideoOrientation {
+                conn.videoOrientation = getVideoOrientationFromInterfaceOrientation(UIDevice.currentDevice().orientation);
+            }
+        }
+        self.view.layer.addSublayer(self.avVideoPreviewLayer)
     }
     
     override func viewWillDisappear(animated: Bool) {

@@ -70,8 +70,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = start()
         
+        /*
         let reader = QRReaderViewController()
+        reader.resultCallback = {
+            println($0)
+            reader.dismissViewControllerAnimated(true, completion: nil)
+        }
         window?.rootViewController?.presentViewController(reader, animated: true, completion: nil)
+        */
         
         
         socket = SocketIO(url: "http://localhost:8001/")
