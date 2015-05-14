@@ -143,21 +143,15 @@ class QRReaderViewController: UIViewController, AVCaptureMetadataOutputObjectsDe
                 dispatch_async(dispatch_get_main_queue()) {
                     if let videoLayer = self.avVideoPreviewLayer, let conn = videoLayer.connection {
                         if conn.supportsVideoOrientation {
-                            conn.videoOrientation = self.getVideoOrientationFromInterfaceOrientation(UIDevice.currentDevice().orientation);
+                            //conn.videoOrientation = videoOrientationFromDeviceOrientation(UIDevice.currentDevice().orientation);
                         }
                     }
-                    
                     session.startRunning()
                 }
             }
             
         }
         
-        if let videoLayer = avVideoPreviewLayer, let conn = videoLayer.connection {
-            if conn.supportsVideoOrientation {
-                conn.videoOrientation = getVideoOrientationFromInterfaceOrientation(UIDevice.currentDevice().orientation);
-            }
-        }
         self.view.layer.addSublayer(self.avVideoPreviewLayer)
     }
     
@@ -167,6 +161,10 @@ class QRReaderViewController: UIViewController, AVCaptureMetadataOutputObjectsDe
         avVideoPreviewLayer = nil;
         avSession = nil;
         avDevice = nil;
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     override func viewDidLayoutSubviews() {
@@ -179,20 +177,22 @@ class QRReaderViewController: UIViewController, AVCaptureMetadataOutputObjectsDe
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         
         // The device has already rotated, that's why this method is being called
-        let toOrientation = UIDevice.currentDevice().orientation
-        
-        // TODO: willRotateToInterfaceOrientation??
+        if let videoLayer = self.avVideoPreviewLayer, let conn = videoLayer.connection {
+            if conn.supportsVideoOrientation {
+                conn.videoOrientation = self.videoOrientationFromDeviceOrientation(UIDevice.currentDevice().orientation);
+            }
+        }
     }
     
-    private func getVideoOrientationFromInterfaceOrientation(deviceOrientation: UIDeviceOrientation) -> AVCaptureVideoOrientation {
-        switch (deviceOrientation) {
-        case UIDeviceOrientation.Portrait:
+    private func videoOrientationFromDeviceOrientation(orientation: UIDeviceOrientation) -> AVCaptureVideoOrientation {
+        switch (orientation) {
+        case .Portrait:
             return AVCaptureVideoOrientation.Portrait
-        case UIDeviceOrientation.LandscapeLeft:
-            return AVCaptureVideoOrientation.LandscapeLeft
-        case UIDeviceOrientation.LandscapeRight:
+        case .LandscapeLeft:
             return AVCaptureVideoOrientation.LandscapeRight
-        case UIDeviceOrientation.PortraitUpsideDown:
+        case .LandscapeRight:
+            return AVCaptureVideoOrientation.LandscapeLeft
+        case .PortraitUpsideDown:
             return AVCaptureVideoOrientation.PortraitUpsideDown
         default:
             return AVCaptureVideoOrientation.Portrait
@@ -213,7 +213,7 @@ class QRReaderViewController: UIViewController, AVCaptureMetadataOutputObjectsDe
             turnTorchOn()
         case UIGestureRecognizerState.Changed, UIGestureRecognizerState.Possible:
             break
-        case UIGestureRecognizerState.Failed, UIGestureRecognizerState.Cancelled:
+        case UIGestureRecognizerState.Ended, UIGestureRecognizerState.Cancelled, UIGestureRecognizerState.Failed:
             turnTorchOff()
         default:
             break
