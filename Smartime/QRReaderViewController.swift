@@ -32,6 +32,7 @@ class QRReaderViewController: UIViewController, AVCaptureMetadataOutputObjectsDe
     private var lastCapturedString: String?
     
     // Constants
+    private let fTorchLevel: Float = 0.25
     private let torchLevel = 0.25
     private let torchActivationDelay = 0.25
     private let errorDomain = "eu.ricardopereira.qrreaderviewcontroller"
@@ -57,7 +58,6 @@ class QRReaderViewController: UIViewController, AVCaptureMetadataOutputObjectsDe
         self.view.backgroundColor = UIColor.blackColor()
         
         let torchGestureRecognizer = UILongPressGestureRecognizer(target: self, action: Selector("handleTorchRecognizerTap:"))
-        
         torchGestureRecognizer.minimumPressDuration = torchLevel
         self.view.addGestureRecognizer(torchGestureRecognizer)
     }
@@ -83,6 +83,15 @@ class QRReaderViewController: UIViewController, AVCaptureMetadataOutputObjectsDe
         }
         
         self.avSession = AVCaptureSession()
+        
+        avVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: avSession);
+        avVideoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        avVideoPreviewLayer?.frame = self.view.bounds;
+        if let videoLayer = avVideoPreviewLayer {
+            if videoLayer.connection.supportsVideoOrientation {
+                videoLayer.connection.videoOrientation = getVideoOrientationFromInterfaceOrientation(UIDevice.currentDevice().orientation);
+            }
+        }
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             self.avDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
@@ -137,13 +146,96 @@ class QRReaderViewController: UIViewController, AVCaptureMetadataOutputObjectsDe
                 session.commitConfiguration()
                 
                 dispatch_async(dispatch_get_main_queue()) {
-                    if self.avVideoPreviewLayer?.connection.isVideoOrientationSupported {
-                        self.avVideoPreviewLayer.connection.videoOrientation = CDZVideoOrientationFromInterfaceOrientation(self.interfaceOrientation);
+                    if let videoLayer = self.avVideoPreviewLayer {
+                        if videoLayer.connection.supportsVideoOrientation {
+                            videoLayer.connection.videoOrientation = self.getVideoOrientationFromInterfaceOrientation(UIDevice.currentDevice().orientation);
+                        }
                     }
                     
                     session.startRunning()
                 }
-
+            }
+            
+            self.view.layer.addSublayer(self.avVideoPreviewLayer)
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        avVideoPreviewLayer?.removeFromSuperlayer();
+        avVideoPreviewLayer = nil;
+        avSession = nil;
+        avDevice = nil;
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        avVideoPreviewLayer?.bounds = self.view.bounds;
+        avVideoPreviewLayer?.position = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        
+        // The device has already rotated, that's why this method is being called
+        let toOrientation = UIDevice.currentDevice().orientation
+        
+        // TODO: willRotateToInterfaceOrientation??
+    }
+    
+    private func getVideoOrientationFromInterfaceOrientation(deviceOrientation: UIDeviceOrientation) -> AVCaptureVideoOrientation {
+        switch (deviceOrientation) {
+        case UIDeviceOrientation.Portrait:
+            return AVCaptureVideoOrientation.Portrait
+        case UIDeviceOrientation.LandscapeLeft:
+            return AVCaptureVideoOrientation.LandscapeLeft
+        case UIDeviceOrientation.LandscapeRight:
+            return AVCaptureVideoOrientation.LandscapeRight
+        case UIDeviceOrientation.PortraitUpsideDown:
+            return AVCaptureVideoOrientation.PortraitUpsideDown
+        default:
+            return AVCaptureVideoOrientation.Portrait
+        }
+    }
+    
+    
+    // MARK: UI Actions
+    
+    func cancelItemSelected(sender: AnyObject) {
+        avSession?.stopRunning;
+        cancelCallback?();
+    }
+    
+    func handleTorchRecognizerTap(sender: UIGestureRecognizer) {
+        switch(sender.state) {
+        case UIGestureRecognizerState.Began:
+            turnTorchOn()
+        case UIGestureRecognizerState.Changed, UIGestureRecognizerState.Possible:
+            break
+        case UIGestureRecognizerState.Failed, UIGestureRecognizerState.Cancelled:
+            turnTorchOff()
+        default:
+            break
+        }
+    }
+    
+    
+    // MARK: Torch
+    
+    func turnTorchOn() {
+        if let device = avDevice {
+            if device.hasTorch && device.torchAvailable && device.isTorchModeSupported(.On) && device.lockForConfiguration(nil) {
+                device.setTorchModeOnWithLevel(fTorchLevel, error: nil)
+                device.unlockForConfiguration()
+            }
+        }
+    }
+    
+    func turnTorchOff() {
+        if let device = avDevice {
+            if device.hasTorch && device.torchAvailable && device.isTorchModeSupported(.Off) && device.lockForConfiguration(nil) {
+                device.torchMode = .Off
+                device.unlockForConfiguration()
             }
         }
     }
@@ -152,7 +244,22 @@ class QRReaderViewController: UIViewController, AVCaptureMetadataOutputObjectsDe
     // MARK: AVCaptureMetadataOutputObjectsDelegate
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
+        var metadataStr: String?
         
+        for metadata in metadataObjects {
+            if contains(self.metadataObjectTypes, metadata.type) {
+                metadataStr = metadata.stringValue;
+                break
+            }
+        }
+        
+        if let result = metadataStr {
+            if lastCapturedString != result {
+               lastCapturedString = result
+                avSession?.stopRunning()
+                resultCallback?(result)
+            }
+        }
     }
     
 }
