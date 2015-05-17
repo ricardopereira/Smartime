@@ -26,6 +26,7 @@
 		D74CDE251AFB9A18006CF7FE /* SocketIOReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CDE241AFB9A18006CF7FE /* SocketIOReceiver.swift */; };
 		D769DA291B02A68B00606FB4 /* SocketIOObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D769DA281B02A68B00606FB4 /* SocketIOObject.swift */; };
 		D79107E31AFFB1A600CF0CDB /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79107E21AFFB1A600CF0CDB /* Functional.swift */; };
+		D7949F001B0891E1001F84F8 /* SocketIONamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7949EFF1B0891E1001F84F8 /* SocketIONamespace.swift */; };
 		D79540051ACDB4B50031354F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540041ACDB4B50031354F /* AppDelegate.swift */; };
 		D795400C1ACDB4B50031354F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D795400B1ACDB4B50031354F /* Images.xcassets */; };
 		D795400F1ACDB4B50031354F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D795400D1ACDB4B50031354F /* LaunchScreen.xib */; };
@@ -98,6 +99,7 @@
 		D74CDE241AFB9A18006CF7FE /* SocketIOReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOReceiver.swift; sourceTree = "<group>"; };
 		D769DA281B02A68B00606FB4 /* SocketIOObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOObject.swift; sourceTree = "<group>"; };
 		D79107E21AFFB1A600CF0CDB /* Functional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functional.swift; sourceTree = "<group>"; };
+		D7949EFF1B0891E1001F84F8 /* SocketIONamespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIONamespace.swift; sourceTree = "<group>"; };
 		D7953FFF1ACDB4B50031354F /* Smartime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smartime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79540031ACDB4B50031354F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D79540041ACDB4B50031354F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				D72CEECC1AF4FCA800D86C38 /* SocketIOPayload.swift */,
 				D79540491ACDC3640031354F /* SocketIOPacket.swift */,
 				D795404A1ACDC3640031354F /* SocketIOParser.swift */,
+				D7949EFF1B0891E1001F84F8 /* SocketIONamespace.swift */,
 				D795404B1ACDC3640031354F /* SocketIOTransport.swift */,
 				D795404C1ACDC3640031354F /* SocketIOTransportDelegate.swift */,
 				D795404D1ACDC3640031354F /* SocketIOWebSocket.swift */,
@@ -507,6 +510,7 @@
 				D79540571ACDC3640031354F /* SocketIOTransportDelegate.swift in Sources */,
 				D79540051ACDB4B50031354F /* AppDelegate.swift in Sources */,
 				D72CEECF1AF5059100D86C38 /* SocketIOJSON.swift in Sources */,
+				D7949F001B0891E1001F84F8 /* SocketIONamespace.swift in Sources */,
 				D72CEECD1AF4FCA800D86C38 /* SocketIOPayload.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
     }
-    
+        
     var window: UIWindow?
     var socket: SocketIO<Events>!
     
@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = start()
         
-        
+        /*
         let reader = QRReaderViewController()
         reader.resultCallback = {
             println($0)
@@ -80,9 +80,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             reader.dismissViewControllerAnimated(true, completion: nil)
         }
         window?.rootViewController?.presentViewController(reader, animated: true, completion: nil)
+        */
         
+        var options = SocketIOOptions()
+        options.namespace = "/gallery"
         
-        socket = SocketIO(url: "http://localhost:8001/")
+        socket = SocketIO(url: "http://localhost:8001/", withOptions: options)
         
         socket.on(.ConnectError) {
             switch $0 {
@@ -93,6 +96,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }.on(.Connected) { (arg: SocketIOArg) -> () in
             println("User event telling that it was connected")
+        }
+        
+        socket.on(.ChatMessage) {
+            switch $0 {
+            case .Message(let message):
+                println("CHAT: " + message)
+            default:
+                break
+            }
         }
         
         socket.on(.Image, withCallback: { (arg: SocketIOArg) -> () in
