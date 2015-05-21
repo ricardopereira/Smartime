@@ -82,10 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController?.presentViewController(reader, animated: true, completion: nil)
         */
         
-        var options = SocketIOOptions()
-        options.namespace = "/gallery"
-        
-        socket = SocketIO(url: "http://localhost:8001/", withOptions: options)
+        socket = SocketIO(url: "http://localhost:8001/", withOptions: SocketIOOptions().namespace("/gallery"))
         
         socket.on(.ConnectError) {
             switch $0 {
