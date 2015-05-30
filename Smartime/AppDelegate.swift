@@ -9,6 +9,8 @@
 import UIKit
 import FLXView
 import ReactiveCocoa
+import Runes
+import QRCodeReader
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -70,8 +72,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = start()
         
-        /*
-        let reader = QRReaderViewController()
+        
+        
+        let reader = QRCodeReaderViewController()
         reader.resultCallback = {
             println($0)
             reader.dismissViewControllerAnimated(true, completion: nil)
@@ -80,7 +83,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             reader.dismissViewControllerAnimated(true, completion: nil)
         }
         window?.rootViewController?.presentViewController(reader, animated: true, completion: nil)
-        */
+        
+        
         
         socket = SocketIO(url: "http://localhost:8001/", withOptions: SocketIOOptions().namespace("/gallery"))
         
@@ -93,6 +97,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }.on(.Connected) { (arg: SocketIOArg) -> () in
             println("User event telling that it was connected")
+        }.on(.Disconnected) {
+            switch $0 {
+            case .Message(let message):
+                println("Disconnected with no error")
+            case .Failure(let error):
+                println("Disconnected with error: \(error)")
+            default:
+                break
+            }
         }
         
         socket.on(.ChatMessage) {
@@ -111,7 +124,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case .JSON(let json):
                 let imageInfo = ImageInfo(dict: json)
                 
-                if let image = imageInfo.buffer >>- Utilities.base64EncodedStringToUIImage {
+                if let image = imageInfo.buffer >>- SocketIOUtilities.base64EncodedStringToUIImage {
                     println(image)
                 }
             default:
