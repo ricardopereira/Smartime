@@ -50,10 +50,10 @@ extension TicketsViewController: UITableViewDelegate {
         }
         
         if indexPath.row % 2 == 0 {
-            cell.contentView.backgroundColor = UIColor(red: 191.0/255.0, green: 37.0/255.0, blue: 99.0/255.0, alpha: 1.0)
+            cell.contentView.backgroundColor = UIColor(rgba: "#3D54DC")
         }
         else {
-            cell.contentView.backgroundColor = UIColor(red: 82.0/255.0, green: 40.0/255.0, blue: 123.0/255.0, alpha: 1.0)
+            cell.contentView.backgroundColor = UIColor(rgba: "#00B9DC")
         }
     }
     
