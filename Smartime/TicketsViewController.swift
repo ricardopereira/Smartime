@@ -8,11 +8,21 @@
 
 import UIKit
 
+enum AppEvents: String, Printable {
+    case TicketCall = "TicketCall"
+    
+    var description: String {
+        return self.rawValue
+    }
+}
+
 class TicketsViewController: PageViewController {
     
     let tableView = UITableView()
     let ticketCellIdentifier = "TicketCell"
-    let items = ["A", "B" , "C"]
+    var items = ["A", "B" , "C"]
+    
+    let socket = SocketIO<AppEvents>(url: "http://smartime.herokuapp.com")
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -20,6 +30,37 @@ class TicketsViewController: PageViewController {
         tableView.delegate = self
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         tableView.showsVerticalScrollIndicator = false
+        
+        socket.on(.ConnectError) {
+            switch $0 {
+            case .Failure(let error):
+                println(error)
+            default:
+                break
+            }
+        }.on(.Connected) { (arg: SocketIOArg) -> () in
+            println("Connected")
+        }.on(.Disconnected) {
+            switch $0 {
+            case .Message(let message):
+                println("Disconnected with no error")
+            case .Failure(let error):
+                println("Disconnected with error: \(error)")
+            default:
+                break
+            }
+        }
+        
+        socket.on(.TicketCall) {
+            switch $0 {
+            case .Message(let message):
+                println("Mensagem recebida: \(message)")
+            default:
+                break
+            }
+        }
+        
+        //socket.connect()
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -55,6 +96,25 @@ extension TicketsViewController: UITableViewDelegate {
         else {
             cell.contentView.backgroundColor = UIColor(rgba: "#00B9DC")
         }
+        
+        if indexPath.row == 3 {
+            //1. Setup the CATransform3D structure
+            var rotation = CATransform3DMakeRotation(CGFloat((30*M_PI)/180), CGFloat(0.0), CGFloat(0.7), CGFloat(0.4))
+            rotation.m34 = 1.0 / -600
+            
+            //2. Define the initial state (Before the animation)
+            cell.layer.transform = rotation
+            cell.alpha = 0
+            cell.layer.anchorPoint = CGPointMake(0, 0.5)
+            
+            //3. Define the final state (After the animation) and commit the animation
+            UIView.beginAnimations("rotation", context: nil)
+            UIView.setAnimationDuration(0.8)
+            
+            cell.layer.transform = CATransform3DIdentity
+            cell.alpha = 1
+            UIView.commitAnimations()
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -64,9 +124,14 @@ extension TicketsViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Select row
-        items.map({ $0 + " - Done" }).flatMap({ value -> Array<String> in println(value); return items })
-        
+        items.append("D")
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        //tableView.beginUpdates()
+        //tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+        //tableView.endUpdates()
+        
+        tableView.reloadData()
     }
     
 }
