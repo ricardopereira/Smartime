@@ -31,7 +31,6 @@
 		D7949F001B0891E1001F84F8 /* SocketIONamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7949EFF1B0891E1001F84F8 /* SocketIONamespace.swift */; };
 		D79540051ACDB4B50031354F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540041ACDB4B50031354F /* AppDelegate.swift */; };
 		D795400C1ACDB4B50031354F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D795400B1ACDB4B50031354F /* Images.xcassets */; };
-		D795400F1ACDB4B50031354F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D795400D1ACDB4B50031354F /* LaunchScreen.xib */; };
 		D795401B1ACDB4B50031354F /* SmartimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795401A1ACDB4B50031354F /* SmartimeTests.swift */; };
 		D79540251ACDB74E0031354F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540241ACDB74E0031354F /* AppSettings.swift */; };
 		D79540281ACDB9F00031354F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79540261ACDB9EF0031354F /* MainViewController.swift */; };
@@ -51,6 +50,9 @@
 		D7C604A71AE56241004342CE /* SocketIOEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C604A61AE56241004342CE /* SocketIOEmitter.swift */; };
 		D7EFA9091AFE766D00623A16 /* FLXView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFA9081AFE766D00623A16 /* FLXView.framework */; };
 		D7EFA90B1AFE795600623A16 /* FLXView.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7EFA9081AFE766D00623A16 /* FLXView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7F906401B20AF0700C96D7E /* TicketViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9063E1B20AF0700C96D7E /* TicketViewCell.swift */; };
+		D7F906411B20AF0700C96D7E /* TicketViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7F9063F1B20AF0700C96D7E /* TicketViewCell.xib */; };
+		D7F906431B20BC4A00C96D7E /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F906421B20BC4A00C96D7E /* UIColor+Hex.swift */; };
 		D7FDABFB1B1F0D8000E8BF2F /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FDABF91B1F0D8000E8BF2F /* PageViewController.swift */; };
 		D7FDABFC1B1F0D8000E8BF2F /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FDABFA1B1F0D8000E8BF2F /* SlideViewController.swift */; };
 /* End PBXBuildFile section */
@@ -108,7 +110,6 @@
 		D79540031ACDB4B50031354F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D79540041ACDB4B50031354F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D795400B1ACDB4B50031354F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D795400E1ACDB4B50031354F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D79540141ACDB4B50031354F /* SmartimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79540191ACDB4B50031354F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D795401A1ACDB4B50031354F /* SmartimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartimeTests.swift; sourceTree = "<group>"; };
@@ -129,6 +130,9 @@
 		D7B63B271AD6BA8100C06BD8 /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		D7C604A61AE56241004342CE /* SocketIOEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOEmitter.swift; sourceTree = "<group>"; };
 		D7EFA9081AFE766D00623A16 /* FLXView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FLXView.framework; sourceTree = "<group>"; };
+		D7F9063E1B20AF0700C96D7E /* TicketViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewCell.swift; sourceTree = "<group>"; };
+		D7F9063F1B20AF0700C96D7E /* TicketViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketViewCell.xib; sourceTree = "<group>"; };
+		D7F906421B20BC4A00C96D7E /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		D7FDABF91B1F0D8000E8BF2F /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		D7FDABFA1B1F0D8000E8BF2F /* SlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -230,10 +234,12 @@
 				D7FDABFA1B1F0D8000E8BF2F /* SlideViewController.swift */,
 				D79540261ACDB9EF0031354F /* MainViewController.swift */,
 				D74484401B204C3F00E64B39 /* TicketsViewController.swift */,
+				D7F9063E1B20AF0700C96D7E /* TicketViewCell.swift */,
+				D7F9063F1B20AF0700C96D7E /* TicketViewCell.xib */,
 				D74484421B204C4A00E64B39 /* StatusViewController.swift */,
 				D74484371B1FF35C00E64B39 /* Slider.storyboard */,
+				D7F906421B20BC4A00C96D7E /* UIColor+Hex.swift */,
 				D795400B1ACDB4B50031354F /* Images.xcassets */,
-				D795400D1ACDB4B50031354F /* LaunchScreen.xib */,
 				D79540021ACDB4B50031354F /* Supporting Files */,
 			);
 			path = Smartime;
@@ -420,8 +426,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D795400F1ACDB4B50031354F /* LaunchScreen.xib in Resources */,
 				D795400C1ACDB4B50031354F /* Images.xcassets in Resources */,
+				D7F906411B20AF0700C96D7E /* TicketViewCell.xib in Resources */,
 				D74484381B1FF35C00E64B39 /* Slider.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,6 +515,7 @@
 				D795404F1ACDC3640031354F /* SocketIOCallback.swift in Sources */,
 				D769DA291B02A68B00606FB4 /* SocketIOObject.swift in Sources */,
 				D74CDE251AFB9A18006CF7FE /* SocketIOReceiver.swift in Sources */,
+				D7F906431B20BC4A00C96D7E /* UIColor+Hex.swift in Sources */,
 				D74484411B204C3F00E64B39 /* TicketsViewController.swift in Sources */,
 				D795404E1ACDC3640031354F /* SocketIO.swift in Sources */,
 				D7FDABFB1B1F0D8000E8BF2F /* PageViewController.swift in Sources */,
@@ -516,6 +523,7 @@
 				D7C604A71AE56241004342CE /* SocketIOEmitter.swift in Sources */,
 				D79540571ACDC3640031354F /* SocketIOTransportDelegate.swift in Sources */,
 				D79540051ACDB4B50031354F /* AppDelegate.swift in Sources */,
+				D7F906401B20AF0700C96D7E /* TicketViewCell.swift in Sources */,
 				D7FDABFC1B1F0D8000E8BF2F /* SlideViewController.swift in Sources */,
 				D72CEECF1AF5059100D86C38 /* SocketIOJSON.swift in Sources */,
 				D7949F001B0891E1001F84F8 /* SocketIONamespace.swift in Sources */,
@@ -541,17 +549,6 @@
 			targetProxy = D79540151ACDB4B50031354F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		D795400D1ACDB4B50031354F /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D795400E1ACDB4B50031354F /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D795401C1ACDB4B50031354F /* Debug */ = {
@@ -638,6 +635,7 @@
 			baseConfigurationReference = 76771A09F1A25955CE67F59B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Components/FLXView",
@@ -657,6 +655,7 @@
 			baseConfigurationReference = D2257D97EC160B10468A01A6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Components/FLXView",

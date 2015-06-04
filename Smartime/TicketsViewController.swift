@@ -12,12 +12,14 @@ class TicketsViewController: PageViewController {
     
     let tableView = UITableView()
     let ticketCellIdentifier = "TicketCell"
-    let items = ["Service A", "Service B" , "Service C"]
+    let items = ["A", "B" , "C"]
     
     init() {
         super.init(nibName: nil, bundle: nil)
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        tableView.showsVerticalScrollIndicator = false
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -43,16 +45,28 @@ extension TicketsViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         // Refresh data
-        cell.textLabel?.text = items[indexPath.row]
+        if let ticketCell = cell as? TicketViewCell {
+            ticketCell.serviceLetter.text = items[indexPath.row]
+        }
+        
+        if indexPath.row % 2 == 0 {
+            cell.contentView.backgroundColor = UIColor(red: 191.0/255.0, green: 37.0/255.0, blue: 99.0/255.0, alpha: 1.0)
+        }
+        else {
+            cell.contentView.backgroundColor = UIColor(red: 82.0/255.0, green: 40.0/255.0, blue: 123.0/255.0, alpha: 1.0)
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         // Height of cell
-        return 60
+        return 150
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Select row
+        items.map({ $0 + " - Done" }).flatMap({ value -> Array<String> in println(value); return items })
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
 }
@@ -68,11 +82,11 @@ extension TicketsViewController: UITableViewDataSource {
         // Create cell
         let cell: AnyObject? = tableView.dequeueReusableCellWithIdentifier(ticketCellIdentifier)
         
-        if let cellText = cell as? UITableViewCell {
+        if let cellText = cell as? TicketViewCell {
             return cellText
         }
         else {
-            tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: ticketCellIdentifier)
+            tableView.registerNib(UINib(nibName: "TicketViewCell", bundle: nil), forCellReuseIdentifier: ticketCellIdentifier)
             let cellText = tableView.dequeueReusableCellWithIdentifier(ticketCellIdentifier) as! UITableViewCell
             return cellText
         }
