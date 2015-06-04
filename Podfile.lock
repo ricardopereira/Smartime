@@ -1,8 +1,10 @@
 PODS:
+  - DKChainableAnimationKit (1.3.0)
   - QRCodeReader (1.0)
   - Runes (2.0.0)
 
 DEPENDENCIES:
+  - DKChainableAnimationKit (~> 1.3.0)
   - QRCodeReader (from `https://github.com/ricardopereira/QRCodeReader.git`)
   - Runes
 
@@ -12,10 +14,11 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   QRCodeReader:
-    :commit: ba68dc7adaaad835bea247568d73d308c43cb847
+    :commit: 169cf1ecb264aa1e31848a795df79b51d5591b2d
     :git: https://github.com/ricardopereira/QRCodeReader.git
 
 SPEC CHECKSUMS:
+  DKChainableAnimationKit: 2dfe87e03f5992779f82bcbedfbeb6cdeb122a41
   QRCodeReader: 7c5a73cb0849e888ef8140c1729ca785b5ea8c68
   Runes: 4fe81355f4620b76b02176222d264b33e60dba51
 
