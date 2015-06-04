@@ -28,13 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Create the slide pages
         let slideVC = storyboard.instantiateInitialViewController() as! SlideViewController
         
-        let statusVC = PageViewController()
+        let statusVC = StatusViewController()
         statusVC.view.backgroundColor = UIColor.greenColor()
         
         let mainVC = MainViewController()
         mainVC.view.backgroundColor = UIColor.redColor()
         
-        let ticketsVC = PageViewController()
+        let ticketsVC = TicketsViewController()
         ticketsVC.view.backgroundColor = UIColor.blueColor()
         
         // Attach the pages to the Slide manager
