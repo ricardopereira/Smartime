@@ -20,12 +20,14 @@ class StatusViewController: SlidePageViewController {
         let header = FLXView()
         header.childAlignment = .Center
         header.direction = .Row
-        header.flx_margins = FLXMargins(top: 0, left: 8, bottom: 0, right: 8)
+        header.flx_margins = FLXMargins(top: 0, left: 0, bottom: 0, right: 0)
         flexView.addSubview(header)
         
         let title = Label(text: "Smartime", align: .Center, fontSize: 24)
         title.flx_flex = 1
-        title.flx_margins = FLXMargins(top: 8, left: 8, bottom: 8, right: 8)
+        title.textColor = UIColor.whiteColor()
+        title.backgroundColor = UIColor(rgba: "#00B9DC")
+        title.flx_margins = FLXMargins(top: 12, left: 0, bottom: 8, right: 0)
         header.addSubview(title)
         
         let subtitle = Label(text: "Já conquistou X minutos", align: .Center)
@@ -41,6 +43,12 @@ class StatusViewController: SlidePageViewController {
         flexView.bounds.size = CGSize(width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
         
         view = flexView
+    }
+    
+    override func pageDidScroll(position: CGFloat, offset: CGFloat) {
+        let newAlpha = CGFloat(1 - (position / view.frame.width))
+        println("Offset:\(offset) NewAlpha:\(newAlpha) Position:\(position) Width:\(view.frame.width)")
+        view.alpha = newAlpha;
     }
     
 }

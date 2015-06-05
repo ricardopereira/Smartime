@@ -6,7 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="Smartime" customModuleProvider="target">
             <connections>
+                <outlet property="aboutButton" destination="8ek-TD-T22" id="JWZ-ct-sSG"/>
                 <outlet property="qrCodeButton" destination="jEh-4N-b42" id="KET-OX-it2"/>
+                <outlet property="ticketsButton" destination="3rZ-FS-iUu" id="pqU-xH-Vl6"/>
                 <outlet property="view" destination="iN0-l3-epB" id="KR3-Oh-Q5w"/>
             </connections>
         </placeholder>
@@ -15,14 +17,42 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jEh-4N-b42">
-                    <rect key="frame" x="128" y="225" width="64" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3rZ-FS-iUu">
+                    <rect key="frame" x="250" y="435" width="62" height="37"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="37" id="8hC-NP-ybm"/>
+                        <constraint firstAttribute="width" constant="62" id="lmf-S5-Axl"/>
+                    </constraints>
+                    <state key="normal" title="Senhas">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ek-TD-T22">
+                    <rect key="frame" x="8" y="435" width="57" height="37"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="57" id="Df3-oQ-PEq"/>
+                        <constraint firstAttribute="height" constant="37" id="FWS-su-os0"/>
+                    </constraints>
+                    <state key="normal" title="Sobre">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jEh-4N-b42">
+                    <rect key="frame" x="103" y="193" width="115" height="94"/>
                     <state key="normal" title="QR Code">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerY" secondItem="jEh-4N-b42" secondAttribute="centerY" id="3KW-sD-eRX"/>
+                <constraint firstAttribute="bottom" secondItem="3rZ-FS-iUu" secondAttribute="bottom" constant="8" id="5Mc-sk-0q8"/>
+                <constraint firstAttribute="bottom" secondItem="8ek-TD-T22" secondAttribute="bottom" constant="8" id="msn-Rl-sw3"/>
+                <constraint firstAttribute="trailing" secondItem="3rZ-FS-iUu" secondAttribute="trailing" constant="8" id="tAX-xX-3Wy"/>
+                <constraint firstItem="8ek-TD-T22" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="uXF-Ht-wAa"/>
+                <constraint firstAttribute="centerX" secondItem="jEh-4N-b42" secondAttribute="centerX" id="z49-yz-Osy"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
