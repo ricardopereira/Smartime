@@ -43,11 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let slideVC = storyboard.instantiateInitialViewController() as! SlideViewController
         
         let statusVC = StatusViewController(slider: slideVC)
-        
-        let mainVC = MainViewController(slider: slideVC)
-        mainVC.view.backgroundColor = UIColor(red: 80.0/255.0, green: 168.0/255.0, blue: 228.0/255.0, alpha: 1.0)
-        
-        let ticketsVC = TicketsViewController(slider: slideVC, sourceSignal: slideVC.ticketItems.producer)
+        let mainVC = MainViewController(slider: slideVC, nibName: "MainViewController", bundle: nil)
+        let ticketsVC = TicketsViewController(slider: slideVC)
         
         // Attach the pages to the Slide manager
         slideVC.addViewController(statusVC)

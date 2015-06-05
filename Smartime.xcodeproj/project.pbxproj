@@ -11,6 +11,7 @@
 		D7242B4C1AD825F00015BA96 /* SocketIOEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B4B1AD825F00015BA96 /* SocketIOEvent.swift */; };
 		D7242B501AD8A3D40015BA96 /* SocketIORequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B4F1AD8A3D40015BA96 /* SocketIORequester.swift */; };
 		D7242B531AD95F040015BA96 /* NSURL+TrailingSlash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B521AD95F040015BA96 /* NSURL+TrailingSlash.swift */; };
+		D725E72A1B21F7EF00486F0F /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D725E7291B21F7EE00486F0F /* MainViewController.xib */; };
 		D72A4F2A1B03CCB100B571EB /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72A4F291B03CCB100B571EB /* ReactiveCocoa.framework */; };
 		D72A4F2B1B03CCBD00B571EB /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D72A4F291B03CCB100B571EB /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D72A4F301B03D5CB00B571EB /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72A4F2D1B03D5CB00B571EB /* Box.framework */; };
@@ -56,7 +57,8 @@
 		D7F906451B21B68B00C96D7E /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F906441B21B68A00C96D7E /* Ticket.swift */; };
 		D7F906471B21B6A600C96D7E /* TicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F906461B21B6A600C96D7E /* TicketViewModel.swift */; };
 		D7F906491B21CC8400C96D7E /* RACExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F906481B21CC8400C96D7E /* RACExtensions.swift */; };
-		D7FDABFB1B1F0D8000E8BF2F /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FDABF91B1F0D8000E8BF2F /* PageViewController.swift */; };
+		D7F9064B1B21F15B00C96D7E /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9064A1B21F15A00C96D7E /* CommonViewModel.swift */; };
+		D7FDABFB1B1F0D8000E8BF2F /* SlidePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FDABF91B1F0D8000E8BF2F /* SlidePageViewController.swift */; };
 		D7FDABFC1B1F0D8000E8BF2F /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FDABFA1B1F0D8000E8BF2F /* SlideViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +95,7 @@
 		D7242B4B1AD825F00015BA96 /* SocketIOEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOEvent.swift; sourceTree = "<group>"; };
 		D7242B4F1AD8A3D40015BA96 /* SocketIORequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIORequester.swift; sourceTree = "<group>"; };
 		D7242B521AD95F040015BA96 /* NSURL+TrailingSlash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+TrailingSlash.swift"; sourceTree = "<group>"; };
+		D725E7291B21F7EE00486F0F /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		D72A4F291B03CCB100B571EB /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D72A4F2D1B03D5CB00B571EB /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Box.framework; sourceTree = "<group>"; };
 		D72A4F2F1B03D5CB00B571EB /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
@@ -139,7 +142,8 @@
 		D7F906441B21B68A00C96D7E /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		D7F906461B21B6A600C96D7E /* TicketViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewModel.swift; sourceTree = "<group>"; };
 		D7F906481B21CC8400C96D7E /* RACExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACExtensions.swift; sourceTree = "<group>"; };
-		D7FDABF91B1F0D8000E8BF2F /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		D7F9064A1B21F15A00C96D7E /* CommonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
+		D7FDABF91B1F0D8000E8BF2F /* SlidePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidePageViewController.swift; sourceTree = "<group>"; };
 		D7FDABFA1B1F0D8000E8BF2F /* SlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -236,9 +240,11 @@
 			children = (
 				D79540041ACDB4B50031354F /* AppDelegate.swift */,
 				D79540241ACDB74E0031354F /* AppSettings.swift */,
+				D7F9064A1B21F15A00C96D7E /* CommonViewModel.swift */,
 				D7FDABFA1B1F0D8000E8BF2F /* SlideViewController.swift */,
-				D7FDABF91B1F0D8000E8BF2F /* PageViewController.swift */,
+				D7FDABF91B1F0D8000E8BF2F /* SlidePageViewController.swift */,
 				D79540261ACDB9EF0031354F /* MainViewController.swift */,
+				D725E7291B21F7EE00486F0F /* MainViewController.xib */,
 				D74484401B204C3F00E64B39 /* TicketsViewController.swift */,
 				D74484421B204C4A00E64B39 /* StatusViewController.swift */,
 				D74484371B1FF35C00E64B39 /* Slider.storyboard */,
@@ -438,6 +444,7 @@
 				D795400C1ACDB4B50031354F /* Images.xcassets in Resources */,
 				D7F906411B20AF0700C96D7E /* TicketViewCell.xib in Resources */,
 				D74484381B1FF35C00E64B39 /* Slider.storyboard in Resources */,
+				D725E72A1B21F7EF00486F0F /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +529,7 @@
 				D79540501ACDC3640031354F /* SocketIOConnection.swift in Sources */,
 				D7F906471B21B6A600C96D7E /* TicketViewModel.swift in Sources */,
 				D79540511ACDC3640031354F /* SocketIOEventHandler.swift in Sources */,
+				D7F9064B1B21F15B00C96D7E /* CommonViewModel.swift in Sources */,
 				D79540581ACDC3640031354F /* SocketIOWebSocket.swift in Sources */,
 				D7242B4C1AD825F00015BA96 /* SocketIOEvent.swift in Sources */,
 				D795404F1ACDC3640031354F /* SocketIOCallback.swift in Sources */,
@@ -530,7 +538,7 @@
 				D7F906431B20BC4A00C96D7E /* UIColor+Hex.swift in Sources */,
 				D74484411B204C3F00E64B39 /* TicketsViewController.swift in Sources */,
 				D795404E1ACDC3640031354F /* SocketIO.swift in Sources */,
-				D7FDABFB1B1F0D8000E8BF2F /* PageViewController.swift in Sources */,
+				D7FDABFB1B1F0D8000E8BF2F /* SlidePageViewController.swift in Sources */,
 				D74484431B204C4A00E64B39 /* StatusViewController.swift in Sources */,
 				D7C604A71AE56241004342CE /* SocketIOEmitter.swift in Sources */,
 				D79540571ACDC3640031354F /* SocketIOTransportDelegate.swift in Sources */,

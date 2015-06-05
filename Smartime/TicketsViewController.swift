@@ -17,15 +17,18 @@ enum AppEvents: String, Printable {
     }
 }
 
-class TicketsViewController: PageViewController {
+class TicketsViewController: SlidePageViewController {
     
     let tableView = UITableView()
     let ticketCellIdentifier = "TicketCell"
     var items = []
     
+    let sourceSignal: SignalProducer<[TicketViewModel], NoError>
+    
     let socket = SocketIO<AppEvents>(url: "http://smartime.herokuapp.com")
     
-    init(slider: SliderController, sourceSignal: SignalProducer<[TicketViewModel], NoError>) {
+    init(slider: SliderController) {
+        sourceSignal = slider.viewModel.ticketItems.producer
         // Reactive signal
         super.init(slider: slider, nibName: nil, bundle: nil)
         tableView.dataSource = self

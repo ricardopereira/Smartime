@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import ReactiveCocoa
 
 /** 
 Slide Page:
@@ -24,30 +23,21 @@ protocol SlidePage {
 }
 
 protocol SliderController {
-    
+    var viewModel: CommonViewModel { get }
     func nextPage()
     func prevPage()
-    // Test
-    func addTicket()
 }
 
 
 class SlideViewController: UIViewController, UIScrollViewDelegate, SliderController {
     
+    let viewModel = CommonViewModel()
+    
+    // Components
     private let scrollview: UIScrollView!
     private var controllers: [UIViewController]!
     private var lastViewConstraint: NSArray?
-    
-    // Test
-    let ticketItems = MutableProperty<[TicketViewModel]>([TicketViewModel]())
-    
-    func addTicket() {
-        var response = ticketItems.value
-        response.append(TicketViewModel(Ticket(["service":"\(ticketItems.value.count)", "desk":"Balcão 1", "current":17, "number":23])))
         
-        ticketItems.put(response.map { $0 })
-    }
-    
     // The index of the current page (readonly)
     var currentPage: Int {
         get {

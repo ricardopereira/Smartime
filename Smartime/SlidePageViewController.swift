@@ -1,5 +1,5 @@
 //
-//  PageViewController.swift
+//  SlidePageViewController.swift
 //  Smartime
 //
 //  Created by Yari D'areglia on 17/09/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PageViewController: UIViewController, SlidePage {
+class SlidePageViewController: UIViewController, SlidePage {
     
     let slider: SliderController
     
