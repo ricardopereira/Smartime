@@ -6,28 +6,47 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 /** 
-Walkthrough Page:
-The walkthrough page represents any page added to the Walkthrough.
+Slide Page:
+The slide page represents any page added to the Slider.
 At the moment it's only used to perform custom animations on didScroll.
 **/
 protocol SlidePage {
     // While sliding to the "next" slide (from right to left), the "current" slide changes its offset from 1.0 to 2.0 while the "next" slide changes it from 0.0 to 1.0
     // While sliding to the "previous" slide (left to right), the current slide changes its offset from 1.0 to 0.0 while the "previous" slide changes it from 2.0 to 1.0
-    // The other pages update their offsets whith values like 2.0, 3.0, -2.0... depending on their positions and on the status of the walkthrough
+    // The other pages update their offsets whith values like 2.0, 3.0, -2.0... depending on their positions and on the status of the slider
     // This value can be used on the previous, current and next page to perform custom animations on page's subviews.
     
-    func pageDidScroll(position:CGFloat, offset:CGFloat)   // Called when the main Scrollview...scrolls
+    func pageDidScroll(position:CGFloat, offset:CGFloat) // Called when the main ScrollView...scrolls
+    func pageDidAppear()
+}
+
+protocol SliderController {
+    
+    func nextPage()
+    func prevPage()
+    // Test
+    func addTicket()
 }
 
 
-class SlideViewController: UIViewController, UIScrollViewDelegate {
+class SlideViewController: UIViewController, UIScrollViewDelegate, SliderController {
     
-    // MARK: - Public properties -
+    private let scrollview: UIScrollView!
+    private var controllers: [UIViewController]!
+    private var lastViewConstraint: NSArray?
     
-    @IBOutlet var nextButton: UIButton?
-    @IBOutlet var prevButton: UIButton?
+    // Test
+    let ticketItems = MutableProperty<[TicketViewModel]>([TicketViewModel]())
+    
+    func addTicket() {
+        var response = ticketItems.value
+        response.append(TicketViewModel(Ticket(["service":"\(ticketItems.value.count)", "desk":"Balcão 1", "current":17, "number":23])))
+        
+        ticketItems.put(response.map { $0 })
+    }
     
     // The index of the current page (readonly)
     var currentPage: Int {
@@ -36,13 +55,6 @@ class SlideViewController: UIViewController, UIScrollViewDelegate {
             return page
         }
     }
-    
-    
-    // MARK: - Private properties -
-    
-    private let scrollview: UIScrollView!
-    private var controllers: [UIViewController]!
-    private var lastViewConstraint: NSArray?
     
     
     // MARK: - Overrides -
@@ -70,33 +82,28 @@ class SlideViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         // Initialize UIScrollView
-        
         scrollview.delegate = self
         scrollview.setTranslatesAutoresizingMaskIntoConstraints(false)
-        
         view.insertSubview(scrollview, atIndex: 0) //scrollview is inserted as first view of the hierarchy
         
         // Set scrollview related constraints
-        
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[scrollview]-0-|", options:nil, metrics: nil, views: ["scrollview":scrollview]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[scrollview]-0-|", options:nil, metrics: nil, views: ["scrollview":scrollview]))
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated);
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        // TODO: Forced next page
-        nextPage()
+        // Only for this project
+        if currentPage == 0 {
+            nextPage()
+        }
     }
     
     
     // MARK: - Internal methods -
     
-    @IBAction func nextPage() {
+    func nextPage() {
         if (currentPage + 1) < controllers.count {
             var frame = scrollview.frame
             frame.origin.x = CGFloat(currentPage + 1) * frame.size.width
@@ -104,7 +111,7 @@ class SlideViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    @IBAction func prevPage() {
+    func prevPage() {
         if currentPage > 0 {
             var frame = scrollview.frame
             frame.origin.x = CGFloat(currentPage - 1) * frame.size.width
@@ -156,31 +163,11 @@ class SlideViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
-    /** 
-    Update the UI to reflect the current walkthrough situation 
-    **/
-    
-    private func updateUI() {
-        
-        // Hide/Show navigation buttons
-
-        if currentPage == controllers.count - 1{
-            nextButton?.hidden = true
-        }else{
-            nextButton?.hidden = false
-        }
-        
-        if currentPage == 0{
-            prevButton?.hidden = true
-        }else{
-            prevButton?.hidden = false
-        }
-    }
     
     // MARK: - Scrollview Delegate -
     
     func scrollViewDidScroll(sv: UIScrollView) {
-        
+        // Event - on scroll
         for var i=0; i < controllers.count; i++ {
             
             if let vc = controllers[i] as? SlidePage {
@@ -203,21 +190,22 @@ class SlideViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    func didAppear(pageIndex: Int) {
+        if pageIndex >= 0 && pageIndex < controllers.count {
+            if let page = controllers[pageIndex] as? SlidePage {
+                page.pageDidAppear()
+            }
+        }
+    }
+    
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        updateUI()
+        // Event - finished scroll: running
+        didAppear(currentPage)
     }
     
     func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
-        updateUI()
+        // Event - finished scroll: init
+        didAppear(currentPage)
     }
-    
-    
-    /* WIP */
-    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        println("CHANGE")
-    }
-    
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        println("SIZE")
-    }
+
 }

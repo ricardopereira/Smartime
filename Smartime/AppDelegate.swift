@@ -18,7 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = app()
+        
+        //application.registerForRemoteNotifications()
         return true
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        println(deviceToken)
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        
     }
     
     func app() -> UIViewController {
@@ -28,12 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Create the slide pages
         let slideVC = storyboard.instantiateInitialViewController() as! SlideViewController
         
-        let statusVC = StatusViewController()
+        let statusVC = StatusViewController(slider: slideVC)
         
-        let mainVC = MainViewController()
+        let mainVC = MainViewController(slider: slideVC)
         mainVC.view.backgroundColor = UIColor(red: 80.0/255.0, green: 168.0/255.0, blue: 228.0/255.0, alpha: 1.0)
         
-        let ticketsVC = TicketsViewController()
+        let ticketsVC = TicketsViewController(slider: slideVC, sourceSignal: slideVC.ticketItems.producer)
         
         // Attach the pages to the Slide manager
         slideVC.addViewController(statusVC)

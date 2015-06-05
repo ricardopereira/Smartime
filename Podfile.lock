@@ -14,12 +14,12 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   QRCodeReader:
-    :commit: 169cf1ecb264aa1e31848a795df79b51d5591b2d
+    :commit: 399d5df58f2226a75c8de1400356781526d822fb
     :git: https://github.com/ricardopereira/QRCodeReader.git
 
 SPEC CHECKSUMS:
   DKChainableAnimationKit: 2dfe87e03f5992779f82bcbedfbeb6cdeb122a41
-  QRCodeReader: 7c5a73cb0849e888ef8140c1729ca785b5ea8c68
+  QRCodeReader: 0c654ffa28803c4b33378bce6534e3f57ec98b46
   Runes: 4fe81355f4620b76b02176222d264b33e60dba51
 
 COCOAPODS: 0.37.2

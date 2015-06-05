@@ -53,6 +53,9 @@
 		D7F906401B20AF0700C96D7E /* TicketViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9063E1B20AF0700C96D7E /* TicketViewCell.swift */; };
 		D7F906411B20AF0700C96D7E /* TicketViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7F9063F1B20AF0700C96D7E /* TicketViewCell.xib */; };
 		D7F906431B20BC4A00C96D7E /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F906421B20BC4A00C96D7E /* UIColor+Hex.swift */; };
+		D7F906451B21B68B00C96D7E /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F906441B21B68A00C96D7E /* Ticket.swift */; };
+		D7F906471B21B6A600C96D7E /* TicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F906461B21B6A600C96D7E /* TicketViewModel.swift */; };
+		D7F906491B21CC8400C96D7E /* RACExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F906481B21CC8400C96D7E /* RACExtensions.swift */; };
 		D7FDABFB1B1F0D8000E8BF2F /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FDABF91B1F0D8000E8BF2F /* PageViewController.swift */; };
 		D7FDABFC1B1F0D8000E8BF2F /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FDABFA1B1F0D8000E8BF2F /* SlideViewController.swift */; };
 /* End PBXBuildFile section */
@@ -133,6 +136,9 @@
 		D7F9063E1B20AF0700C96D7E /* TicketViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewCell.swift; sourceTree = "<group>"; };
 		D7F9063F1B20AF0700C96D7E /* TicketViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketViewCell.xib; sourceTree = "<group>"; };
 		D7F906421B20BC4A00C96D7E /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		D7F906441B21B68A00C96D7E /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		D7F906461B21B6A600C96D7E /* TicketViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewModel.swift; sourceTree = "<group>"; };
+		D7F906481B21CC8400C96D7E /* RACExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACExtensions.swift; sourceTree = "<group>"; };
 		D7FDABF91B1F0D8000E8BF2F /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		D7FDABFA1B1F0D8000E8BF2F /* SlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -230,14 +236,17 @@
 			children = (
 				D79540041ACDB4B50031354F /* AppDelegate.swift */,
 				D79540241ACDB74E0031354F /* AppSettings.swift */,
-				D7FDABF91B1F0D8000E8BF2F /* PageViewController.swift */,
 				D7FDABFA1B1F0D8000E8BF2F /* SlideViewController.swift */,
+				D7FDABF91B1F0D8000E8BF2F /* PageViewController.swift */,
 				D79540261ACDB9EF0031354F /* MainViewController.swift */,
 				D74484401B204C3F00E64B39 /* TicketsViewController.swift */,
-				D7F9063E1B20AF0700C96D7E /* TicketViewCell.swift */,
-				D7F9063F1B20AF0700C96D7E /* TicketViewCell.xib */,
 				D74484421B204C4A00E64B39 /* StatusViewController.swift */,
 				D74484371B1FF35C00E64B39 /* Slider.storyboard */,
+				D7F906441B21B68A00C96D7E /* Ticket.swift */,
+				D7F906461B21B6A600C96D7E /* TicketViewModel.swift */,
+				D7F9063E1B20AF0700C96D7E /* TicketViewCell.swift */,
+				D7F9063F1B20AF0700C96D7E /* TicketViewCell.xib */,
+				D7F906481B21CC8400C96D7E /* RACExtensions.swift */,
 				D7F906421B20BC4A00C96D7E /* UIColor+Hex.swift */,
 				D795400B1ACDB4B50031354F /* Images.xcassets */,
 				D79540021ACDB4B50031354F /* Supporting Files */,
@@ -506,9 +515,12 @@
 				D72CEED11AF5163C00D86C38 /* SocketIOJSONHandshake.swift in Sources */,
 				D79540251ACDB74E0031354F /* AppSettings.swift in Sources */,
 				D7242B501AD8A3D40015BA96 /* SocketIORequester.swift in Sources */,
+				D7F906451B21B68B00C96D7E /* Ticket.swift in Sources */,
+				D7F906491B21CC8400C96D7E /* RACExtensions.swift in Sources */,
 				D79540521ACDC3640031354F /* SocketIOHandshake.swift in Sources */,
 				D7242B531AD95F040015BA96 /* NSURL+TrailingSlash.swift in Sources */,
 				D79540501ACDC3640031354F /* SocketIOConnection.swift in Sources */,
+				D7F906471B21B6A600C96D7E /* TicketViewModel.swift in Sources */,
 				D79540511ACDC3640031354F /* SocketIOEventHandler.swift in Sources */,
 				D79540581ACDC3640031354F /* SocketIOWebSocket.swift in Sources */,
 				D7242B4C1AD825F00015BA96 /* SocketIOEvent.swift in Sources */,

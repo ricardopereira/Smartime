@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 enum AppEvents: String, Printable {
     case TicketCall = "TicketCall"
@@ -20,17 +21,26 @@ class TicketsViewController: PageViewController {
     
     let tableView = UITableView()
     let ticketCellIdentifier = "TicketCell"
-    var items = ["A", "B" , "C"]
+    var items = []
     
     let socket = SocketIO<AppEvents>(url: "http://smartime.herokuapp.com")
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
+    init(slider: SliderController, sourceSignal: SignalProducer<[TicketViewModel], NoError>) {
+        // Reactive signal
+        super.init(slider: slider, nibName: nil, bundle: nil)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         tableView.showsVerticalScrollIndicator = false
         
+        // Reactive
+        sourceSignal.start(next: { data in
+            self.items = data.map { $0 as TicketViewModel }
+            self.tableView.reloadData()
+            self.scrollToBottom()
+        })
+        
+        // SocketIO-Kit
         socket.on(.ConnectError) {
             switch $0 {
             case .Failure(let error):
@@ -62,13 +72,9 @@ class TicketsViewController: PageViewController {
         
         //socket.connect()
     }
-    
+
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    private override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func loadView() {
@@ -80,16 +86,28 @@ class TicketsViewController: PageViewController {
 
     }
     
+    func scrollToBottom() {
+        if items.count > 0 {
+            tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: items.count-1, inSection: 0), atScrollPosition: .Bottom, animated: true)
+        }
+    }
+    
 }
 
 extension TicketsViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        // Refresh data
-        if let ticketCell = cell as? TicketViewCell {
-            ticketCell.serviceLetter.text = items[indexPath.row]
-        }
+    func animateEntranceCell(cell: UITableViewCell) {
+        cell.center.x += self.view.bounds.width
+        cell.alpha = 0
         
+        UIView.animateWithDuration(1.1, delay: 0.2, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .CurveEaseIn, animations: {
+            cell.center.x -= self.view.bounds.width
+            cell.alpha = 1
+            }, completion: nil)
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        // Striped
         if indexPath.row % 2 == 0 {
             cell.contentView.backgroundColor = UIColor(rgba: "#3D54DC")
         }
@@ -97,23 +115,15 @@ extension TicketsViewController: UITableViewDelegate {
             cell.contentView.backgroundColor = UIColor(rgba: "#00B9DC")
         }
         
-        if indexPath.row == 3 {
-            //1. Setup the CATransform3D structure
-            var rotation = CATransform3DMakeRotation(CGFloat((30*M_PI)/180), CGFloat(0.0), CGFloat(0.7), CGFloat(0.4))
-            rotation.m34 = 1.0 / -600
+        // Refresh data
+        if let ticketCell = cell as? TicketViewCell, let ticketModel = items[indexPath.row] as? TicketViewModel {
+            ticketCell.serviceLetter.text = ticketModel.service.value
             
-            //2. Define the initial state (Before the animation)
-            cell.layer.transform = rotation
-            cell.alpha = 0
-            cell.layer.anchorPoint = CGPointMake(0, 0.5)
-            
-            //3. Define the final state (After the animation) and commit the animation
-            UIView.beginAnimations("rotation", context: nil)
-            UIView.setAnimationDuration(0.8)
-            
-            cell.layer.transform = CATransform3DIdentity
-            cell.alpha = 1
-            UIView.commitAnimations()
+            // Animation
+            if ticketModel.new {
+                animateEntranceCell(cell)
+                ticketModel.new = false
+            }
         }
     }
     
@@ -124,14 +134,7 @@ extension TicketsViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Select row
-        items.append("D")
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        //tableView.beginUpdates()
-        //tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
-        //tableView.endUpdates()
-        
-        tableView.reloadData()
     }
     
 }

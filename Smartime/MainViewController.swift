@@ -11,28 +11,17 @@ import FLXView
 
 class MainViewController: PageViewController {
     
-    var connect: UIButton!
-    var disconnect: UIButton!
-    var send: UIButton!
-    var reconnect: UIButton!
-    var login: UIButton!
+    var qrCodeButton: UIButton!
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Events
-        connect.addTarget(self, action: Selector("didTouchConnect:"), forControlEvents: .TouchUpInside)
-        disconnect.addTarget(self, action: Selector("didTouchDisconnect:"), forControlEvents: .TouchUpInside)
-        send.addTarget(self, action: Selector("didTouchSend:"), forControlEvents: .TouchUpInside)
-        reconnect.addTarget(self, action: Selector("didTouchReconnect:"), forControlEvents: .TouchUpInside)
-        login.addTarget(self, action: Selector("didTouchLogin:"), forControlEvents: .TouchUpInside)
+        qrCodeButton.addTarget(self, action: Selector("didTouchQRCodeButton:"), forControlEvents: .TouchUpInside)
+    }
+    
+    func didTouchQRCodeButton(sender: AnyObject?) {
+        slider.addTicket()
+        slider.nextPage()
     }
 
     override func loadView() {
@@ -79,50 +68,14 @@ class MainViewController: PageViewController {
         flexView.addSubview(Separator())
         
         // Buttons
-        connect = Button(label: "Connect")
-        connect.flx_margins = FLXMargins(top: 8, left: 8, bottom: 4, right: 8)
-        flexView.addSubview(connect)
-        
-        disconnect = Button(label: "Disconnect")
-        disconnect.flx_margins = FLXMargins(top: 8, left: 8, bottom: 4, right: 8)
-        flexView.addSubview(disconnect)
-        
-        send = Button(label: "Send")
-        send.flx_margins = FLXMargins(top: 8, left: 8, bottom: 4, right: 8)
-        flexView.addSubview(send)
-        
-        reconnect = Button(label: "Reconnect")
-        reconnect.flx_margins = FLXMargins(top: 8, left: 8, bottom: 4, right: 8)
-        flexView.addSubview(reconnect)
-        
-        login = Button(label: "Login")
-        login.flx_margins = FLXMargins(top: 8, left: 8, bottom: 4, right: 8)
-        flexView.addSubview(login)
+        qrCodeButton = Button(label: "Connect")
+        qrCodeButton.flx_margins = FLXMargins(top: 8, left: 8, bottom: 4, right: 8)
+        flexView.addSubview(qrCodeButton)
         
         //flexView.sizeThatFits
         flexView.bounds.size = CGSize(width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
         
         view = flexView
-    }
-    
-    func didTouchConnect(sender: AnyObject?) {
-
-    }
-    
-    func didTouchDisconnect(sender: AnyObject?) {
-
-    }
-    
-    func didTouchSend(sender: AnyObject?) {
-
-    }
-    
-    func didTouchReconnect(sender: AnyObject?) {
-
-    }
-    
-    func didTouchLogin(sender: AnyObject?) {
-
     }
     
 

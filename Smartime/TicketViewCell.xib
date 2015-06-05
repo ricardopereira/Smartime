@@ -80,6 +80,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="currentText" destination="LOp-Sx-3eV" id="P5J-Ik-eSs"/>
+                <outlet property="numberText" destination="zIw-RA-HkL" id="uIL-X8-0q8"/>
                 <outlet property="serviceLetter" destination="QyJ-8m-1U3" id="Nja-qE-nyK"/>
             </connections>
             <point key="canvasLocation" x="279.5" y="443"/>
