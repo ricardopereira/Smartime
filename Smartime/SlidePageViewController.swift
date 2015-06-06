@@ -25,7 +25,7 @@ class SlidePageViewController: UIViewController, SlidePage {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(slider: SliderController, nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    init(slider: SliderController, nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle? = nil) {
         self.slider = slider
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }

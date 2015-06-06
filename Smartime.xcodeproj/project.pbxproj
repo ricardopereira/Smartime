@@ -21,6 +21,8 @@
 		D72CEECD1AF4FCA800D86C38 /* SocketIOPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72CEECC1AF4FCA800D86C38 /* SocketIOPayload.swift */; };
 		D72CEECF1AF5059100D86C38 /* SocketIOJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72CEECE1AF5059100D86C38 /* SocketIOJSON.swift */; };
 		D72CEED11AF5163C00D86C38 /* SocketIOJSONHandshake.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72CEED01AF5163C00D86C38 /* SocketIOJSONHandshake.swift */; };
+		D7428BC31B235FC000E0CD5A /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7428BC21B235FC000E0CD5A /* StyleKit.swift */; };
+		D7428BC51B236CED00E0CD5A /* StatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7428BC41B236CED00E0CD5A /* StatusViewController.xib */; };
 		D74484381B1FF35C00E64B39 /* Slider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D74484371B1FF35C00E64B39 /* Slider.storyboard */; };
 		D74484411B204C3F00E64B39 /* TicketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74484401B204C3F00E64B39 /* TicketsViewController.swift */; };
 		D74484431B204C4A00E64B39 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74484421B204C4A00E64B39 /* StatusViewController.swift */; };
@@ -103,6 +105,8 @@
 		D72CEECC1AF4FCA800D86C38 /* SocketIOPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOPayload.swift; sourceTree = "<group>"; };
 		D72CEECE1AF5059100D86C38 /* SocketIOJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOJSON.swift; sourceTree = "<group>"; };
 		D72CEED01AF5163C00D86C38 /* SocketIOJSONHandshake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOJSONHandshake.swift; sourceTree = "<group>"; };
+		D7428BC21B235FC000E0CD5A /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
+		D7428BC41B236CED00E0CD5A /* StatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusViewController.xib; sourceTree = "<group>"; };
 		D74484371B1FF35C00E64B39 /* Slider.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Slider.storyboard; sourceTree = "<group>"; };
 		D74484401B204C3F00E64B39 /* TicketsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketsViewController.swift; sourceTree = "<group>"; };
 		D74484421B204C4A00E64B39 /* StatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
@@ -245,14 +249,16 @@
 				D7FDABF91B1F0D8000E8BF2F /* SlidePageViewController.swift */,
 				D79540261ACDB9EF0031354F /* MainViewController.swift */,
 				D725E7291B21F7EE00486F0F /* MainViewController.xib */,
-				D74484401B204C3F00E64B39 /* TicketsViewController.swift */,
 				D74484421B204C4A00E64B39 /* StatusViewController.swift */,
+				D7428BC41B236CED00E0CD5A /* StatusViewController.xib */,
+				D74484401B204C3F00E64B39 /* TicketsViewController.swift */,
 				D74484371B1FF35C00E64B39 /* Slider.storyboard */,
 				D7F906441B21B68A00C96D7E /* Ticket.swift */,
 				D7F906461B21B6A600C96D7E /* TicketViewModel.swift */,
 				D7F9063E1B20AF0700C96D7E /* TicketViewCell.swift */,
 				D7F9063F1B20AF0700C96D7E /* TicketViewCell.xib */,
 				D7F906481B21CC8400C96D7E /* RACExtensions.swift */,
+				D7428BC21B235FC000E0CD5A /* StyleKit.swift */,
 				D7F906421B20BC4A00C96D7E /* UIColor+Hex.swift */,
 				D795400B1ACDB4B50031354F /* Images.xcassets */,
 				D79540021ACDB4B50031354F /* Supporting Files */,
@@ -444,6 +450,7 @@
 				D795400C1ACDB4B50031354F /* Images.xcassets in Resources */,
 				D7F906411B20AF0700C96D7E /* TicketViewCell.xib in Resources */,
 				D74484381B1FF35C00E64B39 /* Slider.storyboard in Resources */,
+				D7428BC51B236CED00E0CD5A /* StatusViewController.xib in Resources */,
 				D725E72A1B21F7EF00486F0F /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -510,6 +517,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7428BC31B235FC000E0CD5A /* StyleKit.swift in Sources */,
 				D79540561ACDC3640031354F /* SocketIOTransport.swift in Sources */,
 				D7A8540C1AF6258B0043AC4E /* SocketIOError.swift in Sources */,
 				D79540531ACDC3640031354F /* SocketIOOptions.swift in Sources */,

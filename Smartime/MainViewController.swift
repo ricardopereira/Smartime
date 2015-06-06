@@ -31,6 +31,10 @@ class MainViewController: SlidePageViewController {
         ticketsButton.addTarget(self, action: Selector("didTouchTickets:"), forControlEvents: .TouchUpInside)
     }
     
+    override func pageDidAppear() {
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true);
+    }
+    
     func didTouchQRCode(sender: AnyObject?) {
         // Test
         var response = slider.viewModel.ticketItems.value

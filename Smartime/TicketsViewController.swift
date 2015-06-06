@@ -95,6 +95,10 @@ class TicketsViewController: SlidePageViewController {
         }
     }
     
+    override func pageDidAppear() {
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true);
+    }
+    
 }
 
 extension TicketsViewController: UITableViewDelegate {

@@ -42,8 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Create the slide pages
         let slideVC = storyboard.instantiateInitialViewController() as! SlideViewController
         
-        let statusVC = StatusViewController(slider: slideVC)
-        let mainVC = MainViewController(slider: slideVC, nibName: "MainViewController", bundle: nil)
+        let statusVC = StatusViewController(slider: slideVC, nibName: "StatusViewController")
+        let mainVC = MainViewController(slider: slideVC, nibName: "MainViewController")
         let ticketsVC = TicketsViewController(slider: slideVC)
         
         // Attach the pages to the Slide manager
