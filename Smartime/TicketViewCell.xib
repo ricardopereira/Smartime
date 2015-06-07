@@ -14,6 +14,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U9y-gn-qbN" customClass="UIImageView">
+                        <rect key="frame" x="8" y="8" width="311" height="103"/>
+                        <color key="backgroundColor" red="0.58431372550000005" green="0.77647058820000003" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="103" id="zYO-ol-16w"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="25"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QyJ-8m-1U3">
                         <rect key="frame" x="22" y="16" width="70" height="88"/>
                         <constraints>
@@ -65,21 +77,26 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" red="1" green="0.55031456339999996" blue="0.22520295609999999" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
+                    <constraint firstAttribute="centerY" secondItem="U9y-gn-qbN" secondAttribute="centerY" id="4S7-5G-flQ"/>
                     <constraint firstAttribute="centerY" secondItem="LOp-Sx-3eV" secondAttribute="centerY" constant="15.5" id="7C2-8R-4Gu"/>
                     <constraint firstItem="QyJ-8m-1U3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="14" id="98H-mJ-gOJ"/>
                     <constraint firstAttribute="centerY" secondItem="iYF-HO-Ou6" secondAttribute="centerY" constant="15.5" id="ByT-EB-Cpt"/>
                     <constraint firstAttribute="trailingMargin" secondItem="zIw-RA-HkL" secondAttribute="trailing" constant="20" id="TQb-NR-8kF"/>
+                    <constraint firstItem="U9y-gn-qbN" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="dsW-Vy-Ept"/>
                     <constraint firstAttribute="trailingMargin" secondItem="LOp-Sx-3eV" secondAttribute="trailing" constant="20" id="o37-iR-KdD"/>
                     <constraint firstAttribute="centerY" secondItem="74k-Qw-JPe" secondAttribute="centerY" constant="-15.5" id="o3o-Qe-qMG"/>
                     <constraint firstAttribute="centerY" secondItem="zIw-RA-HkL" secondAttribute="centerY" constant="-16.5" id="rPB-V3-QZF"/>
                     <constraint firstItem="zIw-RA-HkL" firstAttribute="leading" secondItem="74k-Qw-JPe" secondAttribute="trailing" constant="7" id="rc5-OS-0xu"/>
                     <constraint firstAttribute="centerY" secondItem="QyJ-8m-1U3" secondAttribute="centerY" id="sOp-c4-onY"/>
+                    <constraint firstItem="U9y-gn-qbN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="vcI-Gb-BMP"/>
                     <constraint firstItem="LOp-Sx-3eV" firstAttribute="leading" secondItem="iYF-HO-Ou6" secondAttribute="trailing" constant="7" id="vxh-k1-bXz"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="container" destination="U9y-gn-qbN" id="ZeC-r1-qCd"/>
                 <outlet property="currentText" destination="LOp-Sx-3eV" id="P5J-Ik-eSs"/>
                 <outlet property="numberText" destination="zIw-RA-HkL" id="uIL-X8-0q8"/>
                 <outlet property="serviceLetter" destination="QyJ-8m-1U3" id="Nja-qE-nyK"/>

@@ -41,23 +41,20 @@
                         <constraint firstAttribute="width" constant="100" id="zNS-4m-4eg"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRC-6d-Lbh">
-                    <rect key="frame" x="252" y="412" width="60" height="60"/>
-                    <color key="backgroundColor" red="0.58431372550000005" green="0.77647058820000003" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Button">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <integer key="value" value="15"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tld-Dc-TsM">
+                    <rect key="frame" x="252" y="412" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="gmy-Ik-caN"/>
+                        <constraint firstAttribute="height" constant="50" id="pYJ-qo-UPY"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.2196078431372549" green="0.24313725490196078" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="Bki-7x-l7h" firstAttribute="top" secondItem="MOF-oC-pu4" secondAttribute="bottom" constant="39" id="GLQ-XV-yfG"/>
                 <constraint firstItem="cOn-gs-BC4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="39" id="JIs-8K-gzZ"/>
+                <constraint firstAttribute="trailing" secondItem="tld-Dc-TsM" secondAttribute="trailing" constant="18" id="U07-4m-NGD"/>
+                <constraint firstAttribute="bottom" secondItem="tld-Dc-TsM" secondAttribute="bottom" constant="18" id="WTE-KL-ZXO"/>
                 <constraint firstAttribute="centerX" secondItem="cOn-gs-BC4" secondAttribute="centerX" id="d1m-f5-pGJ"/>
                 <constraint firstItem="MOF-oC-pu4" firstAttribute="top" secondItem="cOn-gs-BC4" secondAttribute="bottom" constant="35" id="hSM-JT-DOr"/>
                 <constraint firstAttribute="centerX" secondItem="Bki-7x-l7h" secondAttribute="centerX" id="kOs-Wt-Xgc"/>
@@ -68,6 +65,7 @@
         <customObject id="ngW-51-dyx" customClass="StyleKit" customModule="Smartime" customModuleProvider="target">
             <connections>
                 <outletCollection property="logoTargets" destination="MOF-oC-pu4" collectionClass="NSMutableArray" id="5HJ-bP-fpA"/>
+                <outletCollection property="nextTargets" destination="tld-Dc-TsM" collectionClass="NSMutableArray" id="m56-TM-jhz"/>
             </connections>
         </customObject>
     </objects>

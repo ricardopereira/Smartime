@@ -17,9 +17,38 @@ enum AppEvents: String, Printable {
     }
 }
 
+class FadeTableView: UITableView {
+    
+    var gradientLayer: CAGradientLayer!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if gradientLayer == nil {
+            let transparent = UIColor.clearColor().CGColor
+            let opaque = StyleKit.cloudBurst.CGColor
+            
+            let maskLayer = CALayer()
+            maskLayer.frame = self.bounds
+            
+            gradientLayer = CAGradientLayer()
+            gradientLayer.frame = CGRectMake(16, 23, self.bounds.size.width, 50)
+            gradientLayer.colors = [opaque, transparent]
+            gradientLayer.locations = [0.2, 0.8]
+            
+            layer.addSublayer(gradientLayer);
+            layer.masksToBounds = false
+            
+            //maskLayer.addSublayer(gradientLayer)
+            //self.layer.mask = maskLayer
+        }
+    }
+    
+}
+
 class TicketsViewController: SlidePageViewController {
     
-    let tableView = UITableView()
+    let tableView = FadeTableView()
     let ticketCellIdentifier = "TicketCell"
     var items = []
     
@@ -35,6 +64,8 @@ class TicketsViewController: SlidePageViewController {
         tableView.delegate = self
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         tableView.showsVerticalScrollIndicator = false
+        
+        view.backgroundColor = StyleKit.cloudBurst
         
         // Reactive
         sourceSignal.start(next: { data in
@@ -83,6 +114,18 @@ class TicketsViewController: SlidePageViewController {
     override func loadView() {
         tableView.bounds.size = CGSize(width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
         view = tableView
+        
+        let shadowLayer = CALayer()
+        shadowLayer.frame = CGRectMake(0, 22, view.bounds.width, 1)
+        shadowLayer.backgroundColor = UIColor.whiteColor().CGColor
+        shadowLayer.shadowOffset = CGSizeMake(0, 3)
+        shadowLayer.shadowRadius = 3.0
+        shadowLayer.shadowColor = UIColor.blackColor().CGColor
+        shadowLayer.shadowOpacity = 1
+        
+        //view.layer.addSublayer(shadowLayer)
+        
+        shadowLayer.setNeedsDisplay();
     }
     
     override func viewDidLoad() {
@@ -114,17 +157,11 @@ extension TicketsViewController: UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        // Striped
-        if indexPath.row % 2 == 0 {
-            cell.contentView.backgroundColor = UIColor(rgba: "#3D54DC")
-        }
-        else {
-            cell.contentView.backgroundColor = UIColor(rgba: "#00B9DC")
-        }
-        
         // Refresh data
         if let ticketCell = cell as? TicketViewCell, let ticketModel = items[indexPath.row] as? TicketViewModel {
+            
             ticketCell.serviceLetter.text = ticketModel.service.value
+            ticketCell.currentText.text = ticketModel.currentAsString
             
             // Animation
             if ticketModel.new {
@@ -154,17 +191,24 @@ extension TicketsViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cellText: TicketViewCell
         // Create cell
-        let cell: AnyObject? = tableView.dequeueReusableCellWithIdentifier(ticketCellIdentifier)
-        
-        if let cellText = cell as? TicketViewCell {
-            return cellText
+        if let cell = tableView.dequeueReusableCellWithIdentifier(ticketCellIdentifier) as? TicketViewCell {
+            cellText = cell
         }
         else {
             tableView.registerNib(UINib(nibName: "TicketViewCell", bundle: nil), forCellReuseIdentifier: ticketCellIdentifier)
-            let cellText = tableView.dequeueReusableCellWithIdentifier(ticketCellIdentifier) as! UITableViewCell
-            return cellText
+            cellText = tableView.dequeueReusableCellWithIdentifier(ticketCellIdentifier) as! TicketViewCell
         }
+        
+        // Test
+        cellText.container.backgroundColor = StyleKit.lightSky
+        //cellText.container.layer.shadowOpacity = 0.8
+        //cellText.container.layer.shadowRadius = 1.7
+        //cellText.container.layer.shadowColor = UIColor.blackColor().CGColor
+        //cellText.container.layer.shadowOffset = CGSizeMake(0.0, 0.0)
+        
+        return cellText
     }
     
 }

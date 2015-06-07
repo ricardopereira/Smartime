@@ -14,6 +14,7 @@ class TicketViewCell: UITableViewCell, ReactiveView {
     @IBOutlet weak var serviceLetter: UILabel!
     @IBOutlet weak var currentText: UILabel!
     @IBOutlet weak var numberText: UILabel!
+    @IBOutlet weak var container: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

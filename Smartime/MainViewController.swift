@@ -51,7 +51,7 @@ class MainViewController: SlidePageViewController {
     
     func didTouchTickets(sender: AnyObject?) {
         // Test
-        slider.viewModel.ticketItems.value[1].currentAsString = "200"
+        slider.viewModel.ticketItems.value[1].current.put(200)
         slider.nextPage()
     }
 
