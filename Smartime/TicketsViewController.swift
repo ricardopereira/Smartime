@@ -28,19 +28,36 @@ class TicketsTableView: UITableView {
 class TicketsViewController: SlidePageViewController {
     
     let tableView = TicketsTableView()
+    let dataSource: TicketsDataSource
     let ticketCellIdentifier = "TicketCell"
-    var items = []
     
     let sourceSignal: SignalProducer<[TicketViewModel], NoError>
     
     let socket = SocketIO<AppEvents>(url: "http://smartime.herokuapp.com")
     
     init(slider: SliderController) {
-        sourceSignal = slider.viewModel.ticketItems.producer
         // Reactive signal
+        sourceSignal = slider.viewModel.ticketItems.producer
+        // DataSource
+        tableView.registerNib(UINib(nibName: "TicketViewCell", bundle: nil), forCellReuseIdentifier: ticketCellIdentifier)
+        dataSource = TicketsDataSource(items: [], cellIdentifier: ticketCellIdentifier)
+        // TableViewController
         super.init(slider: slider, nibName: nil, bundle: nil)
-        tableView.dataSource = self
-        tableView.delegate = self
+        
+        tableView.dataSource = dataSource
+        tableView.delegate = dataSource
+        
+        dataSource.onNewTicket = { cell in
+            //Animate entrance cell
+            cell.center.x += self.view.bounds.width
+            cell.alpha = 0
+            
+            UIView.animateWithDuration(1.1, delay: 0.2, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .CurveEaseIn, animations: {
+                cell.center.x -= self.view.bounds.width
+                cell.alpha = 1
+                }, completion: nil)
+        }
+        
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         tableView.showsVerticalScrollIndicator = false
         
@@ -49,7 +66,7 @@ class TicketsViewController: SlidePageViewController {
         
         // Reactive
         sourceSignal.start(next: { data in
-            self.items = data.map { $0 as TicketViewModel }
+            self.dataSource.items = data.map { $0 as TicketViewModel }
             self.tableView.reloadData()
             self.scrollToBottom()
         })
@@ -97,8 +114,8 @@ class TicketsViewController: SlidePageViewController {
     }
     
     func scrollToBottom() {
-        if items.count > 0 {
-            tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: items.count-1, inSection: 0), atScrollPosition: .Bottom, animated: true)
+        if dataSource.items.count > 0 {
+            tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: dataSource.items.count-1, inSection: 0), atScrollPosition: .Bottom, animated: true)
         }
     }
     
@@ -108,28 +125,28 @@ class TicketsViewController: SlidePageViewController {
     
 }
 
-extension TicketsViewController: UITableViewDelegate {
+class TicketsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
-    func animateEntranceCell(cell: UITableViewCell) {
-        cell.center.x += self.view.bounds.width
-        cell.alpha = 0
-        
-        UIView.animateWithDuration(1.1, delay: 0.2, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .CurveEaseIn, animations: {
-            cell.center.x -= self.view.bounds.width
-            cell.alpha = 1
-            }, completion: nil)
+    var items: [TicketViewModel]
+    let cellID: String
+    var onNewTicket: Optional<(cell: UITableViewCell) -> ()>
+    
+    init(items: [TicketViewModel], cellIdentifier: String) {
+        self.items = items
+        self.cellID = cellIdentifier
     }
+    
+    
+    // MARK: UITableViewDelegate
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         // Refresh data
-        if let ticketCell = cell as? TicketViewCell, let ticketModel = items[indexPath.row] as? TicketViewModel {
-            
-            ticketCell.serviceLetter.text = ticketModel.service.value
-            ticketCell.currentText.text = ticketModel.currentAsString
-            
-            // Animation
-            if ticketModel.new {
-                animateEntranceCell(cell)
+        let ticketModel = items[indexPath.row]
+        
+        if let ticketCell = cell as? TicketViewCell {
+            // Events
+            if ticketModel.new, let doNewTicket = onNewTicket {
+                doNewTicket(cell: cell)
                 ticketModel.new = false
             }
         }
@@ -145,9 +162,8 @@ extension TicketsViewController: UITableViewDelegate {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
-}
-
-extension TicketsViewController: UITableViewDataSource {
+    
+    // MARK: UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Total of rows
@@ -155,16 +171,12 @@ extension TicketsViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellText: TicketViewCell
-        // Create cell
-        if let cell = tableView.dequeueReusableCellWithIdentifier(ticketCellIdentifier) as? TicketViewCell {
-            cellText = cell
+        let item = items[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as! UITableViewCell
+        if let reactiveView = cell as? ReactiveView {
+            reactiveView.bindViewModel(item)
         }
-        else {
-            tableView.registerNib(UINib(nibName: "TicketViewCell", bundle: nil), forCellReuseIdentifier: ticketCellIdentifier)
-            cellText = tableView.dequeueReusableCellWithIdentifier(ticketCellIdentifier) as! TicketViewCell
-        }
-        return cellText
+        return cell
     }
     
 }
