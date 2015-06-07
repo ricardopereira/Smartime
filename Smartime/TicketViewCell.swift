@@ -18,7 +18,12 @@ class TicketViewCell: UITableViewCell, ReactiveView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        container.backgroundColor = UIColor.clearColor()
+        container.layer.shadowOpacity = 0.4
+        container.layer.shadowRadius = 1.7
+        container.layer.shadowColor = UIColor.blackColor().CGColor
+        container.layer.shadowOffset = CGSizeMake(0.0, 0.0)
+        container.layer.cornerRadius = 5
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

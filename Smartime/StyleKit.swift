@@ -23,7 +23,9 @@ public class StyleKit : NSObject {
         static var lightSky: UIColor = UIColor(red: 0.584, green: 0.776, blue: 0.984, alpha: 1.000)
         static var cloudBurst: UIColor = UIColor(red: 0.220, green: 0.243, blue: 0.314, alpha: 1.000)
         static var noteBlue: UIColor = UIColor(red: 0.934, green: 0.966, blue: 1.000, alpha: 1.000)
+        static var blueForest: UIColor = UIColor(red: 0.115, green: 0.161, blue: 0.432, alpha: 1.000)
         static var blueGradient: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.blueInit.CGColor, StyleKit.blueInit.blendedColorWithFraction(0.5, ofColor: StyleKit.blueFinal).CGColor, StyleKit.blueFinal.CGColor], [0, 0.34, 1])
+        static var darkBlueGradient: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.blueForest.CGColor, StyleKit.blueForest.blendedColorWithFraction(0.5, ofColor: StyleKit.blueFinal).CGColor, StyleKit.blueFinal.CGColor], [0, 0.34, 1])
         static var shadow: NSShadow = NSShadow(color: UIColor.blackColor().colorWithAlphaComponent(0.6), offset: CGSizeMake(0.1, 12.1), blurRadius: 15)
         static var imageOfLogo: UIImage?
         static var logoTargets: [AnyObject]?
@@ -39,10 +41,12 @@ public class StyleKit : NSObject {
     public class var lightSky: UIColor { return Cache.lightSky }
     public class var cloudBurst: UIColor { return Cache.cloudBurst }
     public class var noteBlue: UIColor { return Cache.noteBlue }
+    public class var blueForest: UIColor { return Cache.blueForest }
 
     //// Gradients
 
     public class var blueGradient: CGGradient { return Cache.blueGradient }
+    public class var darkBlueGradient: CGGradient { return Cache.darkBlueGradient }
 
     //// Shadows
 
@@ -140,6 +144,69 @@ public class StyleKit : NSObject {
 
         CGContextEndTransparencyLayer(context)
         CGContextEndTransparencyLayer(context)
+        CGContextRestoreGState(context)
+    }
+
+    public class func drawCover(#frame: CGRect) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()
+
+        //// Color Declarations
+        let transparent = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.000)
+
+        //// Gradient Declarations
+        let cloudBurstGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.cloudBurst.CGColor, transparent.CGColor], [0, 1])
+
+        //// Rectangle Base Drawing
+        let rectangleBaseRect = CGRectMake(frame.minX, frame.minY, frame.width, frame.height)
+        let rectangleBasePath = UIBezierPath(rect: rectangleBaseRect)
+        CGContextSaveGState(context)
+        rectangleBasePath.addClip()
+        CGContextDrawLinearGradient(context, StyleKit.darkBlueGradient,
+            CGPointMake(rectangleBaseRect.midX, rectangleBaseRect.maxY),
+            CGPointMake(rectangleBaseRect.midX, rectangleBaseRect.minY),
+            0)
+        CGContextRestoreGState(context)
+
+
+        //// Rectangle Dark Drawing
+        let rectangleDarkPath = UIBezierPath(rect: CGRectMake(frame.minX + floor((frame.width) * 0.00000 + 0.5), frame.minY, frame.width - floor((frame.width) * 0.00000 + 0.5), floor((frame.height) * 1.00000 + 0.5)))
+        CGContextSaveGState(context)
+        rectangleDarkPath.addClip()
+        let rectangleDarkRotatedPath = UIBezierPath()
+        rectangleDarkRotatedPath.appendPath(rectangleDarkPath)
+        var rectangleDarkTransform = CGAffineTransformMakeRotation(45*(-CGFloat(M_PI)/180))
+        rectangleDarkRotatedPath.applyTransform(rectangleDarkTransform)
+        var rectangleDarkBounds = CGPathGetPathBoundingBox(rectangleDarkRotatedPath.CGPath)
+        rectangleDarkTransform = CGAffineTransformInvert(rectangleDarkTransform)
+
+        CGContextDrawLinearGradient(context, cloudBurstGradient,
+            CGPointApplyAffineTransform(CGPointMake(rectangleDarkBounds.minX, rectangleDarkBounds.midY), rectangleDarkTransform),
+            CGPointApplyAffineTransform(CGPointMake(rectangleDarkBounds.maxX, rectangleDarkBounds.midY), rectangleDarkTransform),
+            0)
+        CGContextRestoreGState(context)
+    }
+
+    public class func drawTicket(#frame: CGRect) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()
+
+        //// Color Declarations
+        let coolBlue = UIColor(red: 0.000, green: 0.604, blue: 0.973, alpha: 1.000)
+        let deepSkyBlue = UIColor(red: 0.000, green: 0.824, blue: 0.988, alpha: 1.000)
+
+        //// Gradient Declarations
+        let gradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [coolBlue.CGColor, deepSkyBlue.CGColor], [0, 1])
+
+        //// Rectangle Drawing
+        let rectangleRect = CGRectMake(frame.minX, frame.minY, frame.width, frame.height)
+        let rectanglePath = UIBezierPath(roundedRect: rectangleRect, cornerRadius: 10)
+        CGContextSaveGState(context)
+        rectanglePath.addClip()
+        CGContextDrawLinearGradient(context, gradient,
+            CGPointMake(rectangleRect.midX, rectangleRect.maxY),
+            CGPointMake(rectangleRect.midX, rectangleRect.minY),
+            0)
         CGContextRestoreGState(context)
     }
 
