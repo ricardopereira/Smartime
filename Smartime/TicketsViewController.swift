@@ -120,7 +120,7 @@ class TicketsViewController: SlidePageViewController {
     }
     
     override func pageDidAppear() {
-        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true);
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true);
     }
     
 }

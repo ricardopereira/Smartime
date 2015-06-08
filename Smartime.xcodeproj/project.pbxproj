@@ -54,6 +54,7 @@
 		D7EFA9091AFE766D00623A16 /* FLXView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFA9081AFE766D00623A16 /* FLXView.framework */; };
 		D7EFA90B1AFE795600623A16 /* FLXView.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7EFA9081AFE766D00623A16 /* FLXView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7F7DE4C1B24F32400F26D62 /* TicketContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F7DE4B1B24F32300F26D62 /* TicketContainerView.swift */; };
+		D7F7DE4E1B2541BE00F26D62 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F7DE4D1B2541BD00F26D62 /* LogoView.swift */; };
 		D7F906401B20AF0700C96D7E /* TicketViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9063E1B20AF0700C96D7E /* TicketViewCell.swift */; };
 		D7F906411B20AF0700C96D7E /* TicketViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7F9063F1B20AF0700C96D7E /* TicketViewCell.xib */; };
 		D7F906431B20BC4A00C96D7E /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F906421B20BC4A00C96D7E /* UIColor+Hex.swift */; };
@@ -142,6 +143,7 @@
 		D7C604A61AE56241004342CE /* SocketIOEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOEmitter.swift; sourceTree = "<group>"; };
 		D7EFA9081AFE766D00623A16 /* FLXView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FLXView.framework; sourceTree = "<group>"; };
 		D7F7DE4B1B24F32300F26D62 /* TicketContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketContainerView.swift; sourceTree = "<group>"; };
+		D7F7DE4D1B2541BD00F26D62 /* LogoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		D7F9063E1B20AF0700C96D7E /* TicketViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewCell.swift; sourceTree = "<group>"; };
 		D7F9063F1B20AF0700C96D7E /* TicketViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketViewCell.xib; sourceTree = "<group>"; };
 		D7F906421B20BC4A00C96D7E /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				D7F7DE4B1B24F32300F26D62 /* TicketContainerView.swift */,
 				D7F9063E1B20AF0700C96D7E /* TicketViewCell.swift */,
 				D7F9063F1B20AF0700C96D7E /* TicketViewCell.xib */,
+				D7F7DE4D1B2541BD00F26D62 /* LogoView.swift */,
 				D7F906481B21CC8400C96D7E /* RACExtensions.swift */,
 				D7428BC21B235FC000E0CD5A /* StyleKit.swift */,
 				D7F906421B20BC4A00C96D7E /* UIColor+Hex.swift */,
@@ -552,6 +555,7 @@
 				D795404E1ACDC3640031354F /* SocketIO.swift in Sources */,
 				D7FDABFB1B1F0D8000E8BF2F /* SlidePageViewController.swift in Sources */,
 				D74484431B204C4A00E64B39 /* StatusViewController.swift in Sources */,
+				D7F7DE4E1B2541BE00F26D62 /* LogoView.swift in Sources */,
 				D7C604A71AE56241004342CE /* SocketIOEmitter.swift in Sources */,
 				D79540571ACDC3640031354F /* SocketIOTransportDelegate.swift in Sources */,
 				D79540051ACDB4B50031354F /* AppDelegate.swift in Sources */,

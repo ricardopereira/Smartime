@@ -8,7 +8,19 @@
 
 import UIKit
 
+class AboutView: UIView {
+    
+    override func drawRect(rect: CGRect) {
+        StyleKit.drawAbout(frame: self.bounds)
+    }
+    
+}
+
 class StatusViewController: SlidePageViewController {
+    
+    @IBOutlet weak var subtitle: UILabel!
+    @IBOutlet weak var status: UILabel!
+    @IBOutlet weak var about: UILabel!
     
     override func loadView() {
         super.loadView()
@@ -18,11 +30,13 @@ class StatusViewController: SlidePageViewController {
     override func pageDidScroll(position: CGFloat, offset: CGFloat) {
         let newAlpha = CGFloat(1 - (position / view.frame.width))
         //println("Offset:\(offset) NewAlpha:\(newAlpha) Position:\(position) Width:\(view.frame.width)")
-        view.alpha = newAlpha;
+        subtitle.alpha = newAlpha;
+        status.alpha = newAlpha;
+        about.alpha = newAlpha;
     }
     
     override func pageDidAppear() {
-        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true);
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true);
     }
     
 }

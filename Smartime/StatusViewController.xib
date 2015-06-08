@@ -6,6 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StatusViewController" customModule="Smartime" customModuleProvider="target">
             <connections>
+                <outlet property="about" destination="LAG-9d-3rC" id="0Cs-kK-VMO"/>
+                <outlet property="status" destination="o8R-tA-kua" id="Fie-Ky-OUl"/>
+                <outlet property="subtitle" destination="Bki-7x-l7h" id="gNs-5K-OPe"/>
                 <outlet property="view" destination="iN0-l3-epB" id="aBz-Wg-xJV"/>
             </connections>
         </placeholder>
@@ -14,59 +17,104 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S m a r t i m e" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOn-gs-BC4">
-                    <rect key="frame" x="99" y="39" width="123" height="28"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d5y-ob-7G6" customClass="AboutView" customModule="Smartime" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="63" width="320" height="100"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bki-7x-l7h">
+                            <rect key="frame" x="15" y="8" width="290" height="84"/>
+                            <string key="text">Smartime, é um sistema de gestão de filas de espera que permite rentabilizar o teu tempo numa fila de espera porque no fundo podes recuperar muita coisa... menos o tempo.</string>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="123" id="Kjq-6b-DKF"/>
-                        <constraint firstAttribute="height" constant="28" id="hqI-ST-sJa"/>
+                        <constraint firstAttribute="bottom" secondItem="Bki-7x-l7h" secondAttribute="bottom" constant="8" id="PGo-HK-HPd"/>
+                        <constraint firstAttribute="height" constant="100" id="QL9-A3-pvz"/>
+                        <constraint firstItem="Bki-7x-l7h" firstAttribute="top" secondItem="d5y-ob-7G6" secondAttribute="top" constant="8" id="byS-v8-my7"/>
+                        <constraint firstItem="Bki-7x-l7h" firstAttribute="leading" secondItem="d5y-ob-7G6" secondAttribute="leading" constant="15" id="sDe-85-d1J"/>
+                        <constraint firstAttribute="trailing" secondItem="Bki-7x-l7h" secondAttribute="trailing" constant="15" id="zIT-cZ-ad2"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                    <color key="textColor" red="0.58431372549019611" green="0.77647058823529413" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jA7-TF-bpj">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S m a r t i m e" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOn-gs-BC4">
+                            <rect key="frame" x="99" y="27" width="123" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="28" id="NKf-Lu-Knh"/>
+                                <constraint firstAttribute="width" constant="123" id="dxa-ye-Ul5"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="cOn-gs-BC4" secondAttribute="centerX" id="7Ka-ud-Wg0"/>
+                        <constraint firstAttribute="centerY" secondItem="cOn-gs-BC4" secondAttribute="centerY" constant="-9.5" id="XaO-0h-rMQ"/>
+                        <constraint firstAttribute="height" constant="63" id="oNi-u7-2a9"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Já poupou X minutos com Smartime." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8R-tA-kua">
+                    <rect key="frame" x="15" y="215" width="290" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="S1e-qb-KKe"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="13"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Já poupou X minutos com Smartime." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bki-7x-l7h">
-                    <rect key="frame" x="51" y="241" width="219" height="18"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desenvolvido por Ricardo Pereira, 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rp-Vg-Pz2">
+                    <rect key="frame" x="61" y="445" width="199" height="16"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="219" id="iAT-R0-8TL"/>
-                        <constraint firstAttribute="height" constant="18" id="zJV-oy-atV"/>
+                        <constraint firstAttribute="width" constant="199" id="BIL-2o-mzJ"/>
+                        <constraint firstAttribute="height" constant="16" id="PgK-9p-FiH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="11"/>
+                    <color key="textColor" red="0.34509803921568627" green="0.3843137254901961" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FPt-5y-sTh" customClass="LogoView" customModule="Smartime" customModuleProvider="target">
+                    <rect key="frame" x="136" y="389" width="48" height="48"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="OlH-MV-Fba"/>
+                        <constraint firstAttribute="height" constant="48" id="vaj-Bm-L60"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Isto significa que conseguiu aproveitar o seu tempo noutra tarefa em vez de estar ocupado(a) na fila de espera." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAG-9d-3rC">
+                    <rect key="frame" x="15" y="241" width="290" height="57"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="57" id="quf-F9-5UH"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
-                    <color key="textColor" red="0.59607843137254901" green="0.72156862745098038" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MOF-oC-pu4">
-                    <rect key="frame" x="110" y="102" width="100" height="100"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="100" id="SZO-3B-U5y"/>
-                        <constraint firstAttribute="width" constant="100" id="zNS-4m-4eg"/>
-                    </constraints>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tld-Dc-TsM">
-                    <rect key="frame" x="252" y="412" width="50" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="50" id="gmy-Ik-caN"/>
-                        <constraint firstAttribute="height" constant="50" id="pYJ-qo-UPY"/>
-                    </constraints>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.2196078431372549" green="0.24313725490196078" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="Bki-7x-l7h" firstAttribute="top" secondItem="MOF-oC-pu4" secondAttribute="bottom" constant="39" id="GLQ-XV-yfG"/>
-                <constraint firstItem="cOn-gs-BC4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="39" id="JIs-8K-gzZ"/>
-                <constraint firstAttribute="trailing" secondItem="tld-Dc-TsM" secondAttribute="trailing" constant="18" id="U07-4m-NGD"/>
-                <constraint firstAttribute="bottom" secondItem="tld-Dc-TsM" secondAttribute="bottom" constant="18" id="WTE-KL-ZXO"/>
-                <constraint firstAttribute="centerX" secondItem="cOn-gs-BC4" secondAttribute="centerX" id="d1m-f5-pGJ"/>
-                <constraint firstItem="MOF-oC-pu4" firstAttribute="top" secondItem="cOn-gs-BC4" secondAttribute="bottom" constant="35" id="hSM-JT-DOr"/>
-                <constraint firstAttribute="centerX" secondItem="Bki-7x-l7h" secondAttribute="centerX" id="kOs-Wt-Xgc"/>
-                <constraint firstAttribute="centerX" secondItem="MOF-oC-pu4" secondAttribute="centerX" id="n9I-8O-Oym"/>
+                <constraint firstAttribute="trailing" secondItem="LAG-9d-3rC" secondAttribute="trailing" constant="15" id="1Mc-rY-j4i"/>
+                <constraint firstItem="LAG-9d-3rC" firstAttribute="top" secondItem="o8R-tA-kua" secondAttribute="bottom" constant="8" id="2ki-cO-tLF"/>
+                <constraint firstItem="d5y-ob-7G6" firstAttribute="top" secondItem="jA7-TF-bpj" secondAttribute="bottom" id="804-qd-ljF"/>
+                <constraint firstAttribute="trailing" secondItem="o8R-tA-kua" secondAttribute="trailing" constant="15" id="9u9-Hd-pWI"/>
+                <constraint firstItem="LAG-9d-3rC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="GYM-sH-cUq"/>
+                <constraint firstItem="o8R-tA-kua" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Wzd-IF-CRj"/>
+                <constraint firstAttribute="centerX" secondItem="FPt-5y-sTh" secondAttribute="centerX" id="XCR-Xx-MJC"/>
+                <constraint firstAttribute="centerY" secondItem="o8R-tA-kua" secondAttribute="centerY" constant="16" id="cT2-D5-yV4"/>
+                <constraint firstAttribute="bottom" secondItem="5rp-Vg-Pz2" secondAttribute="bottom" constant="19" id="feP-Ia-QlP"/>
+                <constraint firstItem="d5y-ob-7G6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="g4Y-Ln-8nA"/>
+                <constraint firstAttribute="trailing" secondItem="jA7-TF-bpj" secondAttribute="trailing" id="hNv-eM-u6z"/>
+                <constraint firstAttribute="trailing" secondItem="d5y-ob-7G6" secondAttribute="trailing" id="kl6-fn-AXO"/>
+                <constraint firstAttribute="centerX" secondItem="5rp-Vg-Pz2" secondAttribute="centerX" id="nht-sW-QKw"/>
+                <constraint firstItem="jA7-TF-bpj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qYk-nv-MpA"/>
+                <constraint firstItem="5rp-Vg-Pz2" firstAttribute="top" secondItem="FPt-5y-sTh" secondAttribute="bottom" constant="8" id="xXG-qv-GMj"/>
+                <constraint firstItem="jA7-TF-bpj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zz8-Wd-JSk"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
-        <customObject id="ngW-51-dyx" customClass="StyleKit" customModule="Smartime" customModuleProvider="target">
-            <connections>
-                <outletCollection property="logoTargets" destination="MOF-oC-pu4" collectionClass="NSMutableArray" id="5HJ-bP-fpA"/>
-                <outletCollection property="nextTargets" destination="tld-Dc-TsM" collectionClass="NSMutableArray" id="m56-TM-jhz"/>
-            </connections>
-        </customObject>
     </objects>
 </document>

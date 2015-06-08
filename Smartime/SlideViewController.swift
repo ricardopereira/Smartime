@@ -18,7 +18,7 @@ protocol SlidePage {
     // The other pages update their offsets whith values like 2.0, 3.0, -2.0... depending on their positions and on the status of the slider
     // This value can be used on the previous, current and next page to perform custom animations on page's subviews.
     
-    func pageDidScroll(position:CGFloat, offset:CGFloat) // Called when the main ScrollView...scrolls
+    func pageDidScroll(position: CGFloat, offset: CGFloat) // Called when the main ScrollView...scrolls
     func pageDidAppear()
 }
 
