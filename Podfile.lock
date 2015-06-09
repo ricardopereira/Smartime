@@ -14,7 +14,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   QRCodeReader:
-    :commit: 399d5df58f2226a75c8de1400356781526d822fb
+    :commit: f60af40169ea1c9414c7458554c7a2fd3929e9ec
     :git: https://github.com/ricardopereira/QRCodeReader.git
 
 SPEC CHECKSUMS:
