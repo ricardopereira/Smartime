@@ -9,14 +9,6 @@
 import UIKit
 import ReactiveCocoa
 
-enum AppEvents: String, Printable {
-    case TicketCall = "TicketCall"
-    
-    var description: String {
-        return self.rawValue
-    }
-}
-
 class TicketsTableView: UITableView {
     
     override func drawRect(rect: CGRect) {
@@ -33,7 +25,7 @@ class TicketsViewController: SlidePageViewController {
     
     let sourceSignal: SignalProducer<[TicketViewModel], NoError>
     
-    let socket = SocketIO<AppEvents>(url: "http://smartime.herokuapp.com")
+
     
     init(slider: SliderController) {
         // Reactive signal
@@ -61,47 +53,12 @@ class TicketsViewController: SlidePageViewController {
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         tableView.showsVerticalScrollIndicator = false
         
-        //view.backgroundColor = StyleKit.cloudBurst
-        view.backgroundColor = UIColor.whiteColor()
-        
         // Reactive
         sourceSignal.start(next: { data in
             self.dataSource.items = data.map { $0 as TicketViewModel }
             self.tableView.reloadData()
             self.scrollToBottom()
         })
-        
-        // SocketIO-Kit
-        socket.on(.ConnectError) {
-            switch $0 {
-            case .Failure(let error):
-                println(error)
-            default:
-                break
-            }
-        }.on(.Connected) { (arg: SocketIOArg) -> () in
-            println("Connected")
-        }.on(.Disconnected) {
-            switch $0 {
-            case .Message(let message):
-                println("Disconnected with no error")
-            case .Failure(let error):
-                println("Disconnected with error: \(error)")
-            default:
-                break
-            }
-        }
-        
-        socket.on(.TicketCall) {
-            switch $0 {
-            case .Message(let message):
-                println("Mensagem recebida: \(message)")
-            default:
-                break
-            }
-        }
-        
-        //socket.connect()
     }
 
     required init(coder aDecoder: NSCoder) {

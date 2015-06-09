@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QRCodeReader
 
 class MainViewController: SlidePageViewController {
     
@@ -21,18 +22,18 @@ class MainViewController: SlidePageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Events
         qrCodeButton.layer.cornerRadius = 4
         qrCodeButton.layer.borderWidth = 1
         qrCodeButton.layer.borderColor = UIColor(rgba: "#3D54DC").CGColor
         
+        // Events
         qrCodeButton.addTarget(self, action: Selector("didTouchQRCode:"), forControlEvents: .TouchUpInside)
         aboutButton.addTarget(self, action: Selector("didTouchAbout:"), forControlEvents: .TouchUpInside)
         ticketsButton.addTarget(self, action: Selector("didTouchTickets:"), forControlEvents: .TouchUpInside)
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         aboutButton.center.y = aboutButton.center.y + 50
         ticketsButton.center.y = ticketsButton.center.y + 50
     }
@@ -45,6 +46,7 @@ class MainViewController: SlidePageViewController {
     
     override func pageDidScroll(position: CGFloat, offset: CGFloat) {
         let yOffset: CGFloat
+        
         //println("Position:\(position) Offset:\(offset) Old:\(oldOffset)")
         
         // 0->1 -50 - Offset:1.0 Position:320.0 - Offset > Old
@@ -79,13 +81,40 @@ class MainViewController: SlidePageViewController {
     }
     
     func didTouchQRCode(sender: AnyObject?) {
-        // Test
-        var response = slider.viewModel.ticketItems.value
-        response.append(TicketViewModel(Ticket(["service":"\(slider.viewModel.ticketItems.value.count)", "desk":"Balcão 1", "current":17, "number":23])))
         
-        slider.viewModel.ticketItems.put(response)
+        let reader = QRCodeReaderViewController()
         
-        slider.nextPage()
+        reader.resultCallback = {
+            println($0)
+            
+            if let jsonData = $0.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+                var err: NSError?
+                
+                let parsed: AnyObject? = NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableLeaves, error: &err)
+                
+                if let parsedArray = parsed as? NSArray {
+
+                }
+                else if let parsedDictionary = parsed as? NSDictionary {
+
+                }
+            }
+            
+            // Test
+            var response = self.slider.viewModel.ticketItems.value
+            response.append(TicketViewModel(Ticket(["service":"\(self.slider.viewModel.ticketItems.value.count)", "desk":"Balcão 1", "current":17, "number":23])))
+            
+            self.slider.viewModel.ticketItems.put(response)
+            
+            reader.dismissViewControllerAnimated(true, completion: nil)
+            
+            self.slider.nextPage()
+        }
+        
+        reader.cancelCallback = {            
+            reader.dismissViewControllerAnimated(true, completion: nil)
+        }
+        self.showViewController(reader, sender: nil)
     }
     
     func didTouchAbout(sender: AnyObject?) {
@@ -93,8 +122,6 @@ class MainViewController: SlidePageViewController {
     }
     
     func didTouchTickets(sender: AnyObject?) {
-        // Test
-        slider.viewModel.ticketItems.value[1].current.put(200)
         slider.nextPage()
     }
 
