@@ -30,8 +30,6 @@ class MainViewController: SlidePageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        qrCodeButton.layer.cornerRadius = 4
-        
         // Events
         qrCodeButton.addTarget(self, action: Selector("didTouchQRCode:"), forControlEvents: .TouchUpInside)
         aboutButton.addTarget(self, action: Selector("didTouchAbout:"), forControlEvents: .TouchUpInside)

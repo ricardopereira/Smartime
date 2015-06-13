@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E33b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="Smartime" customModuleProvider="target">
@@ -69,53 +70,78 @@
                         <constraint firstItem="Pcq-YU-fCl" firstAttribute="leading" secondItem="XAX-gV-4f5" secondAttribute="leading" constant="8" id="kIe-sg-ONB"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3rZ-FS-iUu">
-                    <rect key="frame" x="250" y="435" width="62" height="37"/>
+                <button opaque="NO" alpha="0.24999999999999967" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3rZ-FS-iUu">
+                    <rect key="frame" x="236" y="429" width="71" height="37"/>
+                    <color key="backgroundColor" red="0.21960784310000001" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="37" id="8hC-NP-ybm"/>
-                        <constraint firstAttribute="width" constant="62" id="lmf-S5-Axl"/>
                     </constraints>
                     <state key="normal" title="Senhas">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ek-TD-T22">
-                    <rect key="frame" x="8" y="435" width="57" height="37"/>
+                <button opaque="NO" alpha="0.24999999999999967" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ek-TD-T22">
+                    <rect key="frame" x="16" y="429" width="70" height="37"/>
+                    <color key="backgroundColor" red="0.21960784310000001" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="57" id="Df3-oQ-PEq"/>
                         <constraint firstAttribute="height" constant="37" id="FWS-su-os0"/>
                     </constraints>
                     <state key="normal" title="Sobre">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" alpha="0.24999999999999967" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jEh-4N-b42">
                     <rect key="frame" x="103" y="193" width="115" height="94"/>
                     <color key="backgroundColor" red="0.21960784310000001" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="115" id="g1q-3i-W2f"/>
-                        <constraint firstAttribute="height" constant="94" id="xJJ-Ih-zMI"/>
+                        <constraint firstAttribute="height" constant="94" id="Odh-VY-rfy"/>
+                        <constraint firstAttribute="height" constant="94" id="PSs-Hw-0zU"/>
+                        <constraint firstAttribute="width" constant="115" id="dd4-Wd-wYN"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="QR Code">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="PSs-Hw-0zU"/>
+                            <exclude reference="dd4-Wd-wYN"/>
+                        </mask>
+                    </variation>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.21960784310000001" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="jEh-4N-b42" secondAttribute="centerY" id="3KW-sD-eRX"/>
-                <constraint firstAttribute="bottom" secondItem="3rZ-FS-iUu" secondAttribute="bottom" constant="8" id="5Mc-sk-0q8"/>
+                <constraint firstAttribute="bottom" secondItem="3rZ-FS-iUu" secondAttribute="bottom" constant="14" id="5Mc-sk-0q8"/>
                 <constraint firstItem="xYg-9k-hyU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="CaW-Vw-wfQ"/>
                 <constraint firstAttribute="bottom" secondItem="XAX-gV-4f5" secondAttribute="bottom" id="Cj0-Wn-0yX"/>
+                <constraint firstItem="jEh-4N-b42" firstAttribute="width" secondItem="XAX-gV-4f5" secondAttribute="height" multiplier="115:421" id="Cy7-fR-XDc"/>
                 <constraint firstAttribute="trailing" secondItem="XAX-gV-4f5" secondAttribute="trailing" id="DPj-N2-E93"/>
                 <constraint firstAttribute="bottom" secondItem="XAX-gV-4f5" secondAttribute="bottom" id="DfF-Kc-c6F"/>
                 <constraint firstItem="XAX-gV-4f5" firstAttribute="top" secondItem="xYg-9k-hyU" secondAttribute="bottom" constant="-4" id="JOx-HV-Enc"/>
                 <constraint firstItem="8ek-TD-T22" firstAttribute="top" secondItem="XAX-gV-4f5" secondAttribute="bottom" constant="8" id="JlU-J9-CJV"/>
                 <constraint firstAttribute="trailing" secondItem="XAX-gV-4f5" secondAttribute="trailing" id="LEc-wb-Zuj"/>
+                <constraint firstItem="3rZ-FS-iUu" firstAttribute="width" secondItem="XAX-gV-4f5" secondAttribute="height" multiplier="71:421" id="LuX-Hv-e1y"/>
+                <constraint firstItem="8ek-TD-T22" firstAttribute="width" secondItem="XAX-gV-4f5" secondAttribute="height" multiplier="70:421" id="MuX-Cd-HmG"/>
                 <constraint firstItem="XAX-gV-4f5" firstAttribute="top" secondItem="xYg-9k-hyU" secondAttribute="bottom" constant="8" id="Mw8-z9-Ixd"/>
                 <constraint firstItem="xYg-9k-hyU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="SQX-07-qfb"/>
                 <constraint firstAttribute="trailing" secondItem="xYg-9k-hyU" secondAttribute="trailing" id="Wj3-yO-9Bi"/>
@@ -124,10 +150,10 @@
                 <constraint firstItem="4xX-r2-fnc" firstAttribute="top" secondItem="jEh-4N-b42" secondAttribute="bottom" constant="11" id="iUD-gZ-dM3"/>
                 <constraint firstItem="XAX-gV-4f5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mYt-EJ-Z6b"/>
                 <constraint firstItem="XAX-gV-4f5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="meO-RS-oDJ"/>
-                <constraint firstAttribute="bottom" secondItem="8ek-TD-T22" secondAttribute="bottom" constant="8" id="msn-Rl-sw3"/>
+                <constraint firstAttribute="bottom" secondItem="8ek-TD-T22" secondAttribute="bottom" constant="14" id="msn-Rl-sw3"/>
                 <constraint firstAttribute="trailing" secondItem="XAX-gV-4f5" secondAttribute="trailing" id="qcp-gD-Abu"/>
-                <constraint firstAttribute="trailing" secondItem="3rZ-FS-iUu" secondAttribute="trailing" constant="8" id="tAX-xX-3Wy"/>
-                <constraint firstItem="8ek-TD-T22" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="uXF-Ht-wAa"/>
+                <constraint firstAttribute="trailing" secondItem="3rZ-FS-iUu" secondAttribute="trailing" constant="13" id="tAX-xX-3Wy"/>
+                <constraint firstItem="8ek-TD-T22" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="uXF-Ht-wAa"/>
                 <constraint firstAttribute="centerX" secondItem="jEh-4N-b42" secondAttribute="centerX" id="z49-yz-Osy"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
