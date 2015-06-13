@@ -9,6 +9,14 @@
 import UIKit
 import QRCodeReader
 
+class MainView: UIView {
+    
+    override func drawRect(rect: CGRect) {
+        StyleKit.drawMain(frame: self.bounds)
+    }
+    
+}
+
 class MainViewController: SlidePageViewController {
     
     @IBOutlet weak var qrCodeButton: UIButton!
@@ -23,8 +31,6 @@ class MainViewController: SlidePageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         qrCodeButton.layer.cornerRadius = 4
-        qrCodeButton.layer.borderWidth = 1
-        qrCodeButton.layer.borderColor = UIColor(rgba: "#3D54DC").CGColor
         
         // Events
         qrCodeButton.addTarget(self, action: Selector("didTouchQRCode:"), forControlEvents: .TouchUpInside)

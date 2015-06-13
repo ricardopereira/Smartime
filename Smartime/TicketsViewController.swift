@@ -25,8 +25,6 @@ class TicketsViewController: SlidePageViewController {
     
     let sourceSignal: SignalProducer<[TicketViewModel], NoError>
     
-
-    
     init(slider: SliderController) {
         // Reactive signal
         sourceSignal = slider.viewModel.ticketItems.producer
