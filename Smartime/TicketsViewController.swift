@@ -20,6 +20,7 @@ class TicketsTableView: UITableView {
 class TicketsViewController: SlidePageViewController {
     
     let tableView = TicketsTableView()
+    let tableLabel = UILabel()
     let dataSource: TicketsDataSource
     let ticketCellIdentifier = "TicketCell"
     
@@ -54,6 +55,7 @@ class TicketsViewController: SlidePageViewController {
         // Reactive
         sourceSignal.start(next: { data in
             self.dataSource.items = data.map { $0 as TicketViewModel }
+            self.tableLabel.hidden = !self.dataSource.items.isEmpty
             self.tableView.reloadData()
             self.scrollToBottom()
         })
@@ -66,6 +68,15 @@ class TicketsViewController: SlidePageViewController {
     override func loadView() {
         tableView.bounds.size = CGSize(width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
         view = tableView
+        
+        // No data
+        tableLabel.text = "Ainda não tirou nenhuma senha"
+        tableLabel.font = UIFont(name: "Avenir Next", size: 14.0)
+        tableLabel.textColor = UIColor.whiteColor()
+        tableLabel.alpha = 0.6
+        tableLabel.sizeToFit()
+        tableLabel.center = CGPointMake(tableView.bounds.width/2, tableView.bounds.height/2)
+        view.addSubview(tableLabel)
     }
     
     func scrollToBottom() {

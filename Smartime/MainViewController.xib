@@ -41,7 +41,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XAX-gV-4f5" customClass="MainView" customModule="Smartime" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="59" width="320" height="421"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="toque para ler a senha" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xX-r2-fnc">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="toque para ler senha" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xX-r2-fnc">
                             <rect key="frame" x="8" y="239" width="304" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="XhC-QK-u1e"/>
@@ -50,7 +50,7 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="e aproveite o tempo a desfrutar a sua vida" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcq-YU-fCl">
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="e aproveite o tempo a desfrutar a sua vida" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcq-YU-fCl">
                             <rect key="frame" x="8" y="261" width="304" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="tHq-S9-Ps4"/>
