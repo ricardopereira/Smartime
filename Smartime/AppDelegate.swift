@@ -7,41 +7,27 @@
 //
 
 import UIKit
-import QRCodeReader
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
         
     var window: UIWindow?
     
+    var info = AppInfo() {
+        didSet {
+            println(info.deviceID)
+        }
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = app()
-        
-        let notificationSettings = UIUserNotificationSettings(forTypes: .Badge | .Sound | .Alert, categories: nil)
-        
-        application.registerUserNotificationSettings(notificationSettings)
-        application.registerForRemoteNotifications()
+        window?.rootViewController = start(application)
         return true
     }
     
-    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
-        //println("Accepted: \(notificationSettings)")
-    }
-    
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        var deviceTokenStr = deviceToken.description
-        
-        var tokenRange = Range<String.Index>(start: deviceTokenStr.startIndex.successor(), end: deviceTokenStr.endIndex.predecessor())
-        
-        deviceTokenStr = deviceTokenStr.substringWithRange(tokenRange)
-        
-        tokenRange = Range<String.Index>(start: deviceTokenStr.startIndex, end: deviceTokenStr.endIndex)
-        
-        let deviceID = deviceTokenStr.stringByReplacingOccurrencesOfString(" ", withString: "", options: .LiteralSearch, range: tokenRange)
-        
-        println(deviceID)
+        info.setDeviceToken(deviceToken)
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
@@ -56,8 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    func app() -> UIViewController {
-
+    func start(application: UIApplication) -> UIViewController {
+        let notificationSettings = UIUserNotificationSettings(forTypes: .Badge | .Sound | .Alert, categories: nil)
+        
+        application.registerUserNotificationSettings(notificationSettings)
+        application.registerForRemoteNotifications()
+        
         let storyboard = UIStoryboard(name: "Slider", bundle: nil)
         
         // Create the slide pages

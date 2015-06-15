@@ -28,7 +28,6 @@ protocol SliderController {
     func prevPage()
 }
 
-
 class SlideViewController: UIViewController, UIScrollViewDelegate, SliderController {
     
     let viewModel = CommonViewModel()

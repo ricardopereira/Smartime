@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		41DF314FC830DC420A089E06 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49170C4ED90C3D4636821898 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D718D1E21B2F626100F3B529 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718D1E11B2F626100F3B529 /* AppInfo.swift */; };
 		D7242B4C1AD825F00015BA96 /* SocketIOEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B4B1AD825F00015BA96 /* SocketIOEvent.swift */; };
 		D7242B501AD8A3D40015BA96 /* SocketIORequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B4F1AD8A3D40015BA96 /* SocketIORequester.swift */; };
 		D7242B531AD95F040015BA96 /* NSURL+TrailingSlash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B521AD95F040015BA96 /* NSURL+TrailingSlash.swift */; };
@@ -96,6 +97,7 @@
 		49170C4ED90C3D4636821898 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76771A09F1A25955CE67F59B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D2257D97EC160B10468A01A6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D718D1E11B2F626100F3B529 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		D7242B4B1AD825F00015BA96 /* SocketIOEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOEvent.swift; sourceTree = "<group>"; };
 		D7242B4F1AD8A3D40015BA96 /* SocketIORequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIORequester.swift; sourceTree = "<group>"; };
 		D7242B521AD95F040015BA96 /* NSURL+TrailingSlash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+TrailingSlash.swift"; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			children = (
 				D79540041ACDB4B50031354F /* AppDelegate.swift */,
 				D79540241ACDB74E0031354F /* AppSettings.swift */,
+				D718D1E11B2F626100F3B529 /* AppInfo.swift */,
 				D7F9064A1B21F15A00C96D7E /* CommonViewModel.swift */,
 				D7FDABFA1B1F0D8000E8BF2F /* SlideViewController.swift */,
 				D7FDABF91B1F0D8000E8BF2F /* SlidePageViewController.swift */,
@@ -564,6 +567,7 @@
 				D72CEECF1AF5059100D86C38 /* SocketIOJSON.swift in Sources */,
 				D7949F001B0891E1001F84F8 /* SocketIONamespace.swift in Sources */,
 				D72CEECD1AF4FCA800D86C38 /* SocketIOPayload.swift in Sources */,
+				D718D1E21B2F626100F3B529 /* AppInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

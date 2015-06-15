@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppOptions {
+struct AppSettings {
     
     let defaults: NSUserDefaults
     
