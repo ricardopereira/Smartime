@@ -19,12 +19,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = app()
         
-        //application.registerForRemoteNotifications()
+        let notificationSettings = UIUserNotificationSettings(forTypes: .Badge | .Sound | .Alert, categories: nil)
+        
+        application.registerUserNotificationSettings(notificationSettings)
+        application.registerForRemoteNotifications()
         return true
     }
     
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        //println("Accepted: \(notificationSettings)")
+    }
+    
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        println(deviceToken)
+        var deviceTokenStr = deviceToken.description
+        
+        var tokenRange = Range<String.Index>(start: deviceTokenStr.startIndex.successor(), end: deviceTokenStr.endIndex.predecessor())
+        
+        deviceTokenStr = deviceTokenStr.substringWithRange(tokenRange)
+        
+        tokenRange = Range<String.Index>(start: deviceTokenStr.startIndex, end: deviceTokenStr.endIndex)
+        
+        let deviceID = deviceTokenStr.stringByReplacingOccurrencesOfString(" ", withString: "", options: .LiteralSearch, range: tokenRange)
+        
+        println(deviceID)
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        println("Failed: \(error)")
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {

@@ -8,6 +8,7 @@
 
 import UIKit
 import QRCodeReader
+import Runes
 
 class MainView: UIView {
     
@@ -18,6 +19,8 @@ class MainView: UIView {
 }
 
 class MainViewController: SlidePageViewController {
+    
+    private let navigationOffset = CGFloat(50)
     
     @IBOutlet weak var qrCodeButton: UIButton!
     @IBOutlet weak var aboutButton: UIButton!
@@ -38,8 +41,8 @@ class MainViewController: SlidePageViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        aboutButton.center.y = aboutButton.center.y + 50
-        ticketsButton.center.y = ticketsButton.center.y + 50
+        aboutButton.center.y = aboutButton.center.y + navigationOffset
+        ticketsButton.center.y = ticketsButton.center.y + navigationOffset
     }
     
     override func pageDidAppear() {
@@ -60,19 +63,19 @@ class MainViewController: SlidePageViewController {
         
         if offset > oldOffset && offset > 0 && offset <= 1 {
             // 0->1
-            yOffset = (oldOffset - offset) * 50
+            yOffset = (oldOffset - offset) * navigationOffset
         }
         else if offset < oldOffset && offset > 0 && offset <= 1 {
             // 1<-0
-            yOffset = (oldOffset - offset) * 50
+            yOffset = (oldOffset - offset) * navigationOffset
         }
         else if offset > oldOffset && offset > 1 && offset <= 2 {
             // 1->2
-            yOffset = (offset - oldOffset) * 50
+            yOffset = (offset - oldOffset) * navigationOffset
         }
         else if offset < oldOffset && offset > 1 && offset <= 2 {
             // 2->1
-            yOffset = (offset - oldOffset) * 50
+            yOffset = (offset - oldOffset) * navigationOffset
         }
         else {
             yOffset = 0
@@ -91,18 +94,19 @@ class MainViewController: SlidePageViewController {
         reader.resultCallback = {
             println($0)
             
-            if let jsonData = $0.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
-                var err: NSError?
-                
-                let parsed: AnyObject? = NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableLeaves, error: &err)
-                
-                if let parsedArray = parsed as? NSArray {
-
-                }
-                else if let parsedDictionary = parsed as? NSDictionary {
-
-                }
+            let stringToJsonData: String -> NSData? = {
+                $0.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
             }
+            
+            let dataToJsonObject: NSData -> AnyObject? = {
+                var err: NSError?
+                return NSJSONSerialization.JSONObjectWithData($0, options: .MutableLeaves, error: &err)
+            }
+            
+            if let json = $0 >>- stringToJsonData >>- dataToJsonObject >>- { $0 as? NSDictionary } {
+                println(json)
+            }
+            
             
             // Test
             var response = self.slider.viewModel.ticketItems.value
