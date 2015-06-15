@@ -107,6 +107,9 @@ class MainViewController: SlidePageViewController {
                 println(json)
             }
             
+            // Send
+            // self.slider.viewModel.deviceToken
+            
             
             // Test
             var response = self.slider.viewModel.ticketItems.value

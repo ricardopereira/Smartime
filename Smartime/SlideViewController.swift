@@ -28,9 +28,18 @@ protocol SliderController {
     func prevPage()
 }
 
-class SlideViewController: UIViewController, UIScrollViewDelegate, SliderController {
+class SlideViewController: UIViewController, UIScrollViewDelegate, SliderController, DeviceTokenContainer {
     
     let viewModel = CommonViewModel()
+    
+    var deviceToken: String {
+        get {
+            return viewModel.deviceToken
+        }
+        set(value) {
+            viewModel.deviceToken = value
+        }
+    }
     
     // Components
     private let scrollview: UIScrollView!

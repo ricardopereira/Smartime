@@ -20,6 +20,7 @@ enum AppEvents: String, Printable {
 
 class CommonViewModel {
     
+    var deviceToken: String = ""
     let ticketItems = MutableProperty<[TicketViewModel]>([TicketViewModel]())
     
     let socket = SocketIO<AppEvents>(url: "http://smartime.herokuapp.com")

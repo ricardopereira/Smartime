@@ -8,16 +8,20 @@
 
 import Foundation
 
+protocol DeviceTokenContainer {
+    var deviceToken: String { get set }
+}
+
 struct AppInfo {
     
-    private var _deviceID: String
+    private var internalDeviceToken: String
     
     init() {
-        _deviceID = ""
+        internalDeviceToken = ""
     }
     
-    var deviceID: String {
-        return _deviceID
+    var deviceToken: String {
+        return internalDeviceToken
     }
     
     mutating func setDeviceToken(data: NSData) {
@@ -29,7 +33,7 @@ struct AppInfo {
         
         tokenRange = Range<String.Index>(start: deviceTokenStr.startIndex, end: deviceTokenStr.endIndex)
         
-        _deviceID = deviceTokenStr.stringByReplacingOccurrencesOfString(" ", withString: "", options: .LiteralSearch, range: tokenRange)
+        internalDeviceToken = deviceTokenStr.stringByReplacingOccurrencesOfString(" ", withString: "", options: .LiteralSearch, range: tokenRange)
     }
     
 }
