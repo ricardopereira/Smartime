@@ -1,5 +1,5 @@
 //
-//  CommonViewModel.swift
+//  TicketsController.swift
 //  Smartime
 //
 //  Created by Ricardo Pereira on 05/06/2015.
@@ -9,7 +9,7 @@
 import Foundation
 import ReactiveCocoa
 
-class CommonViewModel {
+class TicketsController {
     
     var deviceToken: String = ""
     let ticketItems = MutableProperty<[TicketViewModel]>([TicketViewModel]())

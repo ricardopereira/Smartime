@@ -64,7 +64,7 @@
 		D7F906451B21B68B00C96D7E /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F906441B21B68A00C96D7E /* Ticket.swift */; };
 		D7F906471B21B6A600C96D7E /* TicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F906461B21B6A600C96D7E /* TicketViewModel.swift */; };
 		D7F906491B21CC8400C96D7E /* RACExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F906481B21CC8400C96D7E /* RACExtensions.swift */; };
-		D7F9064B1B21F15B00C96D7E /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9064A1B21F15A00C96D7E /* CommonViewModel.swift */; };
+		D7F9064B1B21F15B00C96D7E /* TicketsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9064A1B21F15A00C96D7E /* TicketsController.swift */; };
 		D7FDABFB1B1F0D8000E8BF2F /* SlidePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FDABF91B1F0D8000E8BF2F /* SlidePageViewController.swift */; };
 		D7FDABFC1B1F0D8000E8BF2F /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FDABFA1B1F0D8000E8BF2F /* SlideViewController.swift */; };
 /* End PBXBuildFile section */
@@ -156,7 +156,7 @@
 		D7F906441B21B68A00C96D7E /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		D7F906461B21B6A600C96D7E /* TicketViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewModel.swift; sourceTree = "<group>"; };
 		D7F906481B21CC8400C96D7E /* RACExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACExtensions.swift; sourceTree = "<group>"; };
-		D7F9064A1B21F15A00C96D7E /* CommonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
+		D7F9064A1B21F15A00C96D7E /* TicketsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketsController.swift; sourceTree = "<group>"; };
 		D7FDABF91B1F0D8000E8BF2F /* SlidePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidePageViewController.swift; sourceTree = "<group>"; };
 		D7FDABFA1B1F0D8000E8BF2F /* SlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -255,7 +255,7 @@
 				D79540041ACDB4B50031354F /* AppDelegate.swift */,
 				D79540241ACDB74E0031354F /* AppSettings.swift */,
 				D718D1E11B2F626100F3B529 /* AppInfo.swift */,
-				D7F9064A1B21F15A00C96D7E /* CommonViewModel.swift */,
+				D7F9064A1B21F15A00C96D7E /* TicketsController.swift */,
 				D718D1E31B2F79E300F3B529 /* Server.swift */,
 				D7FDABFA1B1F0D8000E8BF2F /* SlideViewController.swift */,
 				D7FDABF91B1F0D8000E8BF2F /* SlidePageViewController.swift */,
@@ -578,7 +578,7 @@
 				D7BBF3331B3003B10004FF83 /* TicketRequirements.swift in Sources */,
 				D7F906471B21B6A600C96D7E /* TicketViewModel.swift in Sources */,
 				D79540511ACDC3640031354F /* SocketIOEventHandler.swift in Sources */,
-				D7F9064B1B21F15B00C96D7E /* CommonViewModel.swift in Sources */,
+				D7F9064B1B21F15B00C96D7E /* TicketsController.swift in Sources */,
 				D79540581ACDC3640031354F /* SocketIOWebSocket.swift in Sources */,
 				D7F7DE4C1B24F32400F26D62 /* TicketContainerView.swift in Sources */,
 				D7242B4C1AD825F00015BA96 /* SocketIOEvent.swift in Sources */,

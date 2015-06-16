@@ -23,14 +23,16 @@ protocol SlidePage {
 }
 
 protocol SliderController {
-    var viewModel: CommonViewModel { get }
+    // TODO: Swift2 - Protocol extension
+    var ticketsCtrl: TicketsController { get }
     func nextPage()
     func prevPage()
 }
 
 class SlideViewController: UIViewController, UIScrollViewDelegate, SliderController, DeviceTokenContainer {
     
-    let viewModel = CommonViewModel()
+    // TODO: Swift2 - Protocol extension
+    let ticketsCtrl = TicketsController()
     
     var deviceToken: String {
         get {
