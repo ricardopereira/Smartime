@@ -28,7 +28,7 @@ class TicketsViewController: SlidePageViewController {
     
     init(slider: SliderController) {
         // Reactive signal
-        sourceSignal = slider.viewModel.ticketItems.producer
+        sourceSignal = slider.ticketsCtrl.items.producer
         // DataSource
         tableView.registerNib(UINib(nibName: "TicketViewCell", bundle: nil), forCellReuseIdentifier: ticketCellIdentifier)
         dataSource = TicketsDataSource(items: [], cellIdentifier: ticketCellIdentifier)

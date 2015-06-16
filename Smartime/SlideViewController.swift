@@ -36,10 +36,10 @@ class SlideViewController: UIViewController, UIScrollViewDelegate, SliderControl
     
     var deviceToken: String {
         get {
-            return viewModel.deviceToken
+            return ticketsCtrl.deviceToken
         }
         set(value) {
-            viewModel.deviceToken = value
+            ticketsCtrl.deviceToken = value
         }
     }
     

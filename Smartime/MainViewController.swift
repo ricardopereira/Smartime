@@ -31,7 +31,7 @@ class MainViewController: SlidePageViewController {
     
     init(slider: SliderController) {
         // Reactive signal
-        sourceSignal = slider.viewModel.ticketItems.producer
+        sourceSignal = slider.ticketsCtrl.items.producer
         super.init(slider: slider, nibName: "MainViewController", bundle: nil)
         
         sourceSignal.start(next: { data in
@@ -153,8 +153,8 @@ class MainViewController: SlidePageViewController {
             
             let okAction = UIAlertAction(title: "OK", style: .Default) { (action) in
                 // Send request
-                let ticketRequirements = TicketRequirements(service: service, terminalId: terminalId, device: self.slider.viewModel.deviceToken)
-                self.slider.viewModel.server.requestTicket(ticketRequirements)
+                let ticketRequirements = TicketRequirements(service: service, terminalId: terminalId, device: self.slider.ticketsCtrl.deviceToken)
+                self.slider.ticketsCtrl.server.requestTicket(ticketRequirements)
             }
             alertController.addAction(okAction)
             

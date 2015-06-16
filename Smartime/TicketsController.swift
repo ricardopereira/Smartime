@@ -12,7 +12,7 @@ import ReactiveCocoa
 class TicketsController {
     
     var deviceToken: String = ""
-    let ticketItems = MutableProperty<[TicketViewModel]>([TicketViewModel]())
+    let items = MutableProperty<[TicketViewModel]>([TicketViewModel]())
     
     let server = Server()
         
@@ -20,12 +20,12 @@ class TicketsController {
         server.socket.on(.RequestTicket) {
             switch $0 {
             case .JSON(let json):
-                var response = self.ticketItems.value
+                var response = self.items.value
                 
                 let ticket = Ticket(dict: json)
                 response.append(TicketViewModel(ticket))
                 
-                self.ticketItems.put(response)
+                self.items.put(response)
             default:
                 break;
             }
