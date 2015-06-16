@@ -11,6 +11,7 @@ import Foundation
 enum ServerEvents: String, Printable {
     case TicketCall = "ticket-call"
     case RequestTicket = "request"
+    case RequestAccepted = "accepted"
     
     var description: String {
         return self.rawValue
@@ -19,7 +20,7 @@ enum ServerEvents: String, Printable {
 
 class RemoteStrategy {
     
-    let socket = SocketIO<ServerEvents>(url: "http://localhost:8000") //smartime.herokuapp.com
+    let socket = SocketIO<ServerEvents>(url: "http://localhost:8000", withOptions: SocketIOOptions().namespace("/app")) //smartime.herokuapp.com
     
     init() {
         setup()
@@ -55,10 +56,11 @@ class RemoteStrategy {
                 break
             }
         }
+                
+        socket.connect()
     }
     
     func requestTicket(requirements: TicketRequirements) {
-        socket.connect()
         socket.emit(.RequestTicket, withObject: requirements)
     }
     

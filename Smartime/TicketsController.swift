@@ -18,7 +18,16 @@ class TicketsController {
     lazy var local = LocalStrategy()
         
     init() {
-        remote.socket.on(.RequestTicket) {
+        remote.socket.on(.TicketCall) {
+            switch $0 {
+            case .JSON(let json):
+                println("Ticket call \(json)")
+            default:
+                break;
+            }
+        }
+        
+        remote.socket.on(.RequestAccepted) {
             switch $0 {
             case .JSON(let json):
                 var response = self.items.value
@@ -28,7 +37,7 @@ class TicketsController {
                 
                 self.items.put(response)
             default:
-                break;
+                break
             }
         }
     }

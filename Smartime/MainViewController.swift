@@ -166,7 +166,7 @@ class MainViewController: SlidePageViewController {
         }
         alertController.addAction(okAction)
         
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.showViewController(alertController, sender: nil)
     }
 
 }
