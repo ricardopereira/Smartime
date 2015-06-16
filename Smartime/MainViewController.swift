@@ -105,14 +105,18 @@ class MainViewController: SlidePageViewController {
     }
     
     func didTouchQRCode(sender: AnyObject?) {
-        
-        let reader = QRCodeReaderViewController()
-        
-        reader.resultCallback = readerResult
-        reader.cancelCallback = { reader in
+        #if (arch(i386) || arch(x86_64)) && os(iOS)
+            // Simulator
+            readTicket(["service":"A"])
+        #else
+            let reader = QRCodeReaderViewController()
+            
+            reader.resultCallback = readerResult
+            reader.cancelCallback = { reader in
             reader.dismissViewControllerAnimated(true, completion: nil)
-        }
-        self.showViewController(reader, sender: nil)
+            }
+            self.showViewController(reader, sender: nil)
+        #endif
     }
     
     func didTouchAbout(sender: AnyObject?) {
@@ -138,30 +142,31 @@ class MainViewController: SlidePageViewController {
         
         if let json = data >>- stringToJsonData >>- dataToJsonObject >>- { $0 as? NSDictionary } {
             println(json)
-            
-            let service = json["service"] as? String ?? ""
-            let terminalId = json["terminalId"] as? String ?? ""
-            
-            if service.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "" {
-                return
-            }
-            
-            let alertController = UIAlertController(title: "Senha", message: "Deseja tirar senha para o serviço \(service)?", preferredStyle: UIAlertControllerStyle.Alert)
-            
-            let cancelAction = UIAlertAction(title: "Cancelar", style: .Cancel, handler: nil)
-            alertController.addAction(cancelAction)
-            
-            let okAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-                // Send request
-                let ticketRequirements = TicketRequirements(service: service, terminalId: terminalId, device: self.slider.ticketsCtrl.deviceToken)
-                self.slider.ticketsCtrl.server.requestTicket(ticketRequirements)
-            }
-            alertController.addAction(okAction)
-            
-            self.presentViewController(alertController, animated: true, completion: nil)
+            readTicket(json)
+        }
+    }
+    
+    func readTicket(json: NSDictionary) {
+        let service = json["service"] as? String ?? ""
+        let terminalId = json["terminalId"] as? String ?? ""
+        
+        if service.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "" {
+            return
         }
         
-        //self.slider.nextPage()
+        let alertController = UIAlertController(title: "Senha", message: "Deseja tirar senha para o serviço \(service)?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let okAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            // Send request
+            let ticketRequirements = TicketRequirements(service: service, terminalId: terminalId, device: self.slider.ticketsCtrl.deviceToken)
+            self.slider.ticketsCtrl.remote.requestTicket(ticketRequirements)
+        }
+        alertController.addAction(okAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 
 }

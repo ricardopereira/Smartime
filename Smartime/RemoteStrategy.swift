@@ -1,5 +1,5 @@
 //
-//  Server.swift
+//  RemoteStrategy.swift
 //  Smartime
 //
 //  Created by Ricardo Pereira on 15/06/2015.
@@ -9,7 +9,7 @@
 import Foundation
 
 enum ServerEvents: String, Printable {
-    case TicketCall = "TicketCall"
+    case TicketCall = "ticket-call"
     case RequestTicket = "request"
     
     var description: String {
@@ -17,7 +17,7 @@ enum ServerEvents: String, Printable {
     }
 }
 
-class Server {
+class RemoteStrategy {
     
     let socket = SocketIO<ServerEvents>(url: "http://localhost:8000") //smartime.herokuapp.com
     

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		41DF314FC830DC420A089E06 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49170C4ED90C3D4636821898 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D718D1E21B2F626100F3B529 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718D1E11B2F626100F3B529 /* AppInfo.swift */; };
-		D718D1E41B2F79E500F3B529 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718D1E31B2F79E300F3B529 /* Server.swift */; };
+		D718D1E41B2F79E500F3B529 /* RemoteStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718D1E31B2F79E300F3B529 /* RemoteStrategy.swift */; };
 		D7242B4C1AD825F00015BA96 /* SocketIOEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B4B1AD825F00015BA96 /* SocketIOEvent.swift */; };
 		D7242B501AD8A3D40015BA96 /* SocketIORequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B4F1AD8A3D40015BA96 /* SocketIORequester.swift */; };
 		D7242B531AD95F040015BA96 /* NSURL+TrailingSlash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B521AD95F040015BA96 /* NSURL+TrailingSlash.swift */; };
@@ -53,6 +53,7 @@
 		D7B63B281AD6BA8100C06BD8 /* LumaJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B63B261AD6BA8100C06BD8 /* LumaJSON.swift */; };
 		D7B63B291AD6BA8100C06BD8 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B63B271AD6BA8100C06BD8 /* WebSocket.swift */; };
 		D7BBF3331B3003B10004FF83 /* TicketRequirements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BBF3321B3003B00004FF83 /* TicketRequirements.swift */; };
+		D7BBF3381B300C640004FF83 /* LocalStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BBF3371B300C640004FF83 /* LocalStrategy.swift */; };
 		D7C604A71AE56241004342CE /* SocketIOEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C604A61AE56241004342CE /* SocketIOEmitter.swift */; };
 		D7EFA9091AFE766D00623A16 /* FLXView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFA9081AFE766D00623A16 /* FLXView.framework */; };
 		D7EFA90B1AFE795600623A16 /* FLXView.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7EFA9081AFE766D00623A16 /* FLXView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -100,7 +101,7 @@
 		76771A09F1A25955CE67F59B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D2257D97EC160B10468A01A6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D718D1E11B2F626100F3B529 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
-		D718D1E31B2F79E300F3B529 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		D718D1E31B2F79E300F3B529 /* RemoteStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteStrategy.swift; sourceTree = "<group>"; };
 		D7242B4B1AD825F00015BA96 /* SocketIOEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOEvent.swift; sourceTree = "<group>"; };
 		D7242B4F1AD8A3D40015BA96 /* SocketIORequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIORequester.swift; sourceTree = "<group>"; };
 		D7242B521AD95F040015BA96 /* NSURL+TrailingSlash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+TrailingSlash.swift"; sourceTree = "<group>"; };
@@ -146,6 +147,7 @@
 		D7B63B261AD6BA8100C06BD8 /* LumaJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LumaJSON.swift; sourceTree = "<group>"; };
 		D7B63B271AD6BA8100C06BD8 /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		D7BBF3321B3003B00004FF83 /* TicketRequirements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketRequirements.swift; sourceTree = "<group>"; };
+		D7BBF3371B300C640004FF83 /* LocalStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStrategy.swift; sourceTree = "<group>"; };
 		D7C604A61AE56241004342CE /* SocketIOEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOEmitter.swift; sourceTree = "<group>"; };
 		D7EFA9081AFE766D00623A16 /* FLXView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FLXView.framework; sourceTree = "<group>"; };
 		D7F7DE4B1B24F32300F26D62 /* TicketContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketContainerView.swift; sourceTree = "<group>"; };
@@ -256,7 +258,8 @@
 				D79540241ACDB74E0031354F /* AppSettings.swift */,
 				D718D1E11B2F626100F3B529 /* AppInfo.swift */,
 				D7F9064A1B21F15A00C96D7E /* TicketsController.swift */,
-				D718D1E31B2F79E300F3B529 /* Server.swift */,
+				D718D1E31B2F79E300F3B529 /* RemoteStrategy.swift */,
+				D7BBF3371B300C640004FF83 /* LocalStrategy.swift */,
 				D7FDABFA1B1F0D8000E8BF2F /* SlideViewController.swift */,
 				D7FDABF91B1F0D8000E8BF2F /* SlidePageViewController.swift */,
 				D79540261ACDB9EF0031354F /* MainViewController.swift */,
@@ -564,7 +567,7 @@
 				D7904CB21B15C02C00FF50D1 /* Security.swift in Sources */,
 				D7B63B281AD6BA8100C06BD8 /* LumaJSON.swift in Sources */,
 				D7B63B291AD6BA8100C06BD8 /* WebSocket.swift in Sources */,
-				D718D1E41B2F79E500F3B529 /* Server.swift in Sources */,
+				D718D1E41B2F79E500F3B529 /* RemoteStrategy.swift in Sources */,
 				D79540281ACDB9F00031354F /* MainViewController.swift in Sources */,
 				D79540541ACDC3640031354F /* SocketIOPacket.swift in Sources */,
 				D72CEED11AF5163C00D86C38 /* SocketIOJSONHandshake.swift in Sources */,
@@ -576,6 +579,7 @@
 				D7242B531AD95F040015BA96 /* NSURL+TrailingSlash.swift in Sources */,
 				D79540501ACDC3640031354F /* SocketIOConnection.swift in Sources */,
 				D7BBF3331B3003B10004FF83 /* TicketRequirements.swift in Sources */,
+				D7BBF3381B300C640004FF83 /* LocalStrategy.swift in Sources */,
 				D7F906471B21B6A600C96D7E /* TicketViewModel.swift in Sources */,
 				D79540511ACDC3640031354F /* SocketIOEventHandler.swift in Sources */,
 				D7F9064B1B21F15B00C96D7E /* TicketsController.swift in Sources */,

@@ -14,10 +14,11 @@ class TicketsController {
     var deviceToken: String = ""
     let items = MutableProperty<[TicketViewModel]>([TicketViewModel]())
     
-    let server = Server()
+    lazy var remote = RemoteStrategy()
+    lazy var local = LocalStrategy()
         
     init() {
-        server.socket.on(.RequestTicket) {
+        remote.socket.on(.RequestTicket) {
             switch $0 {
             case .JSON(let json):
                 var response = self.items.value
