@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIColor {
+    
     convenience init(rgba: String) {
         var red:   CGFloat = 0.0
         var green: CGFloat = 0.0
@@ -51,4 +52,5 @@ extension UIColor {
         }
         self.init(red:red, green:green, blue:blue, alpha:alpha)
     }
+    
 }

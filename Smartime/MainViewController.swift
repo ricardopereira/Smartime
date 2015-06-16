@@ -9,6 +9,7 @@
 import UIKit
 import QRCodeReader
 import Runes
+import ReactiveCocoa
 
 class MainView: UIView {
     
@@ -20,11 +21,27 @@ class MainView: UIView {
 
 class MainViewController: SlidePageViewController {
     
+    let sourceSignal: SignalProducer<[TicketViewModel], NoError>
+    
     private let navigationOffset = CGFloat(50)
     
     @IBOutlet weak var qrCodeButton: UIButton!
     @IBOutlet weak var aboutButton: UIButton!
     @IBOutlet weak var ticketsButton: UIButton!
+    
+    init(slider: SliderController) {
+        // Reactive signal
+        sourceSignal = slider.viewModel.ticketItems.producer
+        super.init(slider: slider, nibName: "MainViewController", bundle: nil)
+        
+        sourceSignal.start(next: { data in
+            self.slider.nextPage()
+        })
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         super.loadView()

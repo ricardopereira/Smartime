@@ -265,16 +265,13 @@
 				D7428BC41B236CED00E0CD5A /* StatusViewController.xib */,
 				D74484401B204C3F00E64B39 /* TicketsViewController.swift */,
 				D74484371B1FF35C00E64B39 /* Slider.storyboard */,
-				D7BBF3321B3003B00004FF83 /* TicketRequirements.swift */,
-				D7F906441B21B68A00C96D7E /* Ticket.swift */,
 				D7F906461B21B6A600C96D7E /* TicketViewModel.swift */,
-				D7F7DE4B1B24F32300F26D62 /* TicketContainerView.swift */,
 				D7F9063E1B20AF0700C96D7E /* TicketViewCell.swift */,
 				D7F9063F1B20AF0700C96D7E /* TicketViewCell.xib */,
-				D7F7DE4D1B2541BD00F26D62 /* LogoView.swift */,
-				D7F906481B21CC8400C96D7E /* RACExtensions.swift */,
+				D7BBF3341B30055E0004FF83 /* Models */,
+				D7BBF3351B30057D0004FF83 /* Views */,
+				D7BBF3361B3005DC0004FF83 /* Extensions */,
 				D7428BC21B235FC000E0CD5A /* StyleKit.swift */,
-				D7F906421B20BC4A00C96D7E /* UIColor+Hex.swift */,
 				D795400B1ACDB4B50031354F /* Images.xcassets */,
 				D79540021ACDB4B50031354F /* Supporting Files */,
 			);
@@ -358,6 +355,33 @@
 				D7B63B271AD6BA8100C06BD8 /* WebSocket.swift */,
 			);
 			path = External;
+			sourceTree = "<group>";
+		};
+		D7BBF3341B30055E0004FF83 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D7BBF3321B3003B00004FF83 /* TicketRequirements.swift */,
+				D7F906441B21B68A00C96D7E /* Ticket.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		D7BBF3351B30057D0004FF83 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D7F7DE4B1B24F32300F26D62 /* TicketContainerView.swift */,
+				D7F7DE4D1B2541BD00F26D62 /* LogoView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		D7BBF3361B3005DC0004FF83 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D7F906481B21CC8400C96D7E /* RACExtensions.swift */,
+				D7F906421B20BC4A00C96D7E /* UIColor+Hex.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		D7EFA9071AFE766D00623A16 /* FLXView */ = {
