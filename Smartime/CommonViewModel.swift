@@ -22,7 +22,8 @@ class CommonViewModel {
             case .JSON(let json):
                 var response = self.ticketItems.value
                 
-                response.append(TicketViewModel(Ticket(["service":"\(self.ticketItems.value.count)", "desk":"Balcão 1", "current":17, "number":23])))
+                let ticket = Ticket(dict: json)
+                response.append(TicketViewModel(ticket))
                 
                 self.ticketItems.put(response)
             default:

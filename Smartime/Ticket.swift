@@ -14,12 +14,20 @@ struct Ticket {
     let desk: String
     let current: Int
     let number: Int
+
+}
+
+extension Ticket: SocketIOObject {
     
-    init(_ json: NSDictionary) {
-        service = json["service"] as! String
-        desk = json["desk"] as! String
-        current = json["current"] as! Int
-        number = json["number"] as! Int
+    init(dict: NSDictionary) {
+        service = dict["service"] as! String
+        desk = dict["desk"] as! String
+        current = dict["current"] as! Int
+        number = dict["number"] as! Int
+    }
+    
+    var asDictionary: NSDictionary {
+        return ["service":service, "desk":desk, "current":current, "number":number]
     }
     
 }

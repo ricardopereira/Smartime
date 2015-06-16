@@ -17,24 +17,6 @@ enum ServerEvents: String, Printable {
     }
 }
 
-struct TicketRequirements {
-    let service: String
-    let terminalId: String
-    let device: String
-}
-
-extension TicketRequirements: SocketIOObject {
-    init(dict: NSDictionary) {
-        service = dict["service"] as? String ?? ""
-        terminalId = dict["terminalId"] as? String ?? ""
-        device = dict["device"] as? String ?? ""
-    }
-    
-    var asDictionary: NSDictionary {
-        return ["service":service, "terminalId":terminalId, "device":device]
-    }
-}
-
 class Server {
     
     let socket = SocketIO<ServerEvents>(url: "http://localhost:8000") //smartime.herokuapp.com
