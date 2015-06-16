@@ -8,55 +8,27 @@
 
 import Foundation
 import ReactiveCocoa
-//import SocketIO-Kit
-
-enum AppEvents: String, Printable {
-    case TicketCall = "TicketCall"
-    
-    var description: String {
-        return self.rawValue
-    }
-}
 
 class CommonViewModel {
     
     var deviceToken: String = ""
     let ticketItems = MutableProperty<[TicketViewModel]>([TicketViewModel]())
     
-    let socket = SocketIO<AppEvents>(url: "http://smartime.herokuapp.com")
-    
+    let server = Server()
+        
     init() {
-        // SocketIO-Kit
-        socket.on(.ConnectError) {
+        server.socket.on(.RequestTicket) {
             switch $0 {
-            case .Failure(let error):
-                println(error)
+            case .JSON(let json):
+                var response = self.ticketItems.value
+                
+                response.append(TicketViewModel(Ticket(["service":"\(self.ticketItems.value.count)", "desk":"Balcão 1", "current":17, "number":23])))
+                
+                self.ticketItems.put(response)
             default:
-                break
-            }
-            }.on(.Connected) { (arg: SocketIOArg) -> () in
-                println("Connected")
-            }.on(.Disconnected) {
-                switch $0 {
-                case .Message(let message):
-                    println("Disconnected with no error")
-                case .Failure(let error):
-                    println("Disconnected with error: \(error)")
-                default:
-                    break
-                }
-        }
-        
-        socket.on(.TicketCall) {
-            switch $0 {
-            case .Message(let message):
-                println("Mensagem recebida: \(message)")
-            default:
-                break
+                break;
             }
         }
-        
-        //socket.connect()
     }
     
 }

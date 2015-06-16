@@ -87,6 +87,8 @@ class SlideViewController: UIViewController, UIScrollViewDelegate, SliderControl
         // Set scrollview related constraints
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[scrollview]-0-|", options:nil, metrics: nil, views: ["scrollview":scrollview]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[scrollview]-0-|", options:nil, metrics: nil, views: ["scrollview":scrollview]))
+        
+        println("Slider load")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -97,7 +99,6 @@ class SlideViewController: UIViewController, UIScrollViewDelegate, SliderControl
             nextPage()
         }
     }
-    
     
     // MARK: - Internal methods -
     
