@@ -29,6 +29,7 @@ enum AppEvents: String, Printable {
 class RemoteStrategy {
     
     #if (arch(i386) || arch(x86_64)) && os(iOS)
+    // Simulator
     let socket = SocketIO<AppEvents>(url: "http://localhost:8000", withOptions: SocketIOOptions().namespace("/app"))
     #else
     let socket = SocketIO<AppEvents>(url: "http://smartime.herokuapp.com", withOptions: SocketIOOptions().namespace("/app"))
@@ -64,6 +65,7 @@ class RemoteStrategy {
     }
     
     func requestTicket(requirements: TicketRequirements) {
+        // FIXME: emit when connection was established successfully
         socket.connect()
         socket.emit(.RequestTicket, withObject: requirements)
     }

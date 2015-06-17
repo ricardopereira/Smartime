@@ -31,7 +31,7 @@ class TicketsViewController: SlidePageViewController {
         sourceSignal = slider.ticketsCtrl.items.producer
         // DataSource
         tableView.registerNib(UINib(nibName: "TicketViewCell", bundle: nil), forCellReuseIdentifier: ticketCellIdentifier)
-        dataSource = TicketsDataSource(items: [], cellIdentifier: ticketCellIdentifier)
+        dataSource = TicketsDataSource(items: [], withCellIdentifier: ticketCellIdentifier)
         // TableViewController
         super.init(slider: slider, nibName: nil, bundle: nil)
         
@@ -47,6 +47,11 @@ class TicketsViewController: SlidePageViewController {
                 cell.center.x -= self.view.bounds.width
                 cell.alpha = 1
                 }, completion: nil)
+        }
+        
+        dataSource.onSelectRow = { item in
+            let ticketVC = TicketViewController(nibName: "TicketViewController", bundle: nil)
+            self.showViewController(ticketVC, sender: nil)
         }
         
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
@@ -95,9 +100,11 @@ class TicketsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     var items: [TicketViewModel]
     let cellID: String
-    var onNewTicket: Optional<(cell: UITableViewCell) -> ()>
     
-    init(items: [TicketViewModel], cellIdentifier: String) {
+    var onNewTicket: Optional<(cell: UITableViewCell) -> ()>
+    var onSelectRow: Optional<(item: TicketViewModel) -> ()>
+    
+    init(items: [TicketViewModel], withCellIdentifier cellIdentifier: String) {
         self.items = items
         self.cellID = cellIdentifier
     }
@@ -125,6 +132,9 @@ class TicketsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Select row
+        if let performSelecteRow = onSelectRow {
+            performSelecteRow(item: items[indexPath.row])
+        }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     

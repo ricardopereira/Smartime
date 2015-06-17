@@ -30,6 +30,8 @@
 		D74484431B204C4A00E64B39 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74484421B204C4A00E64B39 /* StatusViewController.swift */; };
 		D74846331AD45F10005836F9 /* SocketIOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74846321AD45F10005836F9 /* SocketIOTests.swift */; };
 		D74CDE251AFB9A18006CF7FE /* SocketIOReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CDE241AFB9A18006CF7FE /* SocketIOReceiver.swift */; };
+		D766EDDC1B322E7D00B447C5 /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D766EDDA1B322E7D00B447C5 /* TicketViewController.swift */; };
+		D766EDDD1B322E7D00B447C5 /* TicketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D766EDDB1B322E7D00B447C5 /* TicketViewController.xib */; };
 		D769DA291B02A68B00606FB4 /* SocketIOObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D769DA281B02A68B00606FB4 /* SocketIOObject.swift */; };
 		D7904CB01B15C01F00FF50D1 /* SocketIOUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7904CAF1B15C01F00FF50D1 /* SocketIOUtilities.swift */; };
 		D7904CB21B15C02C00FF50D1 /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7904CB11B15C02C00FF50D1 /* Security.swift */; };
@@ -120,6 +122,8 @@
 		D74484421B204C4A00E64B39 /* StatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		D74846321AD45F10005836F9 /* SocketIOTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOTests.swift; sourceTree = "<group>"; };
 		D74CDE241AFB9A18006CF7FE /* SocketIOReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOReceiver.swift; sourceTree = "<group>"; };
+		D766EDDA1B322E7D00B447C5 /* TicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
+		D766EDDB1B322E7D00B447C5 /* TicketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketViewController.xib; sourceTree = "<group>"; };
 		D769DA281B02A68B00606FB4 /* SocketIOObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOObject.swift; sourceTree = "<group>"; };
 		D7904CAF1B15C01F00FF50D1 /* SocketIOUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOUtilities.swift; sourceTree = "<group>"; };
 		D7904CB11B15C02C00FF50D1 /* Security.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Security.swift; sourceTree = "<group>"; };
@@ -268,6 +272,8 @@
 				D7428BC41B236CED00E0CD5A /* StatusViewController.xib */,
 				D74484401B204C3F00E64B39 /* TicketsViewController.swift */,
 				D74484371B1FF35C00E64B39 /* Slider.storyboard */,
+				D766EDDA1B322E7D00B447C5 /* TicketViewController.swift */,
+				D766EDDB1B322E7D00B447C5 /* TicketViewController.xib */,
 				D7F906461B21B6A600C96D7E /* TicketViewModel.swift */,
 				D7F9063E1B20AF0700C96D7E /* TicketViewCell.swift */,
 				D7F9063F1B20AF0700C96D7E /* TicketViewCell.xib */,
@@ -491,6 +497,7 @@
 			files = (
 				D795400C1ACDB4B50031354F /* Images.xcassets in Resources */,
 				D7F906411B20AF0700C96D7E /* TicketViewCell.xib in Resources */,
+				D766EDDD1B322E7D00B447C5 /* TicketViewController.xib in Resources */,
 				D74484381B1FF35C00E64B39 /* Slider.storyboard in Resources */,
 				D7428BC51B236CED00E0CD5A /* StatusViewController.xib in Resources */,
 				D725E72A1B21F7EF00486F0F /* MainViewController.xib in Resources */,
@@ -573,6 +580,7 @@
 				D72CEED11AF5163C00D86C38 /* SocketIOJSONHandshake.swift in Sources */,
 				D79540251ACDB74E0031354F /* AppSettings.swift in Sources */,
 				D7242B501AD8A3D40015BA96 /* SocketIORequester.swift in Sources */,
+				D766EDDC1B322E7D00B447C5 /* TicketViewController.swift in Sources */,
 				D7F906451B21B68B00C96D7E /* Ticket.swift in Sources */,
 				D7F906491B21CC8400C96D7E /* RACExtensions.swift in Sources */,
 				D79540521ACDC3640031354F /* SocketIOHandshake.swift in Sources */,
