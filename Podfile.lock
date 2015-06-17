@@ -1,12 +1,15 @@
 PODS:
+  - Dodo (2.0.2)
   - QRCodeReader (1.2)
   - Runes (2.0.0)
 
 DEPENDENCIES:
+  - Dodo (~> 2.0)
   - QRCodeReader
   - Runes
 
 SPEC CHECKSUMS:
+  Dodo: 93474d3a4fffe052ff665d80ebf82d9b45051da6
   QRCodeReader: be8d663cd428ab4cc2583ef568b93f8e9462e43e
   Runes: 4fe81355f4620b76b02176222d264b33e60dba51
 
