@@ -28,8 +28,11 @@ enum AppEvents: String, Printable {
 
 class RemoteStrategy {
     
-    //smartime.herokuapp.com
+    #if (arch(i386) || arch(x86_64)) && os(iOS)
     let socket = SocketIO<AppEvents>(url: "http://localhost:8000", withOptions: SocketIOOptions().namespace("/app"))
+    #else
+    let socket = SocketIO<AppEvents>(url: "http://smartime.herokuapp.com", withOptions: SocketIOOptions().namespace("/app"))
+    #endif
     
     init() {
         setup()
