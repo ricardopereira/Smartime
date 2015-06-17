@@ -52,6 +52,7 @@ class TicketsViewController: SlidePageViewController {
         dataSource.onSelectRow = { item in
             let ticketVC = TicketViewController(nibName: "TicketViewController", bundle: nil)
             self.showViewController(ticketVC, sender: nil)
+            ticketVC.bindViewModel(item)
         }
         
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None

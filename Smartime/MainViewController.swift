@@ -175,7 +175,8 @@ class MainViewController: SlidePageViewController {
             return
         }
         
-        let alertController = UIAlertController(title: "Senha", message: "Deseja tirar senha para o serviço \"\(service)\"?", preferredStyle: UIAlertControllerStyle.Alert)
+        let alertController = UIAlertController(title: "Senha", message: "Deseja tirar senha para o serviço \"\(service)\"?",
+            preferredStyle: UIAlertControllerStyle.Alert)
         
         let cancelAction = UIAlertAction(title: "Cancelar", style: .Cancel, handler: nil)
         alertController.addAction(cancelAction)

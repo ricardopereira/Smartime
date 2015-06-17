@@ -32,6 +32,7 @@ class TicketsController {
                 let ticketCall = Ticket(dict: json)
                 var ticket = TicketViewModel(ticketCall)
                 
+                response[ticketCall.service]?.desk.put(ticket.desk.value)
                 response[ticketCall.service]?.current.put(ticket.current.value)
             default:
                 break;

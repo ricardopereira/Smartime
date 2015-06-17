@@ -18,6 +18,7 @@ class TicketViewCell: UITableViewCell, ReactiveView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        // Setup
         container.backgroundColor = UIColor.clearColor()
         container.layer.shadowOpacity = 0.4
         container.layer.shadowRadius = 1.7

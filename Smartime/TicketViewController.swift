@@ -7,12 +7,27 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
-class TicketViewController: UIViewController {
+class TicketViewController: UIViewController, ReactiveView {
+    
+    @IBOutlet weak var serviceLabel: UILabel!
+    @IBOutlet weak var deskLabel: UILabel!
+    @IBOutlet weak var currentLabel: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    func bindViewModel(viewModel: AnyObject) {
+        if let ticketViewModel = viewModel as? TicketViewModel {
+            serviceLabel.rac_text <~ ticketViewModel.service
+            deskLabel.rac_text <~ ticketViewModel.desk
+            currentLabel.rac_text <~ ticketViewModel.current.producer |> map({ "\($0)" })
+            numberLabel.rac_text <~ ticketViewModel.number.producer |> map({ "\($0)" })
+        }
     }
     
 }

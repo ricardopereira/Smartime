@@ -14,6 +14,7 @@ class TicketViewModel: NSObject {
     private let ticket: Ticket
     
     internal let service: ConstantProperty<String>
+    internal let desk: MutableProperty<String>
     internal let number: ConstantProperty<Int>
     internal let current: MutableProperty<Int>
     internal var new = true
@@ -22,6 +23,7 @@ class TicketViewModel: NSObject {
         self.ticket = ticket
         
         service = ConstantProperty(ticket.service)
+        desk = MutableProperty(ticket.desk)
         number = ConstantProperty(ticket.number)
         current = MutableProperty(ticket.current)
     }
