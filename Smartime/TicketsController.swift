@@ -17,7 +17,7 @@ class TicketsController {
     var deviceToken: String = ""
     #endif
     
-    let items = MutableProperty<[TicketViewModel]>([TicketViewModel]())
+    let items = MutableProperty<[String:TicketViewModel]>([String:TicketViewModel]())
     
     lazy var remote = RemoteStrategy()
     lazy var local = LocalStrategy()
@@ -27,6 +27,12 @@ class TicketsController {
             switch $0 {
             case .JSON(let json):
                 println("Ticket call \(json)")
+                var response = self.items.value
+                
+                let ticketCall = Ticket(dict: json)
+                var ticket = TicketViewModel(ticketCall)
+                
+                response[ticketCall.service]?.current.put(ticket.current.value)
             default:
                 break;
             }
@@ -38,7 +44,7 @@ class TicketsController {
                 var response = self.items.value
                 
                 let ticket = Ticket(dict: json)
-                response.append(TicketViewModel(ticket))
+                response[ticket.service] = TicketViewModel(ticket)
                 
                 self.items.put(response)
             default:
@@ -48,4 +54,3 @@ class TicketsController {
     }
     
 }
-

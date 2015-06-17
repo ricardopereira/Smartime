@@ -21,7 +21,7 @@ class MainView: UIView {
 
 class MainViewController: SlidePageViewController {
     
-    let sourceSignal: SignalProducer<[TicketViewModel], NoError>
+    let sourceSignal: SignalProducer<[String:TicketViewModel], NoError>
     
     private let navigationOffset = CGFloat(50)
     

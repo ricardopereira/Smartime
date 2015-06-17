@@ -24,7 +24,7 @@ class TicketsViewController: SlidePageViewController {
     let dataSource: TicketsDataSource
     let ticketCellIdentifier = "TicketCell"
     
-    let sourceSignal: SignalProducer<[TicketViewModel], NoError>
+    let sourceSignal: SignalProducer<[String:TicketViewModel], NoError>
     
     init(slider: SliderController) {
         // Reactive signal
@@ -54,7 +54,7 @@ class TicketsViewController: SlidePageViewController {
         
         // Reactive
         sourceSignal.start(next: { data in
-            self.dataSource.items = data.map { $0 as TicketViewModel }
+            self.dataSource.items = data.values.array.map { $0 as TicketViewModel }
             self.tableLabel.hidden = !self.dataSource.items.isEmpty
             self.tableView.reloadData()
             self.scrollToBottom()
