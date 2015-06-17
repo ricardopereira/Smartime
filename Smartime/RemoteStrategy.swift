@@ -10,6 +10,14 @@ import Foundation
 
 enum ServerEvents: String, Printable {
     case TicketCall = "ticket-call"
+    
+    var description: String {
+        return self.rawValue
+    }
+}
+
+enum AppEvents: String, Printable {
+    case TicketCall = "ticket-call"
     case RequestTicket = "request"
     case RequestAccepted = "accepted"
     
@@ -20,14 +28,15 @@ enum ServerEvents: String, Printable {
 
 class RemoteStrategy {
     
-    let socket = SocketIO<ServerEvents>(url: "http://localhost:8000", withOptions: SocketIOOptions().namespace("/app")) //smartime.herokuapp.com
+    //smartime.herokuapp.com
+    let socket = SocketIO<AppEvents>(url: "http://localhost:8000", withOptions: SocketIOOptions().namespace("/app"))
     
     init() {
         setup()
     }
     
     private func setup() {
-        // SocketIO-Kit
+        // TODO: Rethink about this implementation - Multi-socket
         socket.on(.ConnectError) {
             switch $0 {
             case .Failure(let error):
@@ -47,16 +56,7 @@ class RemoteStrategy {
                 break
             }
         }
-        
-        socket.on(.TicketCall) {
-            switch $0 {
-            case .Message(let message):
-                println("Mensagem recebida: \(message)")
-            default:
-                break
-            }
-        }
-                
+
         socket.connect()
     }
     

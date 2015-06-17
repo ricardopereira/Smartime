@@ -11,7 +11,12 @@ import ReactiveCocoa
 
 class TicketsController {
     
+    #if (arch(i386) || arch(x86_64)) && os(iOS)
+    var deviceToken: String = "Simulator"
+    #else
     var deviceToken: String = ""
+    #endif
+    
     let items = MutableProperty<[TicketViewModel]>([TicketViewModel]())
     
     lazy var remote = RemoteStrategy()

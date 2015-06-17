@@ -4,4 +4,4 @@ platform :ios, '8.0'
 use_frameworks!
 
 pod 'Runes'
-pod 'QRCodeReader', :git => 'https://github.com/ricardopereira/QRCodeReader.git'
+pod 'QRCodeReader'

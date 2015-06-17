@@ -1,22 +1,13 @@
 PODS:
-  - QRCodeReader (1.0)
+  - QRCodeReader (1.2)
   - Runes (2.0.0)
 
 DEPENDENCIES:
-  - QRCodeReader (from `https://github.com/ricardopereira/QRCodeReader.git`)
+  - QRCodeReader
   - Runes
 
-EXTERNAL SOURCES:
-  QRCodeReader:
-    :git: https://github.com/ricardopereira/QRCodeReader.git
-
-CHECKOUT OPTIONS:
-  QRCodeReader:
-    :commit: f60af40169ea1c9414c7458554c7a2fd3929e9ec
-    :git: https://github.com/ricardopereira/QRCodeReader.git
-
 SPEC CHECKSUMS:
-  QRCodeReader: 0c654ffa28803c4b33378bce6534e3f57ec98b46
+  QRCodeReader: be8d663cd428ab4cc2583ef568b93f8e9462e43e
   Runes: 4fe81355f4620b76b02176222d264b33e60dba51
 
 COCOAPODS: 0.37.2

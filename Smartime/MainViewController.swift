@@ -104,16 +104,15 @@ class MainViewController: SlidePageViewController {
         oldOffset = offset
     }
     
-    func didTouchQRCode(sender: AnyObject?) {
+    func didTouchQRCode(sender: AnyObject?) {        
         #if (arch(i386) || arch(x86_64)) && os(iOS)
-            // Simulator
-            readTicket(["service":"A"])
+            // Simulator: test
+            showTicketDialog(["service":"A"])
         #else
             let reader = QRCodeReaderViewController()
-            
-            reader.resultCallback = readerResult
-            reader.cancelCallback = { reader in
-            reader.dismissViewControllerAnimated(true, completion: nil)
+            reader.resultCallback = qrCodeResult
+            reader.cancelCallback = {
+                $0.dismissViewControllerAnimated(true, completion: nil)
             }
             self.showViewController(reader, sender: nil)
         #endif
@@ -127,7 +126,7 @@ class MainViewController: SlidePageViewController {
         slider.nextPage()
     }
     
-    func readerResult(reader: QRCodeReaderViewController, data: String) {
+    func qrCodeResult(reader: QRCodeReaderViewController, data: String) {
         println(data)
         reader.dismissViewControllerAnimated(true, completion: nil)
         
@@ -142,19 +141,19 @@ class MainViewController: SlidePageViewController {
         
         if let json = data >>- stringToJsonData >>- dataToJsonObject >>- { $0 as? NSDictionary } {
             println(json)
-            readTicket(json)
+            showTicketDialog(json)
         }
     }
     
-    func readTicket(json: NSDictionary) {
-        let service = json["service"] as? String ?? ""
-        let terminalId = json["terminalId"] as? String ?? ""
+    func showTicketDialog(ticketDemand: NSDictionary) {
+        let service = ticketDemand["service"] as? String ?? ""
+        let terminalId = ticketDemand["terminalId"] as? String ?? ""
         
         if service.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "" {
             return
         }
         
-        let alertController = UIAlertController(title: "Senha", message: "Deseja tirar senha para o serviço \(service)?", preferredStyle: UIAlertControllerStyle.Alert)
+        let alertController = UIAlertController(title: "Senha", message: "Deseja tirar senha para o serviço \"\(service)\"?", preferredStyle: UIAlertControllerStyle.Alert)
         
         let cancelAction = UIAlertAction(title: "Cancelar", style: .Cancel, handler: nil)
         alertController.addAction(cancelAction)
