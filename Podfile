@@ -5,5 +5,5 @@ use_frameworks!
 
 pod 'Runes'
 pod 'QRCodeReader'
-pod 'Dodo', '~> 2.0'
+pod 'Dodo', '~> 1.0'
 

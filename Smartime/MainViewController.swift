@@ -10,6 +10,7 @@ import UIKit
 import QRCodeReader
 import Runes
 import ReactiveCocoa
+import Dodo
 
 class MainView: UIView {
     
@@ -24,6 +25,7 @@ class MainViewController: SlidePageViewController {
     let sourceSignal: SignalProducer<[String:TicketViewModel], NoError>
     
     private let navigationOffset = CGFloat(50)
+    private var setupDone = false
     
     @IBOutlet weak var qrCodeButton: UIButton!
     @IBOutlet weak var aboutButton: UIButton!
@@ -54,16 +56,36 @@ class MainViewController: SlidePageViewController {
         qrCodeButton.addTarget(self, action: Selector("didTouchQRCode:"), forControlEvents: .TouchUpInside)
         aboutButton.addTarget(self, action: Selector("didTouchAbout:"), forControlEvents: .TouchUpInside)
         ticketsButton.addTarget(self, action: Selector("didTouchTickets:"), forControlEvents: .TouchUpInside)
+        
+        // Setup message bar
+        self.view.dodo.topLayoutGuide = self.topLayoutGuide
+        self.view.dodo.bottomLayoutGuide = self.bottomLayoutGuide
+        
+        slider.ticketsCtrl.remote.socket.on(.ConnectError) {
+            switch $0 {
+            case .Failure(let error):
+                self.view.dodo.style.leftButton.icon = .Close
+                self.view.dodo.style.leftButton.onTap = {
+                    self.view.dodo.hide()
+                }
+                self.view.dodo.error(error.message)
+            default:
+                break;
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        aboutButton.center.y = aboutButton.center.y + navigationOffset
-        ticketsButton.center.y = ticketsButton.center.y + navigationOffset
+        if !setupDone {
+            aboutButton.center.y = aboutButton.center.y + navigationOffset
+            ticketsButton.center.y = ticketsButton.center.y + navigationOffset
+        }
     }
     
     override func pageDidAppear() {
-        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true);
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
+        setupDone = true
     }
     
     var oldOffset = CGFloat(0.0)

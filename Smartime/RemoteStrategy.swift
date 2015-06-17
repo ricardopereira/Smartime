@@ -64,6 +64,7 @@ class RemoteStrategy {
     }
     
     func requestTicket(requirements: TicketRequirements) {
+        socket.connect()
         socket.emit(.RequestTicket, withObject: requirements)
     }
     
