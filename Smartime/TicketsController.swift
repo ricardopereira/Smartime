@@ -18,6 +18,7 @@ class TicketsController {
     #endif
     
     let items = MutableProperty<[String:TicketViewModel]>([String:TicketViewModel]())
+    //producer
     
     lazy var remote = RemoteStrategy()
     lazy var local = LocalStrategy()
@@ -30,6 +31,10 @@ class TicketsController {
                 
                 let ticketCall = Ticket(dict: json)
                 var ticket = TicketViewModel(ticketCall)
+                
+                if ticketCall.current == ticket.number.value {
+                    println("É a sua vez!")
+                }
                 
                 // Update
                 if let item = ticketsList[ticketCall.service] {

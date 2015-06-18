@@ -51,6 +51,8 @@ class TicketsViewController: SlidePageViewController {
         
         dataSource.onSelectRow = { item in
             let ticketVC = TicketViewController(nibName: "TicketViewController", bundle: nil)
+            ticketVC.modalPresentationStyle = .OverCurrentContext
+            ticketVC.modalTransitionStyle = .CrossDissolve
             self.showViewController(ticketVC, sender: nil)
             ticketVC.bindViewModel(item)
         }
@@ -136,7 +138,7 @@ class TicketsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
         if let performSelecteRow = onSelectRow {
             performSelecteRow(item: items[indexPath.row])
         }
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
     

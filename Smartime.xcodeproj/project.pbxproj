@@ -20,6 +20,8 @@
 		D72A4F311B03D5CB00B571EB /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72A4F2F1B03D5CB00B571EB /* Result.framework */; };
 		D72A4F321B03D5EE00B571EB /* Box.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D72A4F2D1B03D5CB00B571EB /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D72A4F331B03D5F400B571EB /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D72A4F2F1B03D5CB00B571EB /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D72C9EBC1B33549600777FD9 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72C9EBB1B33549600777FD9 /* BlurView.swift */; };
+		D72C9EBE1B33562C00777FD9 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72C9EBD1B33562C00777FD9 /* SoundPlayer.swift */; };
 		D72CEECD1AF4FCA800D86C38 /* SocketIOPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72CEECC1AF4FCA800D86C38 /* SocketIOPayload.swift */; };
 		D72CEECF1AF5059100D86C38 /* SocketIOJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72CEECE1AF5059100D86C38 /* SocketIOJSON.swift */; };
 		D72CEED11AF5163C00D86C38 /* SocketIOJSONHandshake.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72CEED01AF5163C00D86C38 /* SocketIOJSONHandshake.swift */; };
@@ -112,6 +114,8 @@
 		D72A4F2D1B03D5CB00B571EB /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Box.framework; sourceTree = "<group>"; };
 		D72A4F2F1B03D5CB00B571EB /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
 		D72A4F341B03EF3800B571EB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D72C9EBB1B33549600777FD9 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		D72C9EBD1B33562C00777FD9 /* SoundPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		D72CEECC1AF4FCA800D86C38 /* SocketIOPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOPayload.swift; sourceTree = "<group>"; };
 		D72CEECE1AF5059100D86C38 /* SocketIOJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOJSON.swift; sourceTree = "<group>"; };
 		D72CEED01AF5163C00D86C38 /* SocketIOJSONHandshake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOJSONHandshake.swift; sourceTree = "<group>"; };
@@ -380,6 +384,7 @@
 			children = (
 				D7F7DE4B1B24F32300F26D62 /* TicketContainerView.swift */,
 				D7F7DE4D1B2541BD00F26D62 /* LogoView.swift */,
+				D72C9EBB1B33549600777FD9 /* BlurView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -387,6 +392,7 @@
 		D7BBF3361B3005DC0004FF83 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D72C9EBD1B33562C00777FD9 /* SoundPlayer.swift */,
 				D7F906481B21CC8400C96D7E /* RACExtensions.swift */,
 				D7F906421B20BC4A00C96D7E /* UIColor+Hex.swift */,
 			);
@@ -579,6 +585,7 @@
 				D79540541ACDC3640031354F /* SocketIOPacket.swift in Sources */,
 				D72CEED11AF5163C00D86C38 /* SocketIOJSONHandshake.swift in Sources */,
 				D79540251ACDB74E0031354F /* AppSettings.swift in Sources */,
+				D72C9EBC1B33549600777FD9 /* BlurView.swift in Sources */,
 				D7242B501AD8A3D40015BA96 /* SocketIORequester.swift in Sources */,
 				D766EDDC1B322E7D00B447C5 /* TicketViewController.swift in Sources */,
 				D7F906451B21B68B00C96D7E /* Ticket.swift in Sources */,
@@ -599,6 +606,7 @@
 				D74CDE251AFB9A18006CF7FE /* SocketIOReceiver.swift in Sources */,
 				D7F906431B20BC4A00C96D7E /* UIColor+Hex.swift in Sources */,
 				D74484411B204C3F00E64B39 /* TicketsViewController.swift in Sources */,
+				D72C9EBE1B33562C00777FD9 /* SoundPlayer.swift in Sources */,
 				D795404E1ACDC3640031354F /* SocketIO.swift in Sources */,
 				D7FDABFB1B1F0D8000E8BF2F /* SlidePageViewController.swift in Sources */,
 				D74484431B204C4A00E64B39 /* StatusViewController.swift in Sources */,

@@ -18,7 +18,8 @@ class TicketViewController: UIViewController, ReactiveView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("didTouchClose:"))
+        insertBlurView(view, .Dark).addGestureRecognizer(gestureRecognizer)
     }
     
     func bindViewModel(viewModel: AnyObject) {
@@ -28,6 +29,10 @@ class TicketViewController: UIViewController, ReactiveView {
             currentLabel.rac_text <~ ticketViewModel.current.producer |> map({ "\($0)" })
             numberLabel.rac_text <~ ticketViewModel.number.producer |> map({ "\($0)" })
         }
+    }
+    
+    func didTouchClose(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }

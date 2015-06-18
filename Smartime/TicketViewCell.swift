@@ -25,6 +25,8 @@ class TicketViewCell: UITableViewCell, ReactiveView {
         container.layer.shadowColor = UIColor.blackColor().CGColor
         container.layer.shadowOffset = CGSizeMake(0.0, 0.0)
         container.layer.cornerRadius = 5
+        
+        selectionStyle = UITableViewCellSelectionStyle.None
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
