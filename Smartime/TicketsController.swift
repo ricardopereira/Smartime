@@ -26,14 +26,16 @@ class TicketsController {
         remote.socket.on(.TicketCall) {
             switch $0 {
             case .JSON(let json):
-                println("Ticket call \(json)")
-                var response = self.items.value
+                var ticketsList = self.items.value
                 
                 let ticketCall = Ticket(dict: json)
                 var ticket = TicketViewModel(ticketCall)
                 
-                response[ticketCall.service]?.desk.put(ticket.desk.value)
-                response[ticketCall.service]?.current.put(ticket.current.value)
+                // Update
+                if let item = ticketsList[ticketCall.service] {
+                    item.desk.put(ticket.desk.value)
+                    item.current.put(ticket.current.value)
+                }
             default:
                 break;
             }
@@ -42,12 +44,13 @@ class TicketsController {
         remote.socket.on(.RequestAccepted) {
             switch $0 {
             case .JSON(let json):
-                var response = self.items.value
+                var ticketsList = self.items.value
                 
                 let ticket = Ticket(dict: json)
-                response[ticket.service] = TicketViewModel(ticket)
+                // Add
+                ticketsList[ticket.service] = TicketViewModel(ticket)
                 
-                self.items.put(response)
+                self.items.put(ticketsList)
             default:
                 break
             }
