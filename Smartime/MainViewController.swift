@@ -63,7 +63,7 @@ class MainViewController: SlidePageViewController {
         view.dodo.bottomLayoutGuide = self.bottomLayoutGuide
         
         slider.ticketsCtrl.signalTicketNumberCall.observe(next: { ticket in
-            let alertController = UIAlertController(title: "Senha \(ticket.current)", message: "Chegou a sua vez!\n\n Desloque-se ao:\n Serviço \(ticket.service)\n Balcão \(ticket.desk).", preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "Senha \(ticket.current)", message: "\nChegou a sua vez!\n\n Desloque-se ao:\n Serviço - \(ticket.service)\n Balcão - \(ticket.desk)", preferredStyle: .Alert)
             let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
             alertController.addAction(okAction)
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))

@@ -47,13 +47,14 @@ class TicketsController {
                     
                     // Update
                     if let item = ticketsList[ticketCall.service] {
-                        // Check
-                        if ticketCall.current == item.number.value {
-                            sendNext(sink, ticketCall)
-                        }
-                        
                         item.desk.put(ticket.desk.value)
                         item.current.put(ticket.current.value)
+                        
+                        // Check
+                        if ticketCall.current == item.number.value {
+                            item.called.put(true)
+                            sendNext(sink, ticketCall)
+                        }
                     }
                 default:
                     break;

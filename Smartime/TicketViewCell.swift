@@ -40,6 +40,14 @@ class TicketViewCell: UITableViewCell, ReactiveView {
             serviceLetter.rac_text <~ ticketViewModel.service
             currentText.rac_text <~ ticketViewModel.current.producer |> map({ "\($0)" })
             numberText.rac_text <~ ticketViewModel.number.producer |> map({ "\($0)" })
+            
+            ticketViewModel.called.producer.start(next: { sink in
+                if ticketViewModel.called.value {
+                    UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseInOut | .Autoreverse | .Repeat | .AllowUserInteraction, animations: {
+                            self.container.center = CGPointMake(self.container.center.x, self.container.center.y+10)
+                    }, completion: nil)
+                }
+            })
         }
     }
     

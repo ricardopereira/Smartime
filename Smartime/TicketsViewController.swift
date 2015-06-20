@@ -57,6 +57,10 @@ class TicketsViewController: SlidePageViewController {
             ticketVC.bindViewModel(item)
         }
         
+        slider.ticketsCtrl.signalTicketNumberCall.observe(next: { ticket in
+            
+        })
+        
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         tableView.showsVerticalScrollIndicator = false
         
