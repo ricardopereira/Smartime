@@ -44,11 +44,31 @@ class TicketViewCell: UITableViewCell, ReactiveView {
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        println("Touches began")
+        super.touchesBegan(touches, withEvent: event)
+        container.transform = CGAffineTransformMakeScale(1, 1)
+        
+        UIView.animateWithDuration(0.07, animations: {
+            self.container.transform = CGAffineTransformMakeScale(0.98, 0.98)
+        }) { bool in
+            UIView.animateWithDuration(0.07, animations: {
+                self.container.transform = CGAffineTransformMakeScale(1, 1)
+            })
+        }
+    }
+    
+    override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
+        super.touchesCancelled(touches, withEvent: event)
+        
+    }
+    
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        super.touchesMoved(touches, withEvent: event)
+
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
-        println("Touches ended")
+        super.touchesEnded(touches, withEvent: event)
+        
     }
     
 }

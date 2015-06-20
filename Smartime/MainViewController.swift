@@ -150,7 +150,6 @@ class MainViewController: SlidePageViewController {
     
     func qrCodeResult(reader: QRCodeReaderViewController, data: String) {
         println(data)
-        reader.dismissViewControllerAnimated(true, completion: nil)
         
         let stringToJsonData: String -> NSData? = {
             $0.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
@@ -161,10 +160,13 @@ class MainViewController: SlidePageViewController {
             return NSJSONSerialization.JSONObjectWithData($0, options: .MutableLeaves, error: &err)
         }
         
-        if let json = data >>- stringToJsonData >>- dataToJsonObject >>- { $0 as? NSDictionary } {
-            println(json)
-            showTicketDialog(json)
-        }
+        reader.dismissViewControllerAnimated(true, completion: { () -> Void in
+            // Confirmation
+            if let json = data >>- stringToJsonData >>- dataToJsonObject >>- { $0 as? NSDictionary } {
+                println(json)
+                self.showTicketDialog(json)
+            }
+        })
     }
     
     func showTicketDialog(ticketDemand: NSDictionary) {
@@ -174,12 +176,6 @@ class MainViewController: SlidePageViewController {
         if service.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "" {
             return
         }
-        
-        // Send request
-        let ticketRequirements = TicketRequirements(service: service, terminalId: terminalId, device: self.slider.ticketsCtrl.deviceToken)
-        self.slider.ticketsCtrl.remote.requestTicket(ticketRequirements)
-        
-        return
         
         let alertController = UIAlertController(title: "Senha", message: "Deseja tirar senha para o serviço \"\(service)\"?",
             preferredStyle: UIAlertControllerStyle.Alert)
@@ -195,7 +191,6 @@ class MainViewController: SlidePageViewController {
         alertController.addAction(okAction)
         
         self.showViewController(alertController, sender: nil)
-        //self.presentViewController(alertController, animated: true, completion: nil)
     }
 
 }
