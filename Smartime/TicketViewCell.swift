@@ -43,4 +43,12 @@ class TicketViewCell: UITableViewCell, ReactiveView {
         }
     }
     
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        println("Touches began")
+    }
+    
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        println("Touches ended")
+    }
+    
 }

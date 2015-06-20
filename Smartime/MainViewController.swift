@@ -175,6 +175,12 @@ class MainViewController: SlidePageViewController {
             return
         }
         
+        // Send request
+        let ticketRequirements = TicketRequirements(service: service, terminalId: terminalId, device: self.slider.ticketsCtrl.deviceToken)
+        self.slider.ticketsCtrl.remote.requestTicket(ticketRequirements)
+        
+        return
+        
         let alertController = UIAlertController(title: "Senha", message: "Deseja tirar senha para o serviço \"\(service)\"?",
             preferredStyle: UIAlertControllerStyle.Alert)
         
@@ -189,6 +195,7 @@ class MainViewController: SlidePageViewController {
         alertController.addAction(okAction)
         
         self.showViewController(alertController, sender: nil)
+        //self.presentViewController(alertController, animated: true, completion: nil)
     }
 
 }

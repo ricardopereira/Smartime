@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var info = AppInfo() {
         didSet {
-            println(info.deviceToken)
+            println("Device token: \(info.deviceToken)")
             if var container = window?.rootViewController as? DeviceTokenContainer {
                 container.deviceToken = info.deviceToken
             }
