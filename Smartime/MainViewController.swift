@@ -11,6 +11,7 @@ import QRCodeReader
 import Runes
 import ReactiveCocoa
 import Dodo
+import AudioToolbox
 
 class MainView: UIView {
     
@@ -58,21 +59,24 @@ class MainViewController: SlidePageViewController {
         ticketsButton.addTarget(self, action: Selector("didTouchTickets:"), forControlEvents: .TouchUpInside)
         
         // Setup message bar
-        self.view.dodo.topLayoutGuide = self.topLayoutGuide
-        self.view.dodo.bottomLayoutGuide = self.bottomLayoutGuide
+        view.dodo.topLayoutGuide = self.topLayoutGuide
+        view.dodo.bottomLayoutGuide = self.bottomLayoutGuide
         
-        slider.ticketsCtrl.remote.socket.on(.ConnectError) {
-            switch $0 {
-            case .Failure(let error):
-                self.view.dodo.style.leftButton.icon = .Close
-                self.view.dodo.style.leftButton.onTap = {
-                    self.view.dodo.hide()
-                }
-                self.view.dodo.error(error.message)
-            default:
-                break;
+        slider.ticketsCtrl.signalTicketNumberCall.observe(next: { ticket in
+            let alertController = UIAlertController(title: "Senha \(ticket.current)", message: "Chegou a sua vez!\n\n Desloque-se ao:\n Serviço \(ticket.service)\n Balcão \(ticket.desk).", preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alertController.addAction(okAction)
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            self.showViewController(alertController, sender: nil)
+        })
+        
+        slider.ticketsCtrl.signalRemoteError.observe(next: { error in
+            self.view.dodo.style.leftButton.icon = .Close
+            self.view.dodo.style.leftButton.onTap = {
+                self.view.dodo.hide()
             }
-        }
+            self.view.dodo.error(error.message)
+        })
     }
     
     override func viewDidLayoutSubviews() {

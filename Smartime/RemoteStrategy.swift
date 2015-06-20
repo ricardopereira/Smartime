@@ -40,7 +40,6 @@ class RemoteStrategy {
     }
     
     private func setup() {
-        // TODO: Rethink about this implementation - Multi-socket
         socket.on(.ConnectError) {
             switch $0 {
             case .Failure(let error):
@@ -48,14 +47,19 @@ class RemoteStrategy {
             default:
                 break
             }
-        }.on(.Connected) { (arg: SocketIOArg) -> () in
-                println("Connected")
-        }.on(.Disconnected) {
+        }.on(.TransportError) {
             switch $0 {
-            case .Message(let message):
-                println("Disconnected with no error")
             case .Failure(let error):
-                println("Disconnected with error: \(error)")
+                println("WebSocket error: \(error)")
+            default:
+                break
+            }
+        }.on(.Connected) { result in
+            println("Connected")
+        }.on(.Disconnected) { result in
+            switch result {
+            case .Message(let reason):
+                println("Disconnected: \(reason)")
             default:
                 break
             }

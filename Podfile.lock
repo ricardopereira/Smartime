@@ -2,15 +2,18 @@ PODS:
   - Dodo (1.0.17)
   - QRCodeReader (1.2)
   - Runes (2.0.0)
+  - SwiftWebSocket (0.1.18)
 
 DEPENDENCIES:
   - Dodo (~> 1.0)
   - QRCodeReader
-  - Runes
+  - Runes (= 2.0.0)
+  - SwiftWebSocket (= 0.1.18)
 
 SPEC CHECKSUMS:
   Dodo: aa09eb067d7dbed1d55243fc05feeb4cc1c49ce3
   QRCodeReader: be8d663cd428ab4cc2583ef568b93f8e9462e43e
   Runes: 4fe81355f4620b76b02176222d264b33e60dba51
+  SwiftWebSocket: 75f471494224a42ce20ead7a710b7c65607a0a9b
 
 COCOAPODS: 0.37.2

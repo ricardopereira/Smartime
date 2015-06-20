@@ -9,43 +9,6 @@
 import Foundation
 import ReactiveCocoa
 
-
-func createSignalProducer() -> SignalProducer<String, NoError> {
-    var count = 0
-    return SignalProducer { sink, disposable in
-        println("Creating the timer signal producer")
-        
-        println("Emitting a next event")
-        for _ in 1...3 {
-            delay(3) {
-                sendNext(sink, "tick #\(count++)")
-            }
-        }
-    }
-}
-
-func createSignal() -> Signal<String, NoError> {
-    var count = 0
-    return Signal { sink in
-        for _ in 1...6 {
-            delay(3) {
-                sendNext(sink, "tick #\(count++)")
-            }
-        }
-        return nil
-    }
-}
-
-public func delay(delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
-}
-
-
 class TicketsController {
     
     #if (arch(i386) || arch(x86_64)) && os(iOS)
@@ -54,22 +17,25 @@ class TicketsController {
     var deviceToken: String = ""
     #endif
     
-    let items = MutableProperty<[String:TicketViewModel]>([String:TicketViewModel]())
-    
-    // Test
-    let producer: SignalProducer<String, NoError>
-    var singalA: Signal<String, NoError>!
-    
     lazy var remote = RemoteStrategy()
     lazy var local = LocalStrategy()
     
+    let items = MutableProperty<[String:TicketViewModel]>([String:TicketViewModel]())
+    
+    // RAC Signals
+    private var _signalTicketNumberCall: Signal<Ticket, NoError>!
+    private var _signalRemoteError: Signal<SocketIOError, NoError>!
+    
+    var signalTicketNumberCall: Signal<Ticket, NoError> {
+        return _signalTicketNumberCall
+    }
+    
+    var signalRemoteError: Signal<SocketIOError, NoError> {
+        return _signalRemoteError
+    }
+    
     init() {
-        producer = createSignalProducer()
-        //producer.start(next: { println("First \($0)") })
-        //producer.start(next: { println("Second \($0)") })
-        
-        singalA = Signal() { sink in
-            println("First time")
+        _signalTicketNumberCall = Signal() { sink in
             
             self.remote.socket.on(.TicketCall) {
                 switch $0 {
@@ -83,8 +49,7 @@ class TicketsController {
                     if let item = ticketsList[ticketCall.service] {
                         // Check
                         if ticketCall.current == item.number.value {
-                            println("É a sua vez!")
-                            sendNext(sink, "tick")
+                            sendNext(sink, ticketCall)
                         }
                         
                         item.desk.put(ticket.desk.value)
@@ -97,7 +62,27 @@ class TicketsController {
             
             return nil
         }
-        singalA.observe(next: { println($0) })
+        
+        _signalRemoteError = Signal() { sink in
+        
+            self.remote.socket.on(.ConnectError) {
+                switch $0 {
+                case .Failure(let error):
+                    sendNext(sink, error)
+                default:
+                    break;
+                }
+            }.on(.TransportError) {
+                switch $0 {
+                case .Failure(let error):
+                    sendNext(sink, error)
+                default:
+                    break;
+                }
+            }
+            
+            return nil
+        }
         
         remote.socket.on(.RequestAccepted) {
             switch $0 {
