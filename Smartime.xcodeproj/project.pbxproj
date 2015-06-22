@@ -10,6 +10,7 @@
 		41DF314FC830DC420A089E06 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49170C4ED90C3D4636821898 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D718D1E21B2F626100F3B529 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718D1E11B2F626100F3B529 /* AppInfo.swift */; };
 		D718D1E41B2F79E500F3B529 /* RemoteStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718D1E31B2F79E300F3B529 /* RemoteStrategy.swift */; };
+		D72404AD1B3804A9000742D5 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72404AC1B3804A9000742D5 /* Misc.swift */; };
 		D7242B4C1AD825F00015BA96 /* SocketIOEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B4B1AD825F00015BA96 /* SocketIOEvent.swift */; };
 		D7242B501AD8A3D40015BA96 /* SocketIORequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B4F1AD8A3D40015BA96 /* SocketIORequester.swift */; };
 		D7242B531AD95F040015BA96 /* NSURL+TrailingSlash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B521AD95F040015BA96 /* NSURL+TrailingSlash.swift */; };
@@ -63,7 +64,6 @@
 		D7F7DE4E1B2541BE00F26D62 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F7DE4D1B2541BD00F26D62 /* LogoView.swift */; };
 		D7F906401B20AF0700C96D7E /* TicketViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9063E1B20AF0700C96D7E /* TicketViewCell.swift */; };
 		D7F906411B20AF0700C96D7E /* TicketViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7F9063F1B20AF0700C96D7E /* TicketViewCell.xib */; };
-		D7F906431B20BC4A00C96D7E /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F906421B20BC4A00C96D7E /* UIColor+Hex.swift */; };
 		D7F906451B21B68B00C96D7E /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F906441B21B68A00C96D7E /* Ticket.swift */; };
 		D7F906471B21B6A600C96D7E /* TicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F906461B21B6A600C96D7E /* TicketViewModel.swift */; };
 		D7F906491B21CC8400C96D7E /* RACExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F906481B21CC8400C96D7E /* RACExtensions.swift */; };
@@ -104,6 +104,7 @@
 		D2257D97EC160B10468A01A6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D718D1E11B2F626100F3B529 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		D718D1E31B2F79E300F3B529 /* RemoteStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteStrategy.swift; sourceTree = "<group>"; };
+		D72404AC1B3804A9000742D5 /* Misc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
 		D7242B4B1AD825F00015BA96 /* SocketIOEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOEvent.swift; sourceTree = "<group>"; };
 		D7242B4F1AD8A3D40015BA96 /* SocketIORequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIORequester.swift; sourceTree = "<group>"; };
 		D7242B521AD95F040015BA96 /* NSURL+TrailingSlash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+TrailingSlash.swift"; sourceTree = "<group>"; };
@@ -158,7 +159,6 @@
 		D7F7DE4D1B2541BD00F26D62 /* LogoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		D7F9063E1B20AF0700C96D7E /* TicketViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewCell.swift; sourceTree = "<group>"; };
 		D7F9063F1B20AF0700C96D7E /* TicketViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketViewCell.xib; sourceTree = "<group>"; };
-		D7F906421B20BC4A00C96D7E /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		D7F906441B21B68A00C96D7E /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		D7F906461B21B6A600C96D7E /* TicketViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewModel.swift; sourceTree = "<group>"; };
 		D7F906481B21CC8400C96D7E /* RACExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACExtensions.swift; sourceTree = "<group>"; };
@@ -386,9 +386,9 @@
 		D7BBF3361B3005DC0004FF83 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D72C9EBD1B33562C00777FD9 /* SoundPlayer.swift */,
 				D7F906481B21CC8400C96D7E /* RACExtensions.swift */,
-				D7F906421B20BC4A00C96D7E /* UIColor+Hex.swift */,
+				D72C9EBD1B33562C00777FD9 /* SoundPlayer.swift */,
+				D72404AC1B3804A9000742D5 /* Misc.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -579,6 +579,7 @@
 				D79540251ACDB74E0031354F /* AppSettings.swift in Sources */,
 				D72C9EBC1B33549600777FD9 /* BlurView.swift in Sources */,
 				D7242B501AD8A3D40015BA96 /* SocketIORequester.swift in Sources */,
+				D72404AD1B3804A9000742D5 /* Misc.swift in Sources */,
 				D766EDDC1B322E7D00B447C5 /* TicketViewController.swift in Sources */,
 				D7F906451B21B68B00C96D7E /* Ticket.swift in Sources */,
 				D7F906491B21CC8400C96D7E /* RACExtensions.swift in Sources */,
@@ -596,7 +597,6 @@
 				D795404F1ACDC3640031354F /* SocketIOCallback.swift in Sources */,
 				D769DA291B02A68B00606FB4 /* SocketIOObject.swift in Sources */,
 				D74CDE251AFB9A18006CF7FE /* SocketIOReceiver.swift in Sources */,
-				D7F906431B20BC4A00C96D7E /* UIColor+Hex.swift in Sources */,
 				D74484411B204C3F00E64B39 /* TicketsViewController.swift in Sources */,
 				D72C9EBE1B33562C00777FD9 /* SoundPlayer.swift in Sources */,
 				D795404E1ACDC3640031354F /* SocketIO.swift in Sources */,
