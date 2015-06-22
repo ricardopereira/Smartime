@@ -17,7 +17,7 @@ class TicketViewModel: NSObject {
     internal let desk: MutableProperty<String>
     internal let number: ConstantProperty<Int>
     internal let current: MutableProperty<Int>
-    internal let called: MutableProperty<Bool>
+    internal let calling: MutableProperty<Bool>
     internal var new = true
     
     init(_ ticket: Ticket) {
@@ -27,7 +27,11 @@ class TicketViewModel: NSObject {
         desk = MutableProperty(ticket.desk)
         number = ConstantProperty(ticket.number)
         current = MutableProperty(ticket.current)
-        called = MutableProperty(false)
+        calling = MutableProperty(false)
+    }
+    
+    var called: Bool {
+        return ticket.current >= ticket.number
     }
     
 }

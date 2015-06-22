@@ -38,15 +38,20 @@ class TicketViewCell: UITableViewCell, ReactiveView {
     func bindViewModel(viewModel: AnyObject) {
         if let ticketViewModel = viewModel as? TicketViewModel {
             serviceLetter.rac_text <~ ticketViewModel.service
-            currentText.rac_text <~ ticketViewModel.current.producer |> map({ "\($0)" })
-            numberText.rac_text <~ ticketViewModel.number.producer |> map({ "\($0)" })
+            currentText.rac_text <~ ticketViewModel.current.producer |> map({ String(format: "%03d", $0) })
+            numberText.rac_text <~ ticketViewModel.number.producer |> map({ String(format: "%03d", $0) })
             
-            // Cell bouncing when it's your turn
-            ticketViewModel.called.producer.start(next: { sink in
-                if ticketViewModel.called.value {
+            ticketViewModel.calling.producer.start(next: { sink in
+                if ticketViewModel.calling.value {
+                    // Cell bouncing when it's your turn
                     UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseInOut | .Autoreverse | .Repeat | .AllowUserInteraction, animations: {
                             self.container.center = CGPointMake(self.container.center.x, self.container.center.y+8)
-                    }, completion: nil)
+                    }, completion: { finished in
+                        println("Animation finished")
+                    })
+                }
+                else {
+                    self.container.layer.removeAllAnimations()
                 }
             })
         }

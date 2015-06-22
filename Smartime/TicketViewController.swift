@@ -26,8 +26,8 @@ class TicketViewController: UIViewController, ReactiveView {
         if let ticketViewModel = viewModel as? TicketViewModel {
             serviceLabel.rac_text <~ ticketViewModel.service
             deskLabel.rac_text <~ ticketViewModel.desk
-            currentLabel.rac_text <~ ticketViewModel.current.producer |> map({ "\($0)" })
-            numberLabel.rac_text <~ ticketViewModel.number.producer |> map({ "\($0)" })
+            currentLabel.rac_text <~ ticketViewModel.current.producer |> map({ String(format: "%03d", $0) })
+            numberLabel.rac_text <~ ticketViewModel.number.producer |> map({ String(format: "%03d", $0) })
         }
     }
     

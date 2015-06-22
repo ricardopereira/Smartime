@@ -54,6 +54,7 @@ class TicketsViewController: SlidePageViewController {
             ticketVC.modalPresentationStyle = .OverCurrentContext
             ticketVC.modalTransitionStyle = .CrossDissolve
             self.showViewController(ticketVC, sender: nil)
+            item.calling.put(false)
             ticketVC.bindViewModel(item)
         }
         

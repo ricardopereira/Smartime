@@ -28,20 +28,44 @@ class TicketsController {
     let items = MutableProperty<[String:TicketViewModel]>([String:TicketViewModel]())
         
     init() {
-        // Signals
+        setupSignals()
+        observeRemoteSignals()
+    }
+    
+    func observeRemoteSignals() {
+        remote.signalTicketRequestAccepted.observe { ticket in
+            var ticketsList = self.items.value
+            // Add new ticket
+            ticketsList[ticket.service] = TicketViewModel(ticket)
+            self.items.put(ticketsList)
+        }
+    }
+    
+    
+    //MARK: ReactiveCocoa Signals
+    
+    var signalTicketNumberCall: Signal<Ticket, NoError> {
+        return _signalTicketNumberCall
+    }
+    
+    var signalError: Signal<String, NoError> {
+        return _signalError
+    }
+    
+    func setupSignals() {
         _signalTicketNumberCall = Signal() { sink in
             self.remote.signalTicketCall.observe { ticket in
                 var ticketsList = self.items.value
                 var ticketCall = TicketViewModel(ticket)
                 
-                // Update
                 if let item = ticketsList[ticket.service] {
+                    // Update ticket
                     item.desk.put(ticketCall.desk.value)
                     item.current.put(ticketCall.current.value)
                     
-                    // Check
+                    // Check ticket number call
                     if ticket.current == item.number.value {
-                        item.called.put(true)
+                        item.calling.put(true)
                         // Emit
                         sendNext(sink, ticket)
                     }
@@ -57,24 +81,6 @@ class TicketsController {
             }
             return nil
         }
-        
-        remote.signalTicketRequestAccepted.observe { ticket in
-            var ticketsList = self.items.value
-            // Add
-            ticketsList[ticket.service] = TicketViewModel(ticket)
-            self.items.put(ticketsList)
-        }
-    }
-    
-    
-    //MARK: ReactiveCocoa Signals
-    
-    var signalTicketNumberCall: Signal<Ticket, NoError> {
-        return _signalTicketNumberCall
-    }
-    
-    var signalError: Signal<String, NoError> {
-        return _signalError
     }
 
 }
