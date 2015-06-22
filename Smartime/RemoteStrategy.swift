@@ -20,6 +20,7 @@ enum AppEvents: String, Printable {
     case TicketCall = "ticket-call"
     case RequestTicket = "request"
     case RequestAccepted = "accepted"
+    case Advertisement = "ad"
     
     var description: String {
         return self.rawValue

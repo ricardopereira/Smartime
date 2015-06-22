@@ -30,15 +30,4 @@ class TicketViewModel: NSObject {
         called = MutableProperty(false)
     }
     
-    var currentAsString: String {
-        get {
-            return String(current.value)
-        }
-        set(value) {
-            if let intValue = value.toInt() {
-                current.put(intValue)
-            }
-        }
-    }
-    
 }

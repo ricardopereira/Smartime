@@ -8,6 +8,7 @@
 
 import Foundation
 import ReactiveCocoa
+import Runes
 
 class TicketsController {
     
@@ -97,6 +98,17 @@ class TicketsController {
                 self.items.put(ticketsList)
             default:
                 break
+            }
+        }
+        
+        remote.socket.on(.Advertisement) {
+            switch $0 {
+            case .JSON(let json):
+                if let image = json["buffer"] as? String >>- SocketIOUtilities.base64EncodedStringToUIImage {
+                    println(image)
+                }
+            default:
+                println("Not supported")
             }
         }
     }
