@@ -12,6 +12,7 @@ import ReactiveCocoa
 class TicketViewCell: UITableViewCell, ReactiveView {
 
     @IBOutlet weak var serviceLetter: UILabel!
+    @IBOutlet weak var deskLabel: UILabel!
     @IBOutlet weak var currentText: UILabel!
     @IBOutlet weak var numberText: UILabel!
     @IBOutlet weak var container: UIImageView!
@@ -38,6 +39,7 @@ class TicketViewCell: UITableViewCell, ReactiveView {
     func bindViewModel(viewModel: AnyObject) {
         if let ticketViewModel = viewModel as? TicketViewModel {
             serviceLetter.rac_text <~ ticketViewModel.service
+            deskLabel.rac_text <~ ticketViewModel.desk.producer |> map({ $0.isEmpty ? "" : "Balcão \($0)" })
             currentText.rac_text <~ ticketViewModel.current.producer |> map({ String(format: "%03d", $0) })
             numberText.rac_text <~ ticketViewModel.number.producer |> map({ String(format: "%03d", $0) })
             
