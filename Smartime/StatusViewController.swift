@@ -9,11 +9,9 @@
 import UIKit
 
 class AboutView: UIView {
-    
     override func drawRect(rect: CGRect) {
         StyleKit.drawAbout(frame: self.bounds)
     }
-    
 }
 
 class StatusViewController: SlidePageViewController {

@@ -23,6 +23,7 @@ class TicketsController {
     
     // ReactiveCocoa Signals
     private var _signalTicketNumberCall: Signal<Ticket, NoError>!
+    private var _signalAdvertisement: Signal<UIImage, NoError>!
     private var _signalError: Signal<String, NoError>!
     
     let items = MutableProperty<[String:TicketViewModel]>([String:TicketViewModel]())
@@ -48,6 +49,10 @@ class TicketsController {
         return _signalTicketNumberCall
     }
     
+    var signalAdvertisement: Signal<UIImage, NoError> {
+        return _signalAdvertisement
+    }
+    
     var signalError: Signal<String, NoError> {
         return _signalError
     }
@@ -70,6 +75,14 @@ class TicketsController {
                         sendNext(sink, ticket)
                     }
                 }
+            }
+            return nil
+        }
+        
+        _signalAdvertisement = Signal() { sink in
+            self.remote.signalNewAdvertisement.observe { image in
+                // Emit
+                sendNext(sink, image)
             }
             return nil
         }

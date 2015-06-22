@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Ricardo Pereira. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import Runes
 import ReactiveCocoa
 

@@ -14,11 +14,9 @@ import Dodo
 import AudioToolbox
 
 class MainView: UIView {
-    
     override func drawRect(rect: CGRect) {
         StyleKit.drawMain(frame: self.bounds)
     }
-    
 }
 
 class MainViewController: SlidePageViewController {
@@ -57,7 +55,7 @@ class MainViewController: SlidePageViewController {
         qrCodeButton.addTarget(self, action: Selector("didTouchQRCode:"), forControlEvents: .TouchUpInside)
         aboutButton.addTarget(self, action: Selector("didTouchAbout:"), forControlEvents: .TouchUpInside)
         ticketsButton.addTarget(self, action: Selector("didTouchTickets:"), forControlEvents: .TouchUpInside)
-        
+                
         // Setup message bar
         view.dodo.topLayoutGuide = self.topLayoutGuide
         view.dodo.bottomLayoutGuide = self.bottomLayoutGuide
@@ -92,6 +90,15 @@ class MainViewController: SlidePageViewController {
                 self.view.dodo.hide()
             }
             self.view.dodo.error(messageError)
+        }
+        
+        slider.ticketsCtrl.signalAdvertisement.observe { image in
+            delay(3) {
+                let adVC = AdViewController(ad: image)
+                adVC.modalPresentationStyle = .OverCurrentContext
+                adVC.modalTransitionStyle = .CrossDissolve
+                self.showViewController(adVC, sender: nil)
+            }
         }
     }
     

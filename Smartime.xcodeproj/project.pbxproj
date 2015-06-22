@@ -59,6 +59,8 @@
 		D7BBF3331B3003B10004FF83 /* TicketRequirements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BBF3321B3003B00004FF83 /* TicketRequirements.swift */; };
 		D7BBF3381B300C640004FF83 /* LocalStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BBF3371B300C640004FF83 /* LocalStrategy.swift */; };
 		D7C604A71AE56241004342CE /* SocketIOEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C604A61AE56241004342CE /* SocketIOEmitter.swift */; };
+		D7CE6B6A1B38554900374E20 /* AdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CE6B681B38554900374E20 /* AdViewController.swift */; };
+		D7CE6B6B1B38554900374E20 /* AdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7CE6B691B38554900374E20 /* AdViewController.xib */; };
 		D7EFA9091AFE766D00623A16 /* FLXView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFA9081AFE766D00623A16 /* FLXView.framework */; };
 		D7EFA90B1AFE795600623A16 /* FLXView.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7EFA9081AFE766D00623A16 /* FLXView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7F7DE4C1B24F32400F26D62 /* TicketContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F7DE4B1B24F32300F26D62 /* TicketContainerView.swift */; };
@@ -156,6 +158,8 @@
 		D7BBF3321B3003B00004FF83 /* TicketRequirements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketRequirements.swift; sourceTree = "<group>"; };
 		D7BBF3371B300C640004FF83 /* LocalStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStrategy.swift; sourceTree = "<group>"; };
 		D7C604A61AE56241004342CE /* SocketIOEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOEmitter.swift; sourceTree = "<group>"; };
+		D7CE6B681B38554900374E20 /* AdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdViewController.swift; sourceTree = "<group>"; };
+		D7CE6B691B38554900374E20 /* AdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdViewController.xib; sourceTree = "<group>"; };
 		D7EFA9081AFE766D00623A16 /* FLXView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FLXView.framework; sourceTree = "<group>"; };
 		D7F7DE4B1B24F32300F26D62 /* TicketContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketContainerView.swift; sourceTree = "<group>"; };
 		D7F7DE4D1B2541BD00F26D62 /* LogoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
@@ -231,6 +235,8 @@
 				D74484371B1FF35C00E64B39 /* Slider.storyboard */,
 				D766EDDA1B322E7D00B447C5 /* TicketViewController.swift */,
 				D766EDDB1B322E7D00B447C5 /* TicketViewController.xib */,
+				D7CE6B681B38554900374E20 /* AdViewController.swift */,
+				D7CE6B691B38554900374E20 /* AdViewController.xib */,
 				D7F9063E1B20AF0700C96D7E /* TicketViewCell.swift */,
 				D7F9063F1B20AF0700C96D7E /* TicketViewCell.xib */,
 			);
@@ -547,6 +553,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D795400C1ACDB4B50031354F /* Images.xcassets in Resources */,
+				D7CE6B6B1B38554900374E20 /* AdViewController.xib in Resources */,
 				D72404B41B381CF4000742D5 /* TicketCall.wav in Resources */,
 				D7F906411B20AF0700C96D7E /* TicketViewCell.xib in Resources */,
 				D766EDDD1B322E7D00B447C5 /* TicketViewController.xib in Resources */,
@@ -618,6 +625,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7CE6B6A1B38554900374E20 /* AdViewController.swift in Sources */,
 				D7428BC31B235FC000E0CD5A /* StyleKit.swift in Sources */,
 				D79540561ACDC3640031354F /* SocketIOTransport.swift in Sources */,
 				D7A8540C1AF6258B0043AC4E /* SocketIOError.swift in Sources */,

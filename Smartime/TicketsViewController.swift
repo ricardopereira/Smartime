@@ -10,11 +10,9 @@ import UIKit
 import ReactiveCocoa
 
 class TicketsTableView: UITableView {
-    
     override func drawRect(rect: CGRect) {
         StyleKit.drawCover(frame: self.bounds)
     }
-    
 }
 
 class TicketsViewController: SlidePageViewController {
@@ -37,6 +35,8 @@ class TicketsViewController: SlidePageViewController {
         
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        tableView.showsVerticalScrollIndicator = false
         
         dataSource.onNewTicket = { cell in
             //Animate entrance cell
@@ -57,9 +57,6 @@ class TicketsViewController: SlidePageViewController {
             item.calling.put(false)
             ticketVC.bindViewModel(item)
         }
-        
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        tableView.showsVerticalScrollIndicator = false
         
         // Reactive
         sourceSignal.start(next: { data in
