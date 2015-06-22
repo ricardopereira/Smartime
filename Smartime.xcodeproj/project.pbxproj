@@ -11,6 +11,7 @@
 		D718D1E21B2F626100F3B529 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718D1E11B2F626100F3B529 /* AppInfo.swift */; };
 		D718D1E41B2F79E500F3B529 /* RemoteStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718D1E31B2F79E300F3B529 /* RemoteStrategy.swift */; };
 		D72404AD1B3804A9000742D5 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72404AC1B3804A9000742D5 /* Misc.swift */; };
+		D72404B41B381CF4000742D5 /* TicketCall.wav in Resources */ = {isa = PBXBuildFile; fileRef = D72404B31B381CF4000742D5 /* TicketCall.wav */; };
 		D7242B4C1AD825F00015BA96 /* SocketIOEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B4B1AD825F00015BA96 /* SocketIOEvent.swift */; };
 		D7242B501AD8A3D40015BA96 /* SocketIORequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B4F1AD8A3D40015BA96 /* SocketIORequester.swift */; };
 		D7242B531AD95F040015BA96 /* NSURL+TrailingSlash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7242B521AD95F040015BA96 /* NSURL+TrailingSlash.swift */; };
@@ -105,6 +106,7 @@
 		D718D1E11B2F626100F3B529 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		D718D1E31B2F79E300F3B529 /* RemoteStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteStrategy.swift; sourceTree = "<group>"; };
 		D72404AC1B3804A9000742D5 /* Misc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
+		D72404B31B381CF4000742D5 /* TicketCall.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TicketCall.wav; sourceTree = "<group>"; };
 		D7242B4B1AD825F00015BA96 /* SocketIOEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOEvent.swift; sourceTree = "<group>"; };
 		D7242B4F1AD8A3D40015BA96 /* SocketIORequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIORequester.swift; sourceTree = "<group>"; };
 		D7242B521AD95F040015BA96 /* NSURL+TrailingSlash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+TrailingSlash.swift"; sourceTree = "<group>"; };
@@ -199,6 +201,68 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D72404AE1B3805EF000742D5 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D718D1E31B2F79E300F3B529 /* RemoteStrategy.swift */,
+				D7BBF3371B300C640004FF83 /* LocalStrategy.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		D72404AF1B380651000742D5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D7F9064A1B21F15A00C96D7E /* TicketsController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D72404B01B380809000742D5 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				D7FDABFA1B1F0D8000E8BF2F /* SlideViewController.swift */,
+				D7FDABF91B1F0D8000E8BF2F /* SlidePageViewController.swift */,
+				D79540261ACDB9EF0031354F /* MainViewController.swift */,
+				D725E7291B21F7EE00486F0F /* MainViewController.xib */,
+				D74484421B204C4A00E64B39 /* StatusViewController.swift */,
+				D7428BC41B236CED00E0CD5A /* StatusViewController.xib */,
+				D74484401B204C3F00E64B39 /* TicketsViewController.swift */,
+				D74484371B1FF35C00E64B39 /* Slider.storyboard */,
+				D766EDDA1B322E7D00B447C5 /* TicketViewController.swift */,
+				D766EDDB1B322E7D00B447C5 /* TicketViewController.xib */,
+				D7F9063E1B20AF0700C96D7E /* TicketViewCell.swift */,
+				D7F9063F1B20AF0700C96D7E /* TicketViewCell.xib */,
+			);
+			name = Features;
+			sourceTree = "<group>";
+		};
+		D72404B11B380821000742D5 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D79540041ACDB4B50031354F /* AppDelegate.swift */,
+				D79540241ACDB74E0031354F /* AppSettings.swift */,
+				D718D1E11B2F626100F3B529 /* AppInfo.swift */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		D72404B21B380847000742D5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D7F906461B21B6A600C96D7E /* TicketViewModel.swift */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		D72404B51B381CF9000742D5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D72404B31B381CF4000742D5 /* TicketCall.wav */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		D7242B511AD95F040015BA96 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,30 +322,17 @@
 		D79540011ACDB4B50031354F /* Smartime */ = {
 			isa = PBXGroup;
 			children = (
-				D79540041ACDB4B50031354F /* AppDelegate.swift */,
-				D79540241ACDB74E0031354F /* AppSettings.swift */,
-				D718D1E11B2F626100F3B529 /* AppInfo.swift */,
-				D7F9064A1B21F15A00C96D7E /* TicketsController.swift */,
-				D718D1E31B2F79E300F3B529 /* RemoteStrategy.swift */,
-				D7BBF3371B300C640004FF83 /* LocalStrategy.swift */,
-				D7FDABFA1B1F0D8000E8BF2F /* SlideViewController.swift */,
-				D7FDABF91B1F0D8000E8BF2F /* SlidePageViewController.swift */,
-				D79540261ACDB9EF0031354F /* MainViewController.swift */,
-				D725E7291B21F7EE00486F0F /* MainViewController.xib */,
-				D74484421B204C4A00E64B39 /* StatusViewController.swift */,
-				D7428BC41B236CED00E0CD5A /* StatusViewController.xib */,
-				D74484401B204C3F00E64B39 /* TicketsViewController.swift */,
-				D74484371B1FF35C00E64B39 /* Slider.storyboard */,
-				D766EDDA1B322E7D00B447C5 /* TicketViewController.swift */,
-				D766EDDB1B322E7D00B447C5 /* TicketViewController.xib */,
-				D7F906461B21B6A600C96D7E /* TicketViewModel.swift */,
-				D7F9063E1B20AF0700C96D7E /* TicketViewCell.swift */,
-				D7F9063F1B20AF0700C96D7E /* TicketViewCell.xib */,
+				D72404B11B380821000742D5 /* App */,
+				D72404B01B380809000742D5 /* Features */,
 				D7BBF3341B30055E0004FF83 /* Models */,
+				D72404AF1B380651000742D5 /* Controllers */,
+				D72404B21B380847000742D5 /* ViewModels */,
+				D72404AE1B3805EF000742D5 /* Data */,
 				D7BBF3351B30057D0004FF83 /* Views */,
 				D7BBF3361B3005DC0004FF83 /* Extensions */,
 				D7428BC21B235FC000E0CD5A /* StyleKit.swift */,
 				D795400B1ACDB4B50031354F /* Images.xcassets */,
+				D72404B51B381CF9000742D5 /* Resources */,
 				D79540021ACDB4B50031354F /* Supporting Files */,
 			);
 			path = Smartime;
@@ -496,6 +547,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D795400C1ACDB4B50031354F /* Images.xcassets in Resources */,
+				D72404B41B381CF4000742D5 /* TicketCall.wav in Resources */,
 				D7F906411B20AF0700C96D7E /* TicketViewCell.xib in Resources */,
 				D766EDDD1B322E7D00B447C5 /* TicketViewController.xib in Resources */,
 				D74484381B1FF35C00E64B39 /* Slider.storyboard in Resources */,

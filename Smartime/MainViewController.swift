@@ -62,21 +62,7 @@ class MainViewController: SlidePageViewController {
         view.dodo.topLayoutGuide = self.topLayoutGuide
         view.dodo.bottomLayoutGuide = self.bottomLayoutGuide
         
-        slider.ticketsCtrl.signalTicketNumberCall.observe(next: { ticket in
-            let alertController = UIAlertController(title: "Senha \(ticket.current)", message: "\nChegou a sua vez!\n\n Desloque-se ao:\n Serviço - \(ticket.service)\n Balcão - \(ticket.desk)", preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            alertController.addAction(okAction)
-            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-            self.showViewController(alertController, sender: nil)
-        })
-        
-        slider.ticketsCtrl.signalRemoteError.observe(next: { error in
-            self.view.dodo.style.leftButton.icon = .Close
-            self.view.dodo.style.leftButton.onTap = {
-                self.view.dodo.hide()
-            }
-            self.view.dodo.error(error.message)
-        })
+        observeSignals()
     }
     
     override func viewDidLayoutSubviews() {
@@ -87,69 +73,26 @@ class MainViewController: SlidePageViewController {
         }
     }
     
-    override func pageDidAppear() {
-        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
-        setupDone = true
-    }
     
-    var oldOffset = CGFloat(0.0)
+    // MARK: Features
     
-    override func pageDidScroll(position: CGFloat, offset: CGFloat) {
-        let yOffset: CGFloat
-        
-        //println("Position:\(position) Offset:\(offset) Old:\(oldOffset)")
-        
-        // 0->1 -50 - Offset:1.0 Position:320.0 - Offset > Old
-        // 1<-0 +50 - Offset:0.0 Position:0.0 - Offset < Old
-        // 1->2 +50 - Offset:1.99 Position:639.5 - Offset > Old
-        // 2->1 -50 - Offset:1.0 Position:320.0 - Offset < Old
-        
-        if offset > oldOffset && offset > 0 && offset <= 1 {
-            // 0->1
-            yOffset = (oldOffset - offset) * navigationOffset
-        }
-        else if offset < oldOffset && offset > 0 && offset <= 1 {
-            // 1<-0
-            yOffset = (oldOffset - offset) * navigationOffset
-        }
-        else if offset > oldOffset && offset > 1 && offset <= 2 {
-            // 1->2
-            yOffset = (offset - oldOffset) * navigationOffset
-        }
-        else if offset < oldOffset && offset > 1 && offset <= 2 {
-            // 2->1
-            yOffset = (offset - oldOffset) * navigationOffset
-        }
-        else {
-            yOffset = 0
+    func observeSignals() {
+        slider.ticketsCtrl.signalTicketNumberCall.observe { ticket in
+            let alertController = UIAlertController(title: "Senha \(ticket.current)", message: "\nChegou a sua vez!\n\n Desloque-se ao:\n Serviço - \(ticket.service)\n Balcão - \(ticket.desk)", preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alertController.addAction(okAction)
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            SoundPlayer().playSound("TicketCall.wav")
+            self.showViewController(alertController, sender: nil)
         }
         
-        aboutButton.center.y = aboutButton.center.y + yOffset
-        ticketsButton.center.y = ticketsButton.center.y + yOffset
-        
-        oldOffset = offset
-    }
-    
-    func didTouchQRCode(sender: AnyObject?) {        
-        #if (arch(i386) || arch(x86_64)) && os(iOS)
-            // Simulator: test
-            showTicketDialog(["service":"A"])
-        #else
-            let reader = QRCodeReaderViewController()
-            reader.resultCallback = qrCodeResult
-            reader.cancelCallback = {
-                $0.dismissViewControllerAnimated(true, completion: nil)
+        slider.ticketsCtrl.signalError.observe { messageError in
+            self.view.dodo.style.leftButton.icon = .Close
+            self.view.dodo.style.leftButton.onTap = {
+                self.view.dodo.hide()
             }
-            self.showViewController(reader, sender: nil)
-        #endif
-    }
-    
-    func didTouchAbout(sender: AnyObject?) {
-        slider.prevPage()
-    }
-    
-    func didTouchTickets(sender: AnyObject?) {
-        slider.nextPage()
+            self.view.dodo.error(messageError)
+        }
     }
     
     func qrCodeResult(reader: QRCodeReaderViewController, data: String) {
@@ -195,6 +138,77 @@ class MainViewController: SlidePageViewController {
         alertController.addAction(okAction)
         
         self.showViewController(alertController, sender: nil)
+    }
+    
+    
+    // MARK: Actions
+    
+    func didTouchQRCode(sender: AnyObject?) {
+        #if (arch(i386) || arch(x86_64)) && os(iOS)
+            // Simulator: test
+            showTicketDialog(["service":"A"])
+            #else
+            let reader = QRCodeReaderViewController()
+            reader.resultCallback = qrCodeResult
+            reader.cancelCallback = {
+            $0.dismissViewControllerAnimated(true, completion: nil)
+            }
+            self.showViewController(reader, sender: nil)
+        #endif
+    }
+    
+    func didTouchAbout(sender: AnyObject?) {
+        slider.prevPage()
+    }
+    
+    func didTouchTickets(sender: AnyObject?) {
+        slider.nextPage()
+    }
+    
+    
+    // MARK: Slider Page
+    
+    override func pageDidAppear() {
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
+        setupDone = true
+    }
+    
+    var oldOffset = CGFloat(0.0)
+    
+    override func pageDidScroll(position: CGFloat, offset: CGFloat) {
+        let yOffset: CGFloat
+        
+        //println("Position:\(position) Offset:\(offset) Old:\(oldOffset)")
+        
+        // 0->1 -50 - Offset:1.0 Position:320.0 - Offset > Old
+        // 1<-0 +50 - Offset:0.0 Position:0.0 - Offset < Old
+        // 1->2 +50 - Offset:1.99 Position:639.5 - Offset > Old
+        // 2->1 -50 - Offset:1.0 Position:320.0 - Offset < Old
+        
+        if offset > oldOffset && offset > 0 && offset <= 1 {
+            // 0->1
+            yOffset = (oldOffset - offset) * navigationOffset
+        }
+        else if offset < oldOffset && offset > 0 && offset <= 1 {
+            // 1<-0
+            yOffset = (oldOffset - offset) * navigationOffset
+        }
+        else if offset > oldOffset && offset > 1 && offset <= 2 {
+            // 1->2
+            yOffset = (offset - oldOffset) * navigationOffset
+        }
+        else if offset < oldOffset && offset > 1 && offset <= 2 {
+            // 2->1
+            yOffset = (offset - oldOffset) * navigationOffset
+        }
+        else {
+            yOffset = 0
+        }
+        
+        aboutButton.center.y = aboutButton.center.y + yOffset
+        ticketsButton.center.y = ticketsButton.center.y + yOffset
+        
+        oldOffset = offset
     }
 
 }

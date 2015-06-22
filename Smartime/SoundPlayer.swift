@@ -25,14 +25,14 @@ import AudioToolbox
 
 public class SoundPlayer: NSObject {
 
-    @IBInspectable var filename : String?
-    @IBInspectable var enabled : Bool = true
+    @IBInspectable var filename: String?
+    @IBInspectable var enabled: Bool = true
 
     private struct Internal {
         static var cache = [NSURL:SystemSoundID]()
     }
 
-    public func playSound(soundFile:String) {
+    public func playSound(soundFile: String) {
 
         if !enabled {
             return
@@ -40,7 +40,7 @@ public class SoundPlayer: NSObject {
 
         if let url = NSBundle.mainBundle().URLForResource(soundFile, withExtension: nil) {
 
-            var soundID : SystemSoundID = Internal.cache[url] ?? 0
+            var soundID: SystemSoundID = Internal.cache[url] ?? 0
 
             if soundID == 0 {
                 AudioServicesCreateSystemSoundID(url, &soundID)
@@ -48,7 +48,6 @@ public class SoundPlayer: NSObject {
             }
 
             AudioServicesPlaySystemSound(soundID)
-
         } else {
             println("Could not find sound file name `\(soundFile)`")
         }

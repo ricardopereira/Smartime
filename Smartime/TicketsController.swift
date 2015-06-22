@@ -21,96 +21,60 @@ class TicketsController {
     lazy var remote = RemoteStrategy()
     lazy var local = LocalStrategy()
     
-    let items = MutableProperty<[String:TicketViewModel]>([String:TicketViewModel]())
-    
-    // RAC Signals
+    // ReactiveCocoa Signals
     private var _signalTicketNumberCall: Signal<Ticket, NoError>!
-    private var _signalRemoteError: Signal<SocketIOError, NoError>!
+    private var _signalError: Signal<String, NoError>!
+    
+    let items = MutableProperty<[String:TicketViewModel]>([String:TicketViewModel]())
+        
+    init() {
+        // Signals
+        _signalTicketNumberCall = Signal() { sink in
+            self.remote.signalTicketCall.observe { ticket in
+                var ticketsList = self.items.value
+                var ticketCall = TicketViewModel(ticket)
+                
+                // Update
+                if let item = ticketsList[ticket.service] {
+                    item.desk.put(ticketCall.desk.value)
+                    item.current.put(ticketCall.current.value)
+                    
+                    // Check
+                    if ticket.current == item.number.value {
+                        item.called.put(true)
+                        // Emit
+                        sendNext(sink, ticket)
+                    }
+                }
+            }
+            return nil
+        }
+        
+        _signalError = Signal() { sink in
+            self.remote.signalRemoteError.observe { error in
+                // Emit
+                sendNext(sink, error.message)
+            }
+            return nil
+        }
+        
+        remote.signalTicketRequestAccepted.observe { ticket in
+            var ticketsList = self.items.value
+            // Add
+            ticketsList[ticket.service] = TicketViewModel(ticket)
+            self.items.put(ticketsList)
+        }
+    }
+    
+    
+    //MARK: ReactiveCocoa Signals
     
     var signalTicketNumberCall: Signal<Ticket, NoError> {
         return _signalTicketNumberCall
     }
     
-    var signalRemoteError: Signal<SocketIOError, NoError> {
-        return _signalRemoteError
+    var signalError: Signal<String, NoError> {
+        return _signalError
     }
-    
-    init() {
-        _signalTicketNumberCall = Signal() { sink in
-            
-            self.remote.socket.on(.TicketCall) {
-                switch $0 {
-                case .JSON(let json):
-                    var ticketsList = self.items.value
-                    
-                    let ticketCall = Ticket(dict: json)
-                    var ticket = TicketViewModel(ticketCall)
-                    
-                    // Update
-                    if let item = ticketsList[ticketCall.service] {
-                        item.desk.put(ticket.desk.value)
-                        item.current.put(ticket.current.value)
-                        
-                        // Check
-                        if ticketCall.current == item.number.value {
-                            item.called.put(true)
-                            sendNext(sink, ticketCall)
-                        }
-                    }
-                default:
-                    break;
-                }
-            }
-            
-            return nil
-        }
-        
-        _signalRemoteError = Signal() { sink in
-        
-            self.remote.socket.on(.ConnectError) {
-                switch $0 {
-                case .Failure(let error):
-                    sendNext(sink, error)
-                default:
-                    break;
-                }
-            }.on(.TransportError) {
-                switch $0 {
-                case .Failure(let error):
-                    sendNext(sink, error)
-                default:
-                    break;
-                }
-            }
-            
-            return nil
-        }
-        
-        remote.socket.on(.RequestAccepted) {
-            switch $0 {
-            case .JSON(let json):
-                var ticketsList = self.items.value
-                
-                let ticket = Ticket(dict: json)
-                // Add
-                ticketsList[ticket.service] = TicketViewModel(ticket)
-                
-                self.items.put(ticketsList)
-            default:
-                break
-            }
-        }
-        
-        remote.socket.on(.Advertisement) {
-            switch $0 {
-            case .JSON(let json):
-                if let image = json["buffer"] as? String >>- SocketIOUtilities.base64EncodedStringToUIImage {
-                    println(image)
-                }
-            default:
-                println("Not supported")
-            }
-        }
-    }
-    
+
 }
