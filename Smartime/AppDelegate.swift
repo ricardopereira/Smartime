@@ -46,10 +46,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func start(application: UIApplication) -> UIViewController {
-        let notificationSettings = UIUserNotificationSettings(forTypes: .Badge | .Sound | .Alert, categories: nil)
-        
-        application.registerUserNotificationSettings(notificationSettings)
-        application.registerForRemoteNotifications()
+        #if !((arch(i386) || arch(x86_64)) && os(iOS))
+            // Real device
+            let notificationSettings = UIUserNotificationSettings(forTypes: .Badge | .Sound | .Alert, categories: nil)
+            application.registerUserNotificationSettings(notificationSettings)
+            application.registerForRemoteNotifications()
+        #endif
         
         let storyboard = UIStoryboard(name: "Slider", bundle: nil)
         

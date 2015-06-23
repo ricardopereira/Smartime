@@ -41,21 +41,7 @@ class RemoteStrategy {
     }
     
     private func setup() {
-        socket.on(.ConnectError) {
-            switch $0 {
-            case .Failure(let error):
-                println(error)
-            default:
-                break
-            }
-        }.on(.TransportError) {
-            switch $0 {
-            case .Failure(let error):
-                println("WebSocket error: \(error)")
-            default:
-                break
-            }
-        }.on(.Connected) { result in
+        socket.on(.Connected) { result in
             println("Connected")
         }.on(.Disconnected) { result in
             switch result {
@@ -100,7 +86,7 @@ class RemoteStrategy {
                 default:
                     break;
                 }
-                }.on(.TransportError) {
+            }.on(.TransportError) {
                     switch $0 {
                     case .Failure(let error):
                         // Emit
