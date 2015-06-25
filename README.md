@@ -28,7 +28,7 @@ Testing
 
 Run `bin/test`
 
-This will run the tests from the command line, and pipe the result through [XCPretty]().
+This will run the tests from the command line, and pipe the result through [XCPretty](https://github.com/supermarin/xcpretty).
 
 Author
 ------
@@ -41,4 +41,4 @@ License
 Tropos is Copyright (c) 2015 thoughtbot, inc. It is free software,
 and may be redistributed under the terms specified in the [LICENSE] file.
 
-[LICENSE]: /LICENSE
+[LICENSE]: /LICENSE.md
