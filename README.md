@@ -5,6 +5,10 @@ Smartime
 
 Smartime is a queue management system that monetize the time of the customer. Customers no longer have to stand in a line or sit in the waiting area and waiting for their turn to be served. The customer can leave the waiting are without having to worry about missing their turn.
 
+![Smartime demo][demo]
+
+[demo]: https://raw.githubusercontent.com/ricardopereira/Smartime/master/Resources/Smartime-low.gif?token=ADYIwfcXPTkd1s207Jd0-YXt8YxWPIIsks5VlWZ3wA%3D%3D
+
 The app uses [SocketIO-Kit](https://github.com/ricardopereira/SocketIO-Kit) and [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa).
 
 Setup
