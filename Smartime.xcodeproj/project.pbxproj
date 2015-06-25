@@ -153,6 +153,7 @@
 		D795404B1ACDC3640031354F /* SocketIOTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOTransport.swift; sourceTree = "<group>"; };
 		D795404C1ACDC3640031354F /* SocketIOTransportDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOTransportDelegate.swift; sourceTree = "<group>"; };
 		D795404D1ACDC3640031354F /* SocketIOWebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOWebSocket.swift; sourceTree = "<group>"; };
+		D7A3C0FE1B3C29C200898327 /* Secrets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
 		D7A8540B1AF6258B0043AC4E /* SocketIOError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOError.swift; sourceTree = "<group>"; };
 		D7B63B261AD6BA8100C06BD8 /* LumaJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LumaJSON.swift; sourceTree = "<group>"; };
 		D7BBF3321B3003B00004FF83 /* TicketRequirements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketRequirements.swift; sourceTree = "<group>"; };
@@ -328,6 +329,7 @@
 		D79540011ACDB4B50031354F /* Smartime */ = {
 			isa = PBXGroup;
 			children = (
+				D7A3C0FE1B3C29C200898327 /* Secrets.h */,
 				D72404B11B380821000742D5 /* App */,
 				D72404B01B380809000742D5 /* Features */,
 				D7BBF3341B30055E0004FF83 /* Models */,

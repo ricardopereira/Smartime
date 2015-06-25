@@ -27,7 +27,7 @@ class RemoteStrategy {
     // Simulator
     private let socket = SocketIO<AppEvents>(url: "http://localhost:8000", withOptions: SocketIOOptions().namespace("/app"))
     #else
-    private let socket = SocketIO<AppEvents>(url: "http://smartime.herokuapp.com", withOptions: SocketIOOptions().namespace("/app"))
+    private let socket = SocketIO<AppEvents>(url: ServerHost, withOptions: SocketIOOptions().namespace("/app"))
     #endif
     
     // ReactiveCocoa Signals

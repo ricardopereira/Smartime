@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+echo ""
+echo "-------------------------------------------------"
+echo "Installing dependencies"
+echo "-------------------------------------------------"
+# Gemfile
+bundle install
+# Brewfile
+brew bundle
+
+# Carthage
+echo ""
+echo "-------------------------------------------------"
+echo "Carthage"
+echo "-------------------------------------------------"
+carthage update
+
+# Podfile
+echo ""
+echo "-------------------------------------------------"
+echo "CocoaPods"
+echo "-------------------------------------------------"
+pod install
+
+if [ ! -d Smartime/Secrets.h ]; then
+  cp Smartime/Secrets-Example.h Smartime/Secrets.h
+  echo ""
+  echo "-------------------------------------------------"
+  echo "Created Smartime/Secrets.h. Please add your secret strings to it."
+  echo "-------------------------------------------------"
+fi
