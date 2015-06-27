@@ -3,7 +3,7 @@ Smartime
 
 ###### Queue Management System
 
-Smartime is a queue management system that monetize the time of the customer. Customers no longer have to stand in a line or sit in the waiting area and waiting for their turn to be served. The customer can leave the waiting are without having to worry about missing their turn.
+Smartime is a queue management system that monetize the time of the customer. Customers no longer have to stand in a line or sit in the waiting area and waiting for their turn to be served. The customer can leave the waiting area without having to worry about missing their turn.
 
 ![Smartime demo][demo]
 
