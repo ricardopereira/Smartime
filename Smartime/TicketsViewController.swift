@@ -149,7 +149,8 @@ class TicketsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let item = items[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as! UITableViewCell
+        // TODO: Swift2 dequeueReusableCellWithIdentifier:forIndexPath -> UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! UITableViewCell
         if let reactiveView = cell as? ReactiveView {
             reactiveView.bindViewModel(item)
         }
